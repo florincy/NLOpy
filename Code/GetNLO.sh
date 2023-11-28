@@ -1,19 +1,15 @@
 #!/bin/bash
 
 Methods=('B3LYP' 'CAM-B3LYP')
-echo "."
+#echo "."
 
 # Prompt the user to select a directory and store the path in a variable
 directory=$(zenity --title="Select the directory" --file-selection --directory)
 
 # Concatenate the selected directory path with the file name to create the results file path
 ResultsPath="$directory/Results.txt"
-
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "$ResultsPath"
-
-# Run the Python script with the results file path as an argument
-python3 MakeATableForNLO.py "$ResultsPath"
-
 # Loop through each method in the Methods array
 for i in "${!Methods[@]}"; do
   directory2="$directory/${Methods[i]}"
@@ -54,11 +50,34 @@ for i in "${!Methods[@]}"; do
   grep -q "Beta(-2w;w,w)" EnergyReference.txt
   if [ $? -eq 0 ]; then
     echo "Beta(-2w,w,w):" >> $directory/Results.txt
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "x " DipoleMomentReference.txt | head -n 1 >> $directory/Results.txt
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "y " DipoleMomentReference.txt | head -n 1 >> $directory/Results.txt
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "z " DipoleMomentReference.txt | head -n 1 >> $directory/Results.txt
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "x " EnergyReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "y " EnergyReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "z " EnergyReference.txt | head -n 1 >> "$ResultsPath"
+  else
+    #echo "Erro: Campo não requisitado no input"
+    :
+  fi
+  if grep -q "Beta(-w;w,0)" DipoleMomentReference.txt; then
+    echo "Beta(-w,w,0):" >> "$ResultsPath"
+    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "x " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "y " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "z " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+  else
+    #echo "Error: Field not requested in the input"
+    :
+  fi
+    # Check if the Beta(-2w,w,w) field was requested in the input and write the results to the results file
+  grep -q "Beta(-2w;w,w)" EnergyReference.txt
+  if [ $? -eq 0 ]; then
+    echo "Beta(-2w,w,w):" >> $directory/Results.txt
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "x " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "y " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "z " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
   else
     #echo "Erro: Campo não requisitado no input"
     :
   fi
 done 
+cd "$SCRIPT_DIR"
+# Run the Python script with the results file path as an argument
+python3 MakeATableForNLO.py "$ResultsPath"

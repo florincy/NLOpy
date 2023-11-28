@@ -1,0 +1,26 @@
+METODO B3LYP:
+Beta(-w,w,0):
+EnergyReference.txt:   x         -0.273498D+01     -0.695163D+01     -0.231881D+02
+EnergyReference.txt:   y         -0.648378D-01     -0.164801D+00     -0.549718D+00
+EnergyReference.txt:   z          0.152644D+01      0.387981D+01      0.129417D+02
+Beta(-w,w,0):
+DipoleMomentReference.txt:   x          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   y          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   z          0.313278D+01      0.796274D+01      0.265609D+02
+METODO CAM-B3LYP:
+Beta(-w,w,0):
+EnergyReference.txt:   x         -0.486201D-01     -0.123580D+00     -0.412218D+00
+EnergyReference.txt:   y          0.104593D+01      0.265849D+01      0.886778D+01
+EnergyReference.txt:   z          0.000000D+00      0.000000D+00      0.000000D+00
+Beta(-2w,w,w):
+EnergyReference.txt:   x         -0.486201D-01     -0.123580D+00     -0.412218D+00
+EnergyReference.txt:   y          0.104593D+01      0.265849D+01      0.886778D+01
+EnergyReference.txt:   z          0.000000D+00      0.000000D+00      0.000000D+00
+Beta(-w,w,0):
+DipoleMomentReference.txt:   x          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   y          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   z          0.104706D+01      0.266137D+01      0.887736D+01
+Beta(-2w,w,w):
+DipoleMomentReference.txt:   x          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   y          0.000000D+00      0.000000D+00      0.000000D+00
+DipoleMomentReference.txt:   z          0.104706D+01      0.266137D+01      0.887736D+01
