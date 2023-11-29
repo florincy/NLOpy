@@ -28,7 +28,7 @@ for i in "${!Methods[@]}"; do
   NlinesEnergy="$(grep -n "Electric dipole moment (input orientation):" "$outputGAUSSIAN" | cut -d : -f 1)"
   NlinesDipoleMoment="$(grep -n "Electric dipole moment (dipole orientation):" "$outputGAUSSIAN" | cut -d : -f 1)"
   N=$(($NlinesDipoleMoment-$NlinesEnergy))
-  
+  echo $N
   # Extract the Energy and Dipole moment sections and write them to separate files
   grep "Electric dipole moment (input orientation):" "$outputGAUSSIAN" -B1 -A$N > EnergyReference.txt
   grep "Electric dipole moment (dipole orientation):" "$outputGAUSSIAN" -B1 -A$N > DipoleMomentReference.txt
@@ -39,29 +39,28 @@ for i in "${!Methods[@]}"; do
   # Check if the Beta(-w,w,0) field was requested in the input and write the results to the results file
   if grep -q "Beta(-w;w,0)" EnergyReference.txt; then
     echo "Beta(-w,w,0):" >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "x " EnergyReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "y " EnergyReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "z " EnergyReference.txt | head -n 1 >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" EnergyReference.txt |  grep "x "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" EnergyReference.txt |  grep "y "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" EnergyReference.txt |  grep "z "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
   else
     #echo "Error: Field not requested in the input"
     :
   fi
     # Check if the Beta(-2w,w,w) field was requested in the input and write the results to the results file
-  grep -q "Beta(-2w;w,w)" EnergyReference.txt
-  if [ $? -eq 0 ]; then
+  if grep -q "Beta(-2w;w,w)" EnergyReference.txt; then
     echo "Beta(-2w,w,w):" >> $directory/Results.txt
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "x " EnergyReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "y " EnergyReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "z " EnergyReference.txt | head -n 1 >> "$ResultsPath"
-  else
+    grep -A7 "Beta(-2w;w,w)" EnergyReference.txt |  grep "x "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-2w;w,w)" EnergyReference.txt |  grep "y "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-2w;w,w)" EnergyReference.txt |  grep "z "  | sed 's/^/EnergyReference.txt: /' >> "$ResultsPath"
+  else 
     #echo "Erro: Campo não requisitado no input"
     :
   fi
   if grep -q "Beta(-w;w,0)" DipoleMomentReference.txt; then
     echo "Beta(-w,w,0):" >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "x " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "y " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-w;w,0)" -A7 * | xargs grep -w "z " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" DipoleMomentReference.txt|  grep "x "  | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" DipoleMomentReference.txt|  grep "y "  | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-w;w,0)" DipoleMomentReference.txt|  grep "z "  | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
   else
     #echo "Error: Field not requested in the input"
     :
@@ -70,9 +69,9 @@ for i in "${!Methods[@]}"; do
   grep -q "Beta(-2w;w,w)" EnergyReference.txt
   if [ $? -eq 0 ]; then
     echo "Beta(-2w,w,w):" >> $directory/Results.txt
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "x " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "y " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
-    grep -l "Beta(-2w;w,w)" -A7 * | xargs grep -w "z " DipoleMomentReference.txt | head -n 1 >> "$ResultsPath"
+    grep -A7 "Beta(-2w;w,w)" DipoleMomentReference.txt |  grep "x "   | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-2w;w,w)" DipoleMomentReference.txt |  grep "y "   | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
+    grep -A7 "Beta(-2w;w,w)" DipoleMomentReference.txt |  grep "z "   | sed 's/^/DipoleMomentReference.txt: /' >> "$ResultsPath"
   else
     #echo "Erro: Campo não requisitado no input"
     :
