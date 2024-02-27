@@ -32,28 +32,34 @@ def read_file(log_file_path, start, end=None):
 
 def collect(file):
     lines = []
-    trash = ["Unable","xy", "xz", "xx", "yx", "yz", "yy", "zy", "zx", "zz", "(z)","x,y,z","*","job","Alpha (input orientation)","cpu","Elapsed","time","Dipole polarizability"]
+    trash = ["Unable","xy", "xz", "yx", "yz", "zy", "zx", "(z)","x,y,z","xxx","zzz","yyy","*","job","Alpha (input orientation)","cpu","Elapsed","time","Dipole polarizability","First dipole hyperpolarizability"]
     for line in file:
         if any(element in line for element in trash):
             pass
-        elif len(line) > 61:
+        elif len(line) > 62:
             pass
         elif "Beta(0;0,0)" in line:
             line="Beta(0;0,0)"
+            #print(line)
             lines.append(line.strip())
         elif "Beta(-w;w,0)" in line:
             line="Beta(-w;w,0)"
+            #print(line)
             lines.append(line.strip())
         elif "Beta(-2w;w,w)" in line:
             line="Beta(-2w;w,w)"
+            #print(line)
             lines.append(line.strip())
-        elif "First dipole hyperpolarizability" in line:
-            line="Alpha"
+        elif "Alpha(-w;w)" in line:
+            line="Alpha(-w;w)"
+            lines.append(line.strip())
+        elif "Alpha(0;0)" in line:
+            line="Alpha(0;0)"
             lines.append(line.strip())
         elif "Electric dipole moment" in line:
             line="EletricDipole"
             lines.append(line.strip())
-        elif any(keyword in line for keyword in [ "x", "y", "z"]):
+        elif any(keyword in line for keyword in [ "x", "y", "z","xx","yy","zz"]):
             lines.append(line.strip())      
 
     return lines
@@ -67,7 +73,7 @@ def calc(file, name, comment):
                 line[i] = line[i].replace('D', 'E')
             lines.append(line)
         else:
-            lined = [line, name, comment, ""]
+            lined = [line, name, comment, " "]
             lines.append(lined)
     return lines
 
@@ -83,10 +89,11 @@ def AlphaTot(list,name):
                 x=(list[i+1])
                 y=(list[i+2])
                 z=(list[i+3])
-                a_au=math.sqrt(((float(x[1]))**2)+((float(y[1]))**2)+((float(z[1]))**2))
-                a_debye=math.sqrt(((float(x[2]))**2)+((float(y[2]))**2)+((float(z[2]))**2))
-                a_SI=math.sqrt(((float(x[3]))**2)+((float(y[3]))**2)+((float(z[3]))**2))
-                print(x)
+                #print(x)
+                a_au=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
+                a_debye=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
+                a_SI=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
+                #print(x)
                 lined_au=["Tot(Alpha)(au)",a_au,"",""]
                 lined_debye=["Tot(Alpha)(Debye)",a_debye,"",""]
                 lined_SI=["Tot(Alpha)(SI)",a_SI,"",""]
@@ -108,7 +115,7 @@ def EletricDipoleTot(list,name):
                 d_au=math.sqrt(((float(x[1]))**2)+((float(y[1]))**2)+((float(z[1]))**2))
                 d_debye=math.sqrt(((float(x[2]))**2)+((float(y[2]))**2)+((float(z[2]))**2))
                 d_SI=math.sqrt(((float(x[3]))**2)+((float(y[3]))**2)+((float(z[3]))**2))
-                print(x)
+                #print(x)
                 lined_au=["Tot(Electric Dipole)(au)",d_au,"",""]
                 lined_debye=["Tot(Electric Dipole)(Debye)",d_debye,"",""]
                 lined_SI=["Tot(Electric Dipole)(SI)",d_SI,"",""]
@@ -118,11 +125,8 @@ def EletricDipoleTot(list,name):
                 nwlist.append(lined_SI)
     return nwlist
 
-def BetaTot(list,name):
-    nwlist=[]
+def BetaStaticTot(list,name):
     Staticlist=[]
-    HRSlist=[]
-    EFISHlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Beta' in elem:
@@ -144,23 +148,56 @@ def BetaTot(list,name):
                     Staticlist.append(lined_au)
                     Staticlist.append(lined_esu)
                     Staticlist.append(lined_SI)
+    return Staticlist
+def BetaHRSTot(list,name):
+    HRSlist=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Beta' in elem:
+                indice=[i,j]
+                x=(list[i+1])
+                y=(list[i+2])
+                z=(list[i+3])
+                t_au=math.sqrt(((float(x[1])/3)**2)+((float(y[1])/3)**2)+((float(z[1])/3)**2))
+                b_au=math.sqrt(((float(x[1])/6)**2)+((float(y[1])/6)**2)+((float(z[1])/6)**2))
+                t_esu=math.sqrt(((float(x[2])/3)**2)+((float(y[2])/3)**2)+((float(z[2])/3)**2))
+                b_esu=math.sqrt(((float(x[2])/6)**2)+((float(y[2])/6)**2)+((float(z[2])/6)**2))
+                t_SI=math.sqrt(((float(x[3])/3)**2)+((float(y[3])/3)**2)+((float(z[3])/3)**2))
+                b_SI=math.sqrt(((float(x[3])/6)**2)+((float(y[3])/6)**2)+((float(z[3])/6)**2))
+                lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
+                lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
+                lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
                 if 'Beta(-2w;w,w)' in elem:
                     HRSlist.append(list[i])
                     HRSlist.append(lined_au)
                     HRSlist.append(lined_esu)
                     HRSlist.append(lined_SI)
-                if 'Beta(-w;w,0)' in elem:
+    return HRSlist
+
+def BetaEFISHTot(list,name):
+    EFISHlist=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Beta(-w;w,0)' in elem:
+                indice=[i,j]
+                x=(list[i+1])
+                y=(list[i+2])
+                z=(list[i+3])
+                t_au=math.sqrt(((float(x[1])/3)**2)+((float(y[1])/3)**2)+((float(z[1])/3)**2))
+                b_au=math.sqrt(((float(x[1])/6)**2)+((float(y[1])/6)**2)+((float(z[1])/6)**2))
+                t_esu=math.sqrt(((float(x[2])/3)**2)+((float(y[2])/3)**2)+((float(z[2])/3)**2))
+                b_esu=math.sqrt(((float(x[2])/6)**2)+((float(y[2])/6)**2)+((float(z[2])/6)**2))
+                t_SI=math.sqrt(((float(x[3])/3)**2)+((float(y[3])/3)**2)+((float(z[3])/3)**2))
+                b_SI=math.sqrt(((float(x[3])/6)**2)+((float(y[3])/6)**2)+((float(z[3])/6)**2))
+                lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
+                lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
+                lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
+                if "Beta(-w;w,0)" in elem:
                     EFISHlist.append(list[i])
                     EFISHlist.append(lined_au)
                     EFISHlist.append(lined_esu)
                     EFISHlist.append(lined_SI)
-            print(Staticlist)
-            print(HRSlist)
-            print(EFISHlist)
-
-    return Staticlist
-        
-
+    return EFISHlist
 
 
 

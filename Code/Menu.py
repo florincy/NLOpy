@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaTot, BetaTot, EletricDipoleTot, GammaTot
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaTot, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, GammaTot
+from Application import Application
 
 class Application:
     def __init__(self, master=None):
@@ -11,73 +12,92 @@ class Application:
         
         # Create a frame to contain the widgets
         self.widget_frame = tk.Frame(master)
-        self.widget_frame.pack(expand=True, fill=tk.BOTH)  # Expand to fill the available space
+        self.widget_frame.pack()# Expand to fill the available space
         
         # Centering the frame on the window
         self.widget_frame.grid_rowconfigure(0, weight=1)
         self.widget_frame.grid_columnconfigure(0, weight=1)
+        
 
         # NLO data app label
         self.msg = tk.Label(self.widget_frame, text="NLO data app", font=("Calibri", 16, "italic", "bold"))
-        self.msg.pack()
+        self.msg.grid(row=0, columnspan=3)
 
-        # Select Property label
-        self.property_label = tk.Label(self.widget_frame, text="Choose .log files directory:", font=("Calibri", 10, "bold"))
-        self.property_label.pack()
-
-        # Select Directory containing .log files button
+        # Select Input Directory label and button
+        self.select_input_label = tk.Label(self.widget_frame, text="Choose .log files directory:", font=("Calibri", 10, "bold"))
+        self.select_input_label.grid(row=1, column=0, sticky=tk.W)
         self.select_dir_button_input = tk.Button(self.widget_frame, text="Choose directory", command=self.select_directory_input, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_input.pack()
-
-        # Label to display selected directory for input
+        self.select_dir_button_input.grid(row=1, column=1, sticky=tk.W)
         self.selected_directory_label_input = tk.Label(self.widget_frame, text="")
-        self.selected_directory_label_input.pack()
+        self.selected_directory_label_input.grid(row=1, column=2, sticky=tk.W)
 
-        # Select Property label
-        self.property_label = tk.Label(self.widget_frame, text="Choose directory for saving:", font=("Calibri", 10, "bold"))
-        self.property_label.pack()
-
-        # Select Directory for saving the .csv files button
+        # Select Output Directory label and button
+        self.select_output_label = tk.Label(self.widget_frame, text="Choose directory for saving:", font=("Calibri", 10, "bold"))
+        self.select_output_label.grid(row=2, column=0, sticky=tk.W)
         self.select_dir_button_output = tk.Button(self.widget_frame, text="Choose directory", command=self.select_directory_output, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_output.pack()
-        
-        # Label to display selected directory for output
+        self.select_dir_button_output.grid(row=2, column=1, sticky=tk.W)
         self.selected_directory_label_output = tk.Label(self.widget_frame, text="")
-        self.selected_directory_label_output.pack()
+        self.selected_directory_label_output.grid(row=2, column=2, sticky=tk.W)
 
-        # Select Property label
+        # Select Property label and menu
         self.property_label = tk.Label(self.widget_frame, text="Select Property:", font=("Calibri", 10, "bold"))
-        self.property_label.pack()
-
-        # Option menu for selecting property
+        self.property_label.grid(row=3, column=0, sticky=tk.W)
         self.selected_property = tk.StringVar(master)
         self.selected_property.set("Alpha")  # Default value
-        self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_property, "Alpha", "Beta", "Gamma", "Electric Dipole")
-        self.property_menu.config(bg='#B4ADEA')
-        self.property_menu.pack(padx=10, pady=10)
 
-        # Frame to contain the buttons
+        # Create OptionMenu
+        self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
+        self.property_menu.config(bg='#B4ADEA')
+        self.property_menu.grid(row=3, column=1, sticky=tk.W)
+
+        # Checkbuttons
+        self.checkbutton1_value = tk.BooleanVar()
+        self.checkbutton1 = tk.Checkbutton(self.widget_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
+        self.checkbutton2_value = tk.BooleanVar()
+        self.checkbutton2 = tk.Checkbutton(self.widget_frame,text="Beta(-2w;w,w)", variable=self.checkbutton2_value)
+        self.checkbutton3_value = tk.BooleanVar()
+        self.checkbutton3 = tk.Checkbutton(self.widget_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value)
+
+        # Create a frame to contain the buttons
         self.button_frame = tk.Frame(self.widget_frame)
-        self.button_frame.pack()
+        self.button_frame.grid(row=5, column=0, columnspan=4, pady=10)
 
         # Generate CSV file button
-        self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white",bg='#011627')
-        self.run_button.pack(side=tk.LEFT,padx=7)
+        self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white", bg='#011627')
+        self.run_button.pack(side=tk.LEFT, padx=10)
 
         # Exit button
-        self.sair = tk.Button(self.button_frame, text="Exit", command=self.widget_frame.quit, font=("Calibri", 10), fg='#011627', width=5,highlightcolor="#011627",highlightthickness=2,highlightbackground='#011627')
-        self.sair.pack(side=tk.RIGHT, padx=7, pady=10)
+        self.exit_button = tk.Button(self.button_frame, text="Exit", command=self.widget_frame.quit, font=("Calibri", 10), fg='#011627', width=5, highlightcolor="#011627", highlightthickness=2, highlightbackground='#011627')
+        self.exit_button.pack(side=tk.RIGHT, padx=10)
+
 
         # Label to display messages
-        self.mensagem = tk.Label(self.widget_frame, text="")
-        self.mensagem.pack()
+        self.message_label = tk.Label(self.widget_frame, text="")
+        self.message_label.grid(row=6, columnspan=3)
+    
+    def on_property_select(self, event):
+        selected_property = self.selected_property.get()
+        if selected_property == "Beta":
+            self.show_checkbox()
+        else:
+            self.hide_checkbox()
 
+    def show_checkbox(self):
+        self.checkbutton1.grid(row=4, column=0, sticky=tk.W)
+        self.checkbutton2.grid(row=4, column=1, sticky=tk.W)
+        self.checkbutton3.grid(row=4, column=2, sticky=tk.W)
+
+    def hide_checkbox(self):
+        self.checkbutton1.grid_forget()
+        self.checkbutton2.grid_forget()
+        self.checkbutton3.grid_forget()
+    
     def select_directory_input(self):
         directory = filedialog.askdirectory()
         if directory:
             self.selected_directory_label_input.config(text="Selected Input Directory: " + directory)
             self.selected_directory_input = directory 
-    
+
     def select_directory_output(self):
         directory = filedialog.askdirectory()
         if directory:
@@ -87,10 +107,11 @@ class Application:
     def run_application(self):
         selected_property_value = self.selected_property.get()
         print("Selected Property:", selected_property_value)
+        
         option = selected_property_value
 
         if not hasattr(self, 'selected_directory_input') or not hasattr(self, 'selected_directory_output'):
-            self.mensagem["text"] = "Error: Please select both input and output directories."
+            self.message_label["text"] = "Error: Please select both input and output directories."
             return
 
         directory_input = self.selected_directory_input
@@ -117,62 +138,74 @@ class Application:
                     with open(output_file_path_input, "w") as output_file:
                         for line in input_ref:
                             output_file.write(line + "\n")
-
                     outputInputPath = os.path.join(directory_output, "ResultInp.txt")
                     outputDipolePath = os.path.join(directory_output, "ResultDip.txt")
-
+                    #Writing resumed .txt files
                     with open(outputInputPath, "w") as outputInput:
                         with open(output_file_path_input, "r") as file:
                             lines = collect(file)
                             for line in lines:
                                 outputInput.write(line + "\n")
-
                     with open(outputDipolePath, "w") as outputDipole:
                         with open(output_file_path_dipole, "r") as file:
                             lines = collect(file)
                             for line in lines:
                                 outputDipole.write(line + "\n")
+                    #Reading and dealing with resumed .txt files
+                    with open(outputInputPath, "r") as file:
+                        comment = "Input Orientation"
+                        ret = calc(file, name, comment)
+                        self.CSVoptions(option, directory_output, ret, name)
+                    with open(outputDipolePath, "r") as file:
+                        comment = "Dipole Orientation"
+                        ret = calc(file, name, comment)
+                        self.CSVoptions(option, directory_output, ret, name)
 
-                    output = os.path.join(directory_output, f"{option}.csv")
-                    print(output)
-                    with open(output, 'a', newline='') as df:
-                        writer = csv.writer(df)
-                        with open(outputInputPath, "r") as file:
-                            comment = "Input Orientation"
-                            ret = calc(file, name, comment)
-                            if option == "Alpha":
-                                alpha = AlphaTot(ret, name)
-                                writer.writerows(alpha)
-                            elif option == "Beta":
-                                beta = BetaTot(ret, name)
-                                writer.writerows(beta)
-                            elif option == "Gamma":
-                                GammaTot(ret, name)
-                            elif option == "Electric Dipole":
-                                dipole = EletricDipoleTot(ret, name)
-                                writer.writerows(dipole)
-                            else:
-                                print("Error")
-
-                        with open(outputDipolePath, "r") as file:
-                            comment = "Dipole Orientation"
-                            ret = calc(file, name, comment)
-                            if option == "Alpha":
-                                alpha = AlphaTot(ret, name)
-                                writer.writerows(alpha)
-                            elif option == "Beta":
-                                beta = BetaTot(ret, name)
-                                writer.writerows(beta)
-                            elif option == "Gamma":
-                                GammaTot(ret, name)
-                            elif option == "Electric Dipole":
-                                dipole = EletricDipoleTot(ret, name)
-                                writer.writerows(dipole)
-                            else:
-                                print("Error")   
-                    self.mensagem["text"] = ".csv file generated for " + option
+    #Avaliates which .csv where requested and create them                   
+    def CSVoptions(self, option, directory_output, ret, name):
+        checkbutton1_state = self.checkbutton1_value.get()
+        checkbutton2_state = self.checkbutton2_value.get()
+        checkbutton3_state = self.checkbutton3_value.get()
+        
+        if option == "Beta":
+            if checkbutton1_state==True:
+                print(checkbutton1_state)
+                output = os.path.join(directory_output, "BetaStatic.csv")
+                betaStatic = BetaStaticTot(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(betaStatic)
+            if checkbutton2_state==True:
+                print(checkbutton2_state)
+                output = os.path.join(directory_output, "BetaHRS.csv")
+                betaHRS = BetaHRSTot(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(betaHRS)
+            if checkbutton3_state==True:
+                print(checkbutton3_state)
+                output = os.path.join(directory_output, "BetaEFISH.csv")
+                betaEFISH = BetaEFISHTot(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(betaEFISH)
+        else:
+            output = os.path.join(directory_output, f"{option}.csv")
+            with open(output, 'a', newline='') as df:
+                writer = csv.writer(df)
+                if option == "Alpha":
+                    alpha = AlphaTot(ret, name)
+                    writer.writerows(alpha)
+                elif option == "Gamma":
+                    GammaTot(ret, name)
+                elif option == "Electric Dipole":
+                    dipole = EletricDipoleTot(ret, name)
+                    writer.writerows(dipole)
+                else:
+                    print("Error")
+        
+        self.message_label.config(text=".csv file generated for " + option)
 
 root = tk.Tk()
 app = Application(root)
 root.mainloop()
-
