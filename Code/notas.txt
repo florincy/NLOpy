@@ -1,0 +1,36 @@
+ssh ssh.axisapps.io  -l <HASH>
+
+ 
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script a2d323a5f8d74b9895e2b7aa201bf14c
+
+ 
+
+ssh -L localhost:8888:<SERVER>:9761 -L localhost:8889:<SERVER>:7750 -L localhost:7007:<SERVER>:<PPPP> ssh.axisapps.io -l <HASH>
+
+ 
+
+tensorboard --logdir=./ --port=8217
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script 16deb06ddce84f9cbd081b2d7ee65bcc
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 ssh.axisapps.io -L localhost:7007:dgx09:6039 -l 16deb06ddce84f9cbd081b2d7ee65bcc
+-L localhost:7007:dgx09:7997
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 ssh.axisapps.io -L localhost:7007:dgx09:6039 -l ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+ssh -L localhost:8888:dgx08:9761 -L localhost:8889:dgx08:7750 -L localhost:7007:<SERVER>:<PPPP> ssh.axisapps.io -l <HASH>
+
+
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 -L localhost:7007:dgx09:0693 ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+
+Easy notes
+1) Copy link from axisapps
+2) sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script <HASH> 
+3) cat port_forward_command (Check if file exists)
+
+OPEN ANOTHER TERMINAL TAB
+4) Copy the cat output
+5) Add -L localhost:7007:<SERVER>:<REVERVE_PORT> to that copied output and past it on NEW TERMINAL TAB
+                                -L localhost:7007:<SERVER>:<REVERVE_PORT>
+
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 -L localhost:7007:dgx09:0639 ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script a2d323a5f8d74b9895e2b7aa201bf14c

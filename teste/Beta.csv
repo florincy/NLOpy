@@ -1,0 +1,21 @@
+"['Beta(0;0,0)\n', 'SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log', 'Input Orientation', '']","['Tot(t)(au)', 12135.86726001392, 'Top(b)(au)', 6067.93363000696]","['Tot(t)(esu)', 104.84435120321086, 'Top(b)(esu)', 52.42217560160543]","['Tot(t)(SI)', 38.911878736676, 'Top(b)(SI)', 19.455939368338]","['Beta(0;0,0)\n', 'SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log', 'Input Orientation', '']","['Tot(t)(au)', 12135.86726001392, 'Top(b)(au)', 6067.93363000696]","['Tot(t)(esu)', 104.84435120321086, 'Top(b)(esu)', 52.42217560160543]","['Tot(t)(SI)', 38.911878736676, 'Top(b)(SI)', 19.455939368338]"
+"['Beta(-2w;w,w)\n', 'SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log', 'Input Orientation', '']","['Tot(t)(au)', 13613.960895534978, 'Top(b)(au)', 6806.980447767489]","['Tot(t)(esu)', 117.61388307066474, 'Top(b)(esu)', 58.80694153533237]","['Tot(t)(SI)', 43.65139580791076, 'Top(b)(SI)', 21.82569790395538]"
+"['Beta(-w;w,0)\n', 'SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log', 'Input Orientation', '']","['Tot(t)(au)', 11439.599334454177, 'Top(b)(au)', 5719.799667227088]","['Tot(t)(esu)', 98.82904871823422, 'Top(b)(esu)', 49.41452435911711]","['Tot(t)(SI)', 36.679374339281075, 'Top(b)(SI)', 18.339687169640538]"
+"Beta(0;0,0)
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Dipole Orientation,
+Tot(t)(au),12135.840679051034,Top(b)(au),6067.920339525517
+Tot(t)(esu),104.84435479695372,Top(b)(esu),52.42217739847686
+Tot(t)(SI),38.91206694013639,Top(b)(SI),19.456033470068196
+"Beta(0;0,0)
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Dipole Orientation,
+Tot(t)(au),12135.840679051034,Top(b)(au),6067.920339525517
+Tot(t)(esu),104.84435479695372,Top(b)(esu),52.42217739847686
+Tot(t)(SI),38.91206694013639,Top(b)(SI),19.456033470068196
+"['Beta(0;0,0)\n', 'A7_property_B3LYP_def2-TZVP_solvent.log', 'Input Orientation', '']","['Tot(t)(au)', 47257.90674728245, 'Top(b)(au)', 23628.953373641227]","['Tot(t)(esu)', 408.27169850946757, 'Top(b)(esu)', 204.13584925473378]","['Tot(t)(SI)', 151.52588231853142, 'Top(b)(SI)', 75.76294115926571]"
+
+"['Beta(-w;w,0)\n', 'A7_property_B3LYP_def2-TZVP_solvent.log', 'Input Orientation', '']","['Tot(t)(au)', 53357.712704771184, 'Top(b)(au)', 26678.856352385592]","['Tot(t)(esu)', 460.9698907040097, 'Top(b)(esu)', 230.48494535200484]","['Tot(t)(SI)', 171.08414169541857, 'Top(b)(SI)', 85.54207084770928]"
+"Beta(0;0,0)
+",A7_property_B3LYP_def2-TZVP_solvent.log,Dipole Orientation,
+Tot(t)(au),47257.85350958435,Top(b)(au),23628.926754792174
+Tot(t)(esu),408.2724905342059,Top(b)(esu),204.13624526710294
+Tot(t)(SI),151.5260781614014,Top(b)(SI),75.7630390807007
