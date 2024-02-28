@@ -1,0 +1,6 @@
+"xyyx","xyxy","xxyy","xzzx","xzxz","xxzz"
+"yxxy","yxyx","yyxx","yzzy","yzyz","yyzz"
+"zyyz","zyzy","zzyy","zxxz","zxzx","zzxx"
+
+
+

@@ -30,39 +30,68 @@ def read_file(log_file_path, start, end=None):
                 lines.append(next(log_file).strip())
     return lines
 
+def read_file(log_file_path, start, end=None):
+    lines = []
+    with open(log_file_path, "r") as log_file:
+        for i in range(start - 2):
+            next(log_file)  # Skip lines until start line
+            
+        if end is None:
+            for line in log_file:
+                lines.append(line.strip())
+        else:
+            for i in range(end - start + 1):
+                lines.append(next(log_file).strip())
+    return lines
+
+def open_file(log_file_path):
+    with open(log_file_path, "r") as log_file:
+        return log_file.readlines()
+
 def collect(file):
     lines = []
-    trash = ["Unable","xy", "xz", "yx", "yz", "zy", "zx", "(z)","x,y,z","xxx","zzz","yyy","*","job","Alpha (input orientation)","cpu","Elapsed","time","Dipole polarizability","First dipole hyperpolarizability"]
-    for line in file:
-        if any(element in line for element in trash):
-            pass
-        elif len(line) > 62:
-            pass
-        elif "Beta(0;0,0)" in line:
-            line="Beta(0;0,0)"
-            #print(line)
+    trash = {"Unable", "(z)", "x,y,z", "*", "job", "(input orientation)", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
+    Properties = ["Alpha", "Beta", "Gamma"]
+    Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
+    Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)"}
+    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):", "Gamma(-2w;w,w,0)"}
+    
+    file_lines = file.readlines()
+
+    for line in file_lines:
+        if any(keyword in line for keyword in trash):
+            continue
+
+        # Check for Alpha property
+        if any(keyword in line.split() for keyword in Alpha_ok):
             lines.append(line.strip())
-        elif "Beta(-w;w,0)" in line:
-            line="Beta(-w;w,0)"
-            #print(line)
+            continue
+
+    for line in file_lines:
+        if "Electric dipole moment" in line:
             lines.append(line.strip())
-        elif "Beta(-2w;w,w)" in line:
-            line="Beta(-2w;w,w)"
-            #print(line)
+            continue
+
+    for line in file_lines:
+        if any(keyword in line for keyword in trash):
+            continue
+
+        # Check for Beta property
+        if any(keyword in line.split() for keyword in Beta_ok):
             lines.append(line.strip())
-        elif "Alpha(-w;w)" in line:
-            line="Alpha(-w;w)"
+            continue
+
+    for line in file_lines:
+        if any(keyword in line for keyword in trash):
+            continue
+
+        # Check for Gamma property
+        if any(keyword in line.split() for keyword in Gamma_ok):
             lines.append(line.strip())
-        elif "Alpha(0;0)" in line:
-            line="Alpha(0;0)"
-            lines.append(line.strip())
-        elif "Electric dipole moment" in line:
-            line="EletricDipole"
-            lines.append(line.strip())
-        elif any(keyword in line for keyword in [ "x", "y", "z","xx","yy","zz"]):
-            lines.append(line.strip())      
 
     return lines
+
+
 
 def calc(file, name, comment):
     lines = []
@@ -199,5 +228,61 @@ def BetaEFISHTot(list,name):
                     EFISHlist.append(lined_SI)
     return EFISHlist
 
+
+def Gamma0000(list,name):
+    gamma0000=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Gamma(0;0,0,0)' in elem:
+                indice=[i,j]
+                xxxx=(list[i+1])
+                xxyy=(list[i+2])
+                yyyy=(list[i+2])
+                xxzz=(list[i+2])
+                yyzz=(list[i+2])
+                zzzz=(list[i+3])
+                t_au=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy[1])))+(2*(float(xxzz[1])))+(2*(float(yyzz[1]))))/5
+                t_esu=(float(xxxx[2]))+((float(yyyy[2]))+(float(zzzz[2]))+(2*(float(xxyy[2])))+(2*(float(xxzz[2])))+(2*(float(yyzz[2]))))/5
+                t_SI=(float(xxxx[3]))+((float(yyyy[3]))+(float(zzzz[3]))+(3*(float(xxyy[3])))+(3*(float(xxzz[3])))+(3*(float(yyzz[3]))))/5
+                #b_esu=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                #t_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                #b_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                lined_au=["Tot(t)(au)",t_au]
+                lined_esu=["Tot(t)(esu)",t_esu]
+                lined_SI=["Tot(t)(SI)",t_SI]
+                if "Gamma(0;0,0,0)" in elem:
+                    gamma0000.append(list[i])
+                    gamma0000.append(lined_au)
+                    gamma0000.append(lined_esu)
+                    gamma0000.append(lined_SI)
+    return gamma0000
+
+def Gammaww00(list,name):
+    gammaww00=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Gamma(-w;w,0,0)' in elem:
+                indice=[i,j]
+                xxxx=(list[i+1])
+                xxyy=(list[i+2])
+                yyyy=(list[i+2])
+                xxzz=(list[i+2])
+                yyzz=(list[i+2])
+                zzzz=(list[i+3])
+                t_au=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy[1])))+(2*(float(xxzz[1])))+(2*(float(yyzz[1]))))/5
+                t_esu=(float(xxxx[2]))+((float(yyyy[2]))+(float(zzzz[2]))+(2*(float(xxyy[2])))+(2*(float(xxzz[2])))+(2*(float(yyzz[2]))))/5
+                t_SI=(float(xxxx[3]))+((float(yyyy[3]))+(float(zzzz[3]))+(3*(float(xxyy[3])))+(3*(float(xxzz[3])))+(3*(float(yyzz[3]))))/5
+                #b_esu=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                #t_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                #b_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                lined_au=["Tot(t)(au)",t_au]
+                lined_esu=["Tot(t)(esu)",t_esu]
+                lined_SI=["Tot(t)(SI)",t_SI]
+                if "Gamma(-w;w,0,0)" in elem:
+                    gammaww00.append(list[i])
+                    gammaww00.append(lined_au)
+                    gammaww00.append(lined_esu)
+                    gammaww00.append(lined_SI)
+    return gammaww00
 
 

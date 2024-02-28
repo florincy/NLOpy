@@ -1,0 +1,1 @@
+(float(xxxx[3]))+((float(yyyy[3]))+(float(zzzz[3]))+(3*(float(xxyy[3])))+(3*(float(xxzz[3])))+(3*(float(yyzz[3]))))/5
