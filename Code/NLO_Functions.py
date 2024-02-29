@@ -109,11 +109,35 @@ def calc(file, name, comment):
 def GammaTot(list, name):
     print("We are still working on this property")
 
-def AlphaTot(list,name):
+def AlphaStatic(list,name):
     nwlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
-            if 'Alpha' in elem:
+            if 'Alpha(0;0)' in elem:
+                indice=[i,j]
+                xx=(list[i+1])
+                yy=(list[i+2])
+                zz=(list[i+3])
+                def alphamath(xx,yy,zz):
+                    result=((float(xx))+(float(yy))+(float(zz)))/3
+                    return result
+                a_au=alphamath(xx[1],yy[1],zz[1])
+                a_debye=alphamath(xx[2],yy[2],zz[2])
+                a_SI=alphamath(xx[3],yy[3],zz[3])
+                lined_au=["Tot(Alpha)(au)",a_au,"",""]
+                lined_debye=["Tot(Alpha)(Debye)",a_debye,"",""]
+                lined_SI=["Tot(Alpha)(SI)",a_SI,"",""]
+                nwlist.append(list[i])
+                nwlist.append(lined_au)
+                nwlist.append(lined_debye)
+                nwlist.append(lined_SI)
+    return nwlist
+
+def Alphaww(list,name):
+    nwlist=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Alpha(-w;w)' in elem:
                 indice=[i,j]
                 xx=(list[i+1])
                 yy=(list[i+2])
@@ -166,7 +190,7 @@ def BetaStaticTot(list,name):
     Staticlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
-            if 'Beta' in elem:
+            if 'Beta(0;0,0)' in elem:
                 indice=[i,j]
                 x=(list[i+1])
                 y=(list[i+2])
@@ -190,7 +214,7 @@ def BetaHRSTot(list,name):
     HRSlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
-            if 'Beta' in elem:
+            if 'Beta(-2w;w,w)' in elem:
                 indice=[i,j]
                 x=(list[i+1])
                 y=(list[i+2])

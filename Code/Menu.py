@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaTot, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000,Gammaww00
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000,Gammaww00
 from Application import Application
 
 class Application:
@@ -43,7 +43,7 @@ class Application:
         self.property_label = tk.Label(self.widget_frame, text="Select Property:", font=("Calibri", 10, "bold"))
         self.property_label.grid(row=3, column=0, sticky=tk.W)
         self.selected_property = tk.StringVar(master)
-        self.selected_property.set("Alpha")  # Default value
+        self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
         self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
@@ -53,7 +53,7 @@ class Application:
         # Create frame for Checkbuttons
         self.checkbutton_frame = tk.Frame(self.widget_frame)
         self.checkbutton_frame.grid(row=4, column=0, columnspan=4, pady=10) 
-        
+
         # Checkbuttons
         self.checkbutton1_value = tk.BooleanVar()
         self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
@@ -64,11 +64,17 @@ class Application:
 
         # Checkbuttons
         self.checkbutton4_value = tk.BooleanVar()
-        self.checkbutton4 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton1_value)
+        self.checkbutton4 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton4_value)
         self.checkbutton5_value = tk.BooleanVar()
-        self.checkbutton5 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton2_value)
+        self.checkbutton5 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton5_value)
         self.checkbutton6_value = tk.BooleanVar()
-        self.checkbutton6 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton3_value)
+        self.checkbutton6 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton6_value)
+
+        # Checkbuttons 
+        self.checkbutton7_value = tk.BooleanVar()
+        self.checkbutton7 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(-w;w)", variable=self.checkbutton7_value)
+        self.checkbutton8_value = tk.BooleanVar()
+        self.checkbutton8 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(0;0)", variable=self.checkbutton8_value)
 
         # Create a frame to contain the buttons
         self.button_frame = tk.Frame(self.widget_frame)
@@ -89,12 +95,7 @@ class Application:
 
     def on_property_select(self, event):
         selected_property = self.selected_property.get()
-        if selected_property == "Gamma":
-            self.on_off_checkbox(selected_property)
-        elif selected_property == "Beta":
-            self.on_off_checkbox(selected_property)
-        else:
-            self.on_off_checkbox(selected_property)
+        self.on_off_checkbox(selected_property)
 
     def on_off_checkbox(self, selected_property):
         if selected_property =="Beta":
@@ -104,6 +105,8 @@ class Application:
             self.checkbutton4.grid_forget()
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
+            self.checkbutton7.grid_forget()
+            self.checkbutton8.grid_forget()
         elif selected_property=="Gamma":
             self.checkbutton4.grid(row=4, column=0, sticky=tk.W)
             self.checkbutton5.grid(row=4, column=1, sticky=tk.W)
@@ -111,6 +114,17 @@ class Application:
             self.checkbutton1.grid_forget()
             self.checkbutton2.grid_forget()
             self.checkbutton3.grid_forget()
+            self.checkbutton7.grid_forget()
+            self.checkbutton8.grid_forget()
+        elif selected_property=="Alpha":
+            self.checkbutton7.grid(row=4, column=0, sticky=tk.W)
+            self.checkbutton8.grid(row=4, column=2, sticky=tk.W)
+            self.checkbutton1.grid_forget()
+            self.checkbutton2.grid_forget()
+            self.checkbutton3.grid_forget()
+            self.checkbutton4.grid_forget()
+            self.checkbutton5.grid_forget()
+            self.checkbutton6.grid_forget()
         else:
             # Hide all checkbuttons if neither Beta nor Gamma is selected
             self.checkbutton1.grid_forget()
@@ -119,6 +133,8 @@ class Application:
             self.checkbutton4.grid_forget()
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
+            self.checkbutton7.grid_forget()
+            self.checkbutton8.grid_forget()
 
     def select_directory_input(self):
         directory = filedialog.askdirectory()
@@ -191,68 +207,78 @@ class Application:
 
     #Avaliates which .csv where requested and create them                   
     def CSVoptions(self, option, directory_output, ret, name):
-        checkbutton1_state = self.checkbutton1_value.get()
-        checkbutton2_state = self.checkbutton2_value.get()
-        checkbutton3_state = self.checkbutton3_value.get()
-        checkbutton4_state = self.checkbutton1_value.get()
-        checkbutton5_state = self.checkbutton2_value.get()
-        checkbutton6_state = self.checkbutton3_value.get()
         if option == "Beta":
-            if checkbutton1_state==True:
-                print(checkbutton1_state)
+            checkbutton1_state = self.checkbutton1_value.get()
+            checkbutton2_state = self.checkbutton2_value.get()
+            checkbutton3_state = self.checkbutton3_value.get()
+
+            if checkbutton1_state:
                 output = os.path.join(directory_output, "BetaStatic.csv")
                 betaStatic = BetaStaticTot(ret, name)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaStatic)
-            if checkbutton2_state==True:
-                print(checkbutton2_state)
+            if checkbutton2_state:
                 output = os.path.join(directory_output, "BetaHRS.csv")
                 betaHRS = BetaHRSTot(ret, name)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaHRS)
-            if checkbutton3_state==True:
-                print(checkbutton3_state)
+            if checkbutton3_state:
                 output = os.path.join(directory_output, "BetaEFISH.csv")
                 betaEFISH = BetaEFISHTot(ret, name)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaEFISH)
-        if option=="Gamma":
-            if checkbutton4_state==True:
+
+        elif option == "Gamma":
+            print('oof')
+            checkbutton4_state = self.checkbutton4_value.get()
+            checkbutton5_state = self.checkbutton5_value.get()
+            checkbutton6_state = self.checkbutton6_value.get()
+
+            if checkbutton4_state:
                 output = os.path.join(directory_output, "GammaStatic.csv")
                 gamma = Gamma0000(ret, name)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
-            if checkbutton5_state==True:
+            if checkbutton5_state:
                 output = os.path.join(directory_output, "GammaKerreffect.csv")
                 gamma = Gammaww00(ret, name)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
-            if checkbutton6_state==True:
+            if checkbutton6_state:
                 output = os.path.join(directory_output, "GammaEFISH.csv")
                 print("Still working on that")
-                #gamma = G(ret, name)
-                #with open(output, 'a', newline='') as df:
-                 #   writer = csv.writer(df)
-                  #  writer.writerows(betaEFISH)
+        
+        elif option == "Alpha":
+            checkbutton7_state = self.checkbutton7_value.get()
+            checkbutton8_state = self.checkbutton8_value.get()
+
+            if checkbutton7_state:
+                output = os.path.join(directory_output, "AlphaStatic.csv")
+                alpha = AlphaStatic(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(alpha)
+            if checkbutton8_state:
+                output = os.path.join(directory_output, "AlphaEFISH.csv")
+                alpha = Alphaww(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(alpha)
+
         else:
             output = os.path.join(directory_output, f"{option}.csv")
             with open(output, 'a', newline='') as df:
                 writer = csv.writer(df)
-                if option == "Alpha":
-                    alpha = AlphaTot(ret, name)
-                    writer.writerows(alpha)
-                elif option == "Electric Dipole":
-                    dipole = EletricDipoleTot(ret, name)
-                    writer.writerows(dipole)
-                else:
-                    print("Error")
-        
+                dipole = EletricDipoleTot(ret, name)
+                writer.writerows(dipole)
+
         self.message_label.config(text=".csv file generated for " + option)
+
 
 root = tk.Tk()
 app = Application(root)
