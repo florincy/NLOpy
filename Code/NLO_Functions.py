@@ -115,14 +115,15 @@ def AlphaTot(list,name):
         for j, elem in enumerate(elem):
             if 'Alpha' in elem:
                 indice=[i,j]
-                x=(list[i+1])
-                y=(list[i+2])
-                z=(list[i+3])
-                #print(x)
-                a_au=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
-                a_debye=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
-                a_SI=((float(x[1]))+(float(y[1]))+(float(z[1])))/3
-                #print(x)
+                xx=(list[i+1])
+                yy=(list[i+2])
+                zz=(list[i+3])
+                def alphamath(xx,yy,zz):
+                    result=((float(xx))+(float(yy))+(float(zz)))/3
+                    return result
+                a_au=alphamath(xx[1],yy[1],zz[1])
+                a_debye=alphamath(xx[2],yy[2],zz[2])
+                a_SI=alphamath(xx[3],yy[3],zz[3])
                 lined_au=["Tot(Alpha)(au)",a_au,"",""]
                 lined_debye=["Tot(Alpha)(Debye)",a_debye,"",""]
                 lined_SI=["Tot(Alpha)(SI)",a_SI,"",""]
@@ -141,10 +142,12 @@ def EletricDipoleTot(list,name):
                 x=(list[i+1])
                 y=(list[i+2])
                 z=(list[i+3])
-                d_au=math.sqrt(((float(x[1]))**2)+((float(y[1]))**2)+((float(z[1]))**2))
-                d_debye=math.sqrt(((float(x[2]))**2)+((float(y[2]))**2)+((float(z[2]))**2))
-                d_SI=math.sqrt(((float(x[3]))**2)+((float(y[3]))**2)+((float(z[3]))**2))
-                #print(x)
+                def electricdipolemath(x,y,z):
+                    result=math.sqrt((float(x)**2)+((float(y))**2)+((float(z))**2))
+                    return result
+                d_au=electricdipolemath(x[1],y[1],z[1])
+                d_debye=electricdipolemath(x[2],y[2],z[2])
+                d_SI=electricdipolemath(x[3],y[3],z[3])
                 lined_au=["Tot(Electric Dipole)(au)",d_au,"",""]
                 lined_debye=["Tot(Electric Dipole)(Debye)",d_debye,"",""]
                 lined_SI=["Tot(Electric Dipole)(SI)",d_SI,"",""]
@@ -153,7 +156,12 @@ def EletricDipoleTot(list,name):
                 nwlist.append(lined_debye)
                 nwlist.append(lined_SI)
     return nwlist
-
+def betamatht(x,y,z):
+    result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
+    return result
+def betamathb(x,y,z):
+    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
+    return result
 def BetaStaticTot(list,name):
     Staticlist=[]
     for i, elem in enumerate(list):
@@ -163,12 +171,12 @@ def BetaStaticTot(list,name):
                 x=(list[i+1])
                 y=(list[i+2])
                 z=(list[i+3])
-                t_au=math.sqrt(((float(x[1])/3)**2)+((float(y[1])/3)**2)+((float(z[1])/3)**2))
-                b_au=math.sqrt(((float(x[1])/6)**2)+((float(y[1])/6)**2)+((float(z[1])/6)**2))
-                t_esu=math.sqrt(((float(x[2])/3)**2)+((float(y[2])/3)**2)+((float(z[2])/3)**2))
-                b_esu=math.sqrt(((float(x[2])/6)**2)+((float(y[2])/6)**2)+((float(z[2])/6)**2))
-                t_SI=math.sqrt(((float(x[3])/3)**2)+((float(y[3])/3)**2)+((float(z[3])/3)**2))
-                b_SI=math.sqrt(((float(x[3])/6)**2)+((float(y[3])/6)**2)+((float(z[3])/6)**2))
+                t_au=betamatht(x[1],y[1],z[1])
+                b_au=betamathb(x[1],y[1],z[1])
+                t_esu=betamatht(x[2],y[2],z[2])
+                b_esu=betamathb(x[2],y[2],z[2])
+                t_SI=betamatht(x[3],y[3],z[3])
+                b_SI=betamathb(x[3],y[3],z[3])
                 lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
                 lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
                 lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
@@ -187,12 +195,12 @@ def BetaHRSTot(list,name):
                 x=(list[i+1])
                 y=(list[i+2])
                 z=(list[i+3])
-                t_au=math.sqrt(((float(x[1])/3)**2)+((float(y[1])/3)**2)+((float(z[1])/3)**2))
-                b_au=math.sqrt(((float(x[1])/6)**2)+((float(y[1])/6)**2)+((float(z[1])/6)**2))
-                t_esu=math.sqrt(((float(x[2])/3)**2)+((float(y[2])/3)**2)+((float(z[2])/3)**2))
-                b_esu=math.sqrt(((float(x[2])/6)**2)+((float(y[2])/6)**2)+((float(z[2])/6)**2))
-                t_SI=math.sqrt(((float(x[3])/3)**2)+((float(y[3])/3)**2)+((float(z[3])/3)**2))
-                b_SI=math.sqrt(((float(x[3])/6)**2)+((float(y[3])/6)**2)+((float(z[3])/6)**2))
+                t_au=betamatht(x[1],y[1],z[1])
+                b_au=betamathb(x[1],y[1],z[1])
+                t_esu=betamatht(x[2],y[2],z[2])
+                b_esu=betamathb(x[2],y[2],z[2])
+                t_SI=betamatht(x[3],y[3],z[3])
+                b_SI=betamathb(x[3],y[3],z[3])
                 lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
                 lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
                 lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
@@ -212,12 +220,12 @@ def BetaEFISHTot(list,name):
                 x=(list[i+1])
                 y=(list[i+2])
                 z=(list[i+3])
-                t_au=math.sqrt(((float(x[1])/3)**2)+((float(y[1])/3)**2)+((float(z[1])/3)**2))
-                b_au=math.sqrt(((float(x[1])/6)**2)+((float(y[1])/6)**2)+((float(z[1])/6)**2))
-                t_esu=math.sqrt(((float(x[2])/3)**2)+((float(y[2])/3)**2)+((float(z[2])/3)**2))
-                b_esu=math.sqrt(((float(x[2])/6)**2)+((float(y[2])/6)**2)+((float(z[2])/6)**2))
-                t_SI=math.sqrt(((float(x[3])/3)**2)+((float(y[3])/3)**2)+((float(z[3])/3)**2))
-                b_SI=math.sqrt(((float(x[3])/6)**2)+((float(y[3])/6)**2)+((float(z[3])/6)**2))
+                t_au=betamatht(x[1],y[1],z[1])
+                b_au=betamathb(x[1],y[1],z[1])
+                t_esu=betamatht(x[2],y[2],z[2])
+                b_esu=betamathb(x[2],y[2],z[2])
+                t_SI=betamatht(x[3],y[3],z[3])
+                b_SI=betamathb(x[3],y[3],z[3])
                 lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
                 lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
                 lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
@@ -227,8 +235,9 @@ def BetaEFISHTot(list,name):
                     EFISHlist.append(lined_esu)
                     EFISHlist.append(lined_SI)
     return EFISHlist
-
-
+def gammamath(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
+    result=(float(xxxx))+((float(yyyy))+(float(zzzz))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+    return result
 def Gamma0000(list,name):
     gamma0000=[]
     for i, elem in enumerate(list):
@@ -241,12 +250,9 @@ def Gamma0000(list,name):
                 xxzz=(list[i+2])
                 yyzz=(list[i+2])
                 zzzz=(list[i+3])
-                t_au=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy[1])))+(2*(float(xxzz[1])))+(2*(float(yyzz[1]))))/5
-                t_esu=(float(xxxx[2]))+((float(yyyy[2]))+(float(zzzz[2]))+(2*(float(xxyy[2])))+(2*(float(xxzz[2])))+(2*(float(yyzz[2]))))/5
-                t_SI=(float(xxxx[3]))+((float(yyyy[3]))+(float(zzzz[3]))+(3*(float(xxyy[3])))+(3*(float(xxzz[3])))+(3*(float(yyzz[3]))))/5
-                #b_esu=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
-                #t_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
-                #b_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                t_au=gammamath(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                t_esu=gammamath(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                t_SI=gammamath(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                 lined_au=["Tot(t)(au)",t_au]
                 lined_esu=["Tot(t)(esu)",t_esu]
                 lined_SI=["Tot(t)(SI)",t_SI]
@@ -269,12 +275,9 @@ def Gammaww00(list,name):
                 xxzz=(list[i+2])
                 yyzz=(list[i+2])
                 zzzz=(list[i+3])
-                t_au=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy[1])))+(2*(float(xxzz[1])))+(2*(float(yyzz[1]))))/5
-                t_esu=(float(xxxx[2]))+((float(yyyy[2]))+(float(zzzz[2]))+(2*(float(xxyy[2])))+(2*(float(xxzz[2])))+(2*(float(yyzz[2]))))/5
-                t_SI=(float(xxxx[3]))+((float(yyyy[3]))+(float(zzzz[3]))+(3*(float(xxyy[3])))+(3*(float(xxzz[3])))+(3*(float(yyzz[3]))))/5
-                #b_esu=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
-                #t_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
-                #b_SI=(float(xxxx[1]))+((float(yyyy[1]))+(float(zzzz[1]))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+                t_au=gammamath(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                t_esu=gammamath(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                t_SI=gammamath(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                 lined_au=["Tot(t)(au)",t_au]
                 lined_esu=["Tot(t)(esu)",t_esu]
                 lined_SI=["Tot(t)(SI)",t_SI]

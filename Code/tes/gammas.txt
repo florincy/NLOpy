@@ -1,6 +1,44 @@
-"xyyx","xyxy","xxyy","xzzx","xzxz","xxzz"
-"yxxy","yxyx","yyxx","yzzy","yzyz","yyzz"
-"zyyz","zyzy","zzyy","zxxz","zxzx","zzxx"
+"xyyx","xyxy","xxyy","xzzx","xzxz","xxzz","yxxy","yxyx","yyxx","yzzy","yzyz","yyzz","zyyz","zyzy","zzyy","zxxz","zxzx","zzxx"
 
 
+"xxy","yxy","xxz","yxz","yyz","zxz","zyz","yxx","yyx","zxx","zyx","zzx","zxy","zyy","zzy"   
+yxx       -0.131599D+00     -0.113691D-02     -0.421954D-03
+yyx       -0.899251D-01     -0.776882D-03     -0.288332D-03
+zxx        0.643100D-02      0.555589D-04      0.206201D-04
+zyx       -0.146684D-01     -0.126723D-03     -0.470321D-04
+zzx       -0.246863D-01     -0.213270D-03     -0.791531D-04
+zxy       -0.167643D-01     -0.144830D-03     -0.537523D-04
+zyy       -0.501611D-01     -0.433353D-03     -0.160835D-03
+zzy 
 
+"xxxx","yxxx","yyxx","zxxx","zyxx","zzxx"
+"xxyx"
+"yxyx"
+"yyyx"
+"zxyx"
+"zyyx"
+"zzyx"
+"xxyy"
+"yxyy"
+"yyyy"
+"zxyy"
+"zyyy"
+"zzyy"
+"xxzx"
+"yxzx"
+"yyzx"
+"zxzx"
+"zyzx"
+"zzzx"
+"xxzy"
+"yxzy"
+"yyzy"
+"zxzy"
+"zyzy"
+"zzzy"
+"xxzz"
+"yxzz"
+"yyzz"
+"zxzz"
+"zyzz"
+zzzz

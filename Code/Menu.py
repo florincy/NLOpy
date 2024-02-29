@@ -50,25 +50,29 @@ class Application:
         self.property_menu.config(bg='#B4ADEA')
         self.property_menu.grid(row=3, column=1, sticky=tk.W)
 
+        # Create frame for Checkbuttons
+        self.checkbutton_frame = tk.Frame(self.widget_frame)
+        self.checkbutton_frame.grid(row=4, column=0, columnspan=4, pady=10) 
+        
         # Checkbuttons
         self.checkbutton1_value = tk.BooleanVar()
-        self.checkbutton1 = tk.Checkbutton(self.widget_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
+        self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
         self.checkbutton2_value = tk.BooleanVar()
-        self.checkbutton2 = tk.Checkbutton(self.widget_frame,text="Beta(-2w;w,w)", variable=self.checkbutton2_value)
+        self.checkbutton2 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w)", variable=self.checkbutton2_value)
         self.checkbutton3_value = tk.BooleanVar()
-        self.checkbutton3 = tk.Checkbutton(self.widget_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value)
+        self.checkbutton3 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value)
 
         # Checkbuttons
         self.checkbutton4_value = tk.BooleanVar()
-        self.checkbutton4 = tk.Checkbutton(self.widget_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton1_value)
+        self.checkbutton4 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton1_value)
         self.checkbutton5_value = tk.BooleanVar()
-        self.checkbutton5 = tk.Checkbutton(self.widget_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton2_value)
+        self.checkbutton5 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton2_value)
         self.checkbutton6_value = tk.BooleanVar()
-        self.checkbutton6 = tk.Checkbutton(self.widget_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton3_value)
+        self.checkbutton6 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton3_value)
 
         # Create a frame to contain the buttons
         self.button_frame = tk.Frame(self.widget_frame)
-        self.button_frame.grid(row=5, column=0, columnspan=4, pady=10)                            
+        self.button_frame.grid(row=5, column=0, columnspan=4, pady=10)         
 
         # Generate CSV file button
         self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white", bg='#011627')
@@ -107,6 +111,14 @@ class Application:
             self.checkbutton1.grid_forget()
             self.checkbutton2.grid_forget()
             self.checkbutton3.grid_forget()
+        else:
+            # Hide all checkbuttons if neither Beta nor Gamma is selected
+            self.checkbutton1.grid_forget()
+            self.checkbutton2.grid_forget()
+            self.checkbutton3.grid_forget()
+            self.checkbutton4.grid_forget()
+            self.checkbutton5.grid_forget()
+            self.checkbutton6.grid_forget()
 
     def select_directory_input(self):
         directory = filedialog.askdirectory()
