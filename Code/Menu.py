@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000,Gammaww00
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000,Gammaww00, Gamma2www0
 from Application import Application
 
 class Application:
@@ -251,7 +251,10 @@ class Application:
                     writer.writerows(gamma)
             if checkbutton6_state:
                 output = os.path.join(directory_output, "GammaEFISH.csv")
-                print("Still working on that")
+                gamma = Gamma2www0(ret, name)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(gamma)
         
         elif option == "Alpha":
             checkbutton7_state = self.checkbutton7_value.get()

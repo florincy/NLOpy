@@ -1,10 +1,10 @@
 "Gamma(0;0,0,0):
 ",ferro_pbe0_polar.log,Input Orientation, 
-Tot(t)(au),46186.72
-Tot(t)(esu),23.262805999999998
-Tot(t)(SI),28.799239999999998
+Tot(t)(au),21058.24
+Tot(t)(esu),10.606394333333334
+Tot(t)(SI),13.130646666666665
 "Gamma(0;0,0,0):
 ",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(t)(au),45995.06
-Tot(t)(esu),23.166266
-Tot(t)(SI),28.679598
+Tot(t)(au),21071.216666666664
+Tot(t)(esu),10.612917666666666
+Tot(t)(SI),13.138686333333336

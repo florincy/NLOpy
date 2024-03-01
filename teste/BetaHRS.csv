@@ -1,10 +1,10 @@
-"Beta(-2w;w,w) w=  432.0nm:
-",ferro_pbe0_polar.log,Input Orientation, 
-Tot(t)(au),1.0142570243569649,Top(b)(au),0.5071285121784824
-Tot(t)(esu),0.008762399701383813,Top(b)(esu),0.004381199850691906
-Tot(t)(SI),0.0032520798839136096,Top(b)(SI),0.0016260399419568048
-"Beta(-2w;w,w) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(t)(au),1.014258633050707,Top(b)(au),0.5071293165253535
-Tot(t)(esu),0.008762399564036226,Top(b)(esu),0.004381199782018113
-Tot(t)(SI),0.003252080078377188,Top(b)(SI),0.001626040039188594
+"Beta(-2w;w,w) w= 1907.0nm:
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(t)(au),20420.941343302467,Top(b)(au),10210.470671651234
+Tot(t)(esu),176.4208246059971,Top(b)(esu),88.21041230299855
+Tot(t)(SI),65.47709371186615,Top(b)(SI),32.73854685593307
+"Beta(-2w;w,w) w= 1907.0nm:
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Dipole Orientation, 
+Tot(t)(au),20420.921626573938,Top(b)(au),10210.460813286969
+Tot(t)(esu),176.42083179848697,Top(b)(esu),88.21041589924349
+Tot(t)(SI),65.47694235704351,Top(b)(SI),32.738471178521756

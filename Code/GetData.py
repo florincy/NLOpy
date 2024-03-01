@@ -3,7 +3,7 @@ from tkinter import filedialog
 import os
 import csv
 import math
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaTot, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000, Gammaww00
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000, Gammaww00,Gamma2www0
 
 root = tk.Tk()
 root.withdraw()
@@ -53,8 +53,8 @@ for path, dirs, files in os.walk(directory):
                     ret = calc(file,name,comment)
                     gamma0000=Gamma0000(ret,name)
                     #print(gamma0000)
-                    gammaww00=Gammaww00(ret,name)
-                    print(gammaww00)
+                    gamma2www0=Gamma2www0(ret,name)
+                    print(gamma2www0)
                     '''
                     beta=BetaStaticTot(ret,name)
                     #print(beta)

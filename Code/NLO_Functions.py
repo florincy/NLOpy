@@ -54,8 +54,8 @@ def collect(file):
     Properties = ["Alpha", "Beta", "Gamma"]
     Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
     Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)"}
-    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):", "Gamma(-2w;w,w,0)"}
-    
+    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)"}
+    # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy
     file_lines = file.readlines()
 
     for line in file_lines:
@@ -88,7 +88,15 @@ def collect(file):
         # Check for Gamma property
         if any(keyword in line.split() for keyword in Gamma_ok):
             lines.append(line.strip())
+    '''
+    for line in file_lines:
+        if any(keyword in line for keyword in trash):
+            continue
 
+        # Check for Gamma property
+        if any(keyword in line.split() for keyword in Gamma2www0_ok):
+            lines.append(line.strip())
+'''
     return lines
 
 
@@ -181,10 +189,10 @@ def EletricDipoleTot(list,name):
                 nwlist.append(lined_SI)
     return nwlist
 def betamatht(x,y,z):
-    result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
+    result=math.sqrt(((float(x)/2)**2)+((float(y)/2)**2)+((float(z)/2)**2))
     return result
 def betamathb(x,y,z):
-    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
+    result=math.sqrt(((float(x)/4)**2)+((float(y)/4)**2)+((float(z)/4)**2))
     return result
 def BetaStaticTot(list,name):
     Staticlist=[]
@@ -259,8 +267,11 @@ def BetaEFISHTot(list,name):
                     EFISHlist.append(lined_esu)
                     EFISHlist.append(lined_SI)
     return EFISHlist
-def gammamath(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
-    result=(float(xxxx))+((float(yyyy))+(float(zzzz))+(2*(float(xxyy)))+(2*(float(xxzz)))+(2*(float(yyzz))))/5
+def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
+    result=((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6))/5
+    return result
+def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
+    result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5
     return result
 def Gamma0000(list,name):
     gamma0000=[]
@@ -274,12 +285,15 @@ def Gamma0000(list,name):
                 xxzz=(list[i+2])
                 yyzz=(list[i+2])
                 zzzz=(list[i+3])
-                t_au=gammamath(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                t_esu=gammamath(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                t_SI=gammamath(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
-                lined_au=["Tot(t)(au)",t_au]
-                lined_esu=["Tot(t)(esu)",t_esu]
-                lined_SI=["Tot(t)(SI)",t_SI]
+                t_au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                t_esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                t_SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                b_au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                b_esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                b_SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
+                lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
+                lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
                 if "Gamma(0;0,0,0)" in elem:
                     gamma0000.append(list[i])
                     gamma0000.append(lined_au)
@@ -299,12 +313,15 @@ def Gammaww00(list,name):
                 xxzz=(list[i+2])
                 yyzz=(list[i+2])
                 zzzz=(list[i+3])
-                t_au=gammamath(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                t_esu=gammamath(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                t_SI=gammamath(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
-                lined_au=["Tot(t)(au)",t_au]
-                lined_esu=["Tot(t)(esu)",t_esu]
-                lined_SI=["Tot(t)(SI)",t_SI]
+                t_au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                t_esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                t_SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                b_au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                b_esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                b_SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
+                lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
+                lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
                 if "Gamma(-w;w,0,0)" in elem:
                     gammaww00.append(list[i])
                     gammaww00.append(lined_au)
@@ -312,4 +329,33 @@ def Gammaww00(list,name):
                     gammaww00.append(lined_SI)
     return gammaww00
 
+def Gamma2www0(list,name):
+    gamma2www0=[]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Gamma(-2w;w,w,0)' in elem:
+                indice=[i,j]
+                xxxx=(list[i+1])
+                xyxy=(list[i+2])
+                yyyy=(list[i+2])
+                xzxz=(list[i+2])
+                yzyz=(list[i+2])
+                zzzz=(list[i+3])
+                #ijkl = ikjl
+                # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
+                t_au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                t_esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2])
+                t_SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3])
+                b_au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                b_esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2])
+                b_SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3])
+                lined_au=["Tot(t)(au)",t_au,"Top(b)(au)",b_au]
+                lined_esu=["Tot(t)(esu)",t_esu,"Top(b)(esu)",b_esu]
+                lined_SI=["Tot(t)(SI)",t_SI,"Top(b)(SI)",b_SI]
+                if "Gamma(-2w;w,w,0)" in elem:
+                    gamma2www0.append(list[i])
+                    gamma2www0.append(lined_au)
+                    gamma2www0.append(lined_esu)
+                    gamma2www0.append(lined_SI)
+    return gamma2www0
 

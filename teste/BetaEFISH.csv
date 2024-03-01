@@ -1,0 +1,20 @@
+"Beta(-w;w,0) w= 1907.0nm:
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(t)(au),17159.399001681264,Top(b)(au),8579.699500840632
+Tot(t)(esu),148.24357307735133,Top(b)(esu),74.12178653867566
+Tot(t)(SI),55.01906150892161,Top(b)(SI),27.509530754460805
+"Beta(-w;w,0) w= 1907.0nm:
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Dipole Orientation, 
+Tot(t)(au),17159.388955256105,Top(b)(au),8579.694477628052
+Tot(t)(esu),148.2438311859637,Top(b)(esu),74.12191559298185
+Tot(t)(SI),55.019083815341745,Top(b)(SI),27.509541907670872
+"Beta(-w;w,0) w= 1064.0nm:
+",A7_property_B3LYP_def2-TZVP_solvent.log,Input Orientation, 
+Tot(t)(au),80036.56905715677,Top(b)(au),40018.284528578384
+Tot(t)(esu),691.4548360560145,Top(b)(esu),345.72741802800726
+Tot(t)(SI),256.62621254312785,Top(b)(SI),128.31310627156392
+"Beta(-w;w,0) w= 1064.0nm:
+",A7_property_B3LYP_def2-TZVP_solvent.log,Dipole Orientation, 
+Tot(t)(au),80036.8033575806,Top(b)(au),40018.4016787903
+Tot(t)(esu),691.4548581019028,Top(b)(esu),345.7274290509514
+Tot(t)(SI),256.62634049054674,Top(b)(SI),128.31317024527337
