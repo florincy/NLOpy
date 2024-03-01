@@ -23,47 +23,71 @@ class Application:
         self.msg = tk.Label(self.widget_frame, text="NLO data app", font=("Calibri", 16, "italic", "bold"))
         self.msg.grid(row=0, columnspan=3)
 
+        # Create a frame to contain the selectors
+        self.selectors_frame = tk.Frame(self.widget_frame)
+        self.selectors_frame.grid(column=0, columnspan=4)
+
         # Select Input Directory label and button
-        self.select_input_label = tk.Label(self.widget_frame, text="Choose .log files directory:", font=("Calibri", 10, "bold"))
-        self.select_input_label.grid(row=1, column=0, sticky=tk.W)
-        self.select_dir_button_input = tk.Button(self.widget_frame, text="Choose directory", command=self.select_directory_input, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_input.grid(row=1, column=1, sticky=tk.W)
-        self.selected_directory_label_input = tk.Label(self.widget_frame, text="")
-        self.selected_directory_label_input.grid(row=1, column=2, sticky=tk.W)
+        self.select_input_label = tk.Label(self.selectors_frame, text="Choose .log files directory:", font=("Calibri", 10, "bold"))
+        self.select_input_label.grid(row=1, column=0, columnspan=2, sticky=tk.W)
+        self.select_dir_button_input = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_input, bg='#b4adea', font=("Calibri", 10))
+        self.select_dir_button_input.grid(row=1, column=2, sticky=tk.W)
+        self.selected_directory_label_input = tk.Label(self.selectors_frame, text="")
+        self.selected_directory_label_input.grid(row=2, column=0, columnspan=4, sticky=tk.W)
 
         # Select Output Directory label and button
-        self.select_output_label = tk.Label(self.widget_frame, text="Choose directory for saving:", font=("Calibri", 10, "bold"))
-        self.select_output_label.grid(row=2, column=0, sticky=tk.W)
-        self.select_dir_button_output = tk.Button(self.widget_frame, text="Choose directory", command=self.select_directory_output, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_output.grid(row=2, column=1, sticky=tk.W)
-        self.selected_directory_label_output = tk.Label(self.widget_frame, text="")
-        self.selected_directory_label_output.grid(row=2, column=2, sticky=tk.W)
+        self.select_output_label = tk.Label(self.selectors_frame, text="Choose directory for saving:", font=("Calibri", 10, "bold"))
+        self.select_output_label.grid(row=3, column=0, columnspan=2, sticky=tk.W)
+        self.select_dir_button_output = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_output, bg='#b4adea', font=("Calibri", 10))
+        self.select_dir_button_output.grid(row=3, column=2, sticky=tk.W)
+        self.selected_directory_label_output = tk.Label(self.selectors_frame, text="")
+        self.selected_directory_label_output.grid(row=4, column=0, columnspan=4, sticky=tk.W)
 
-        # Select Orientation
-        self.property_label = tk.Label(self.widget_frame, text="Select Orientation:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=3, column=0, sticky=tk.W)
+        # Create frame for Radiobuttons and Orientations
+        self.radioutton_frame = tk.Frame(self.widget_frame)
+        self.radioutton_frame.grid(row=4, column=0, columnspan=4)
+
+
+        # Select Orientation label
+        self.property_label = tk.Label(self.radioutton_frame, text="Select Convention:", font=("Calibri", 10, "bold"))
+        self.property_label.grid(row=0, column=0, sticky=tk.W)
+
+        # Select convention - Radiobuttons
+        self.radiobutton1_value = tk.StringVar()
+        self.radiobutton1 = tk.Radiobutton(self.radioutton_frame, text="T", variable=self.radiobutton1_value, value="T")
+        self.radiobutton1.grid(row=0, column=1, sticky=tk.W)
+
+        self.radiobutton2_value = tk.StringVar()
+        self.radiobutton2 = tk.Radiobutton(self.radioutton_frame, text="B", variable=self.radiobutton1_value, value="B")
+        self.radiobutton2.grid(row=0, column=2, sticky=tk.W)
+
+        # Select Orientation OptionMenu
         self.selected_orientation = tk.StringVar(master)
         self.selected_orientation.set("Dipole Orientation")  # Default value
-
-        # Create OptionMenu
-        self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
-        self.property_menu.config(bg='#B4ADEA')
-        self.property_menu.grid(row=3, column=1, sticky=tk.W)
+        self.orientation_label = tk.Label(self.radioutton_frame, text="Select Orientation:", font=("Calibri", 10,"bold"))
+        self.orientation_label.grid(row=0, column=3, sticky=tk.W)
+        self.orientation_menu = tk.OptionMenu(self.radioutton_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
+        self.orientation_menu.config(bg='#B4ADEA')
+        self.orientation_menu.grid(row=0, column=4, sticky=tk.W)
+        
+        # Create a frame to contain the properties widgets
+        self.property_frame = tk.Frame(self.widget_frame)
+        self.property_frame.grid(row=7,column=0, columnspan=4,pady=6)
 
         # Select Property label and menu
-        self.property_label = tk.Label(self.widget_frame, text="Select Property:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=4, column=0, sticky=tk.W)
+        self.property_label = tk.Label(self.property_frame, text="Select Property:", font=("Calibri", 10, "bold"))
+        self.property_label.grid(row=7,column=0, sticky=tk.W)
         self.selected_property = tk.StringVar(master)
         self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
-        self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
+        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
         self.property_menu.config(bg='#B4ADEA')
-        self.property_menu.grid(row=4, column=1, sticky=tk.W)
+        self.property_menu.grid(row=7,column=2, sticky=tk.W)
 
         # Create frame for Checkbuttons
         self.checkbutton_frame = tk.Frame(self.widget_frame)
-        self.checkbutton_frame.grid(row=5, column=0, columnspan=4, pady=10) 
+        self.checkbutton_frame.grid(row=8, column=0, columnspan=4, pady=10) 
 
         # Checkbuttons
         self.checkbutton1_value = tk.BooleanVar()
@@ -89,7 +113,7 @@ class Application:
 
         # Create a frame to contain the buttons
         self.button_frame = tk.Frame(self.widget_frame)
-        self.button_frame.grid(row=6, column=0, columnspan=4, pady=10)         
+        self.button_frame.grid(row=9, column=0, columnspan=4, pady=10)         
 
         # Generate CSV file button
         self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white", bg='#011627')
@@ -102,7 +126,7 @@ class Application:
 
         # Label to display messages
         self.message_label = tk.Label(self.widget_frame, text="")
-        self.message_label.grid(row=7, columnspan=3)
+        self.message_label.grid(row=10, columnspan=3)
 
     def on_property_select(self, event):
         selected_property = self.selected_property.get()
@@ -162,7 +186,8 @@ class Application:
     def run_application(self):
         selected_property_value = self.selected_property.get()
         selected_orientation_value = self.selected_orientation.get()
-        
+        convention=self.radiobutton1_value.get()
+        print(convention)
         option = selected_property_value
         orientation=selected_orientation_value
         if not hasattr(self, 'selected_directory_input') or not hasattr(self, 'selected_directory_output'):
@@ -211,15 +236,15 @@ class Application:
                         with open(outputInputPath, "r") as file:
                             comment = "Input Orientation"
                             ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name)
+                            self.CSVoptions(option, directory_output, ret, name,convention)
                     elif orientation=="Dipole Orientation":
                         with open(outputDipolePath, "r") as file:
                             comment = "Dipole Orientation"
                             ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name)
+                            self.CSVoptions(option, directory_output, ret, name,convention)
 
     #Avaliates which .csv where requested and create them                   
-    def CSVoptions(self, option, directory_output, ret, name):
+    def CSVoptions(self, option, directory_output, ret, name,convention):
         if option == "Beta":
             checkbutton1_state = self.checkbutton1_value.get()
             checkbutton2_state = self.checkbutton2_value.get()
@@ -227,19 +252,19 @@ class Application:
 
             if checkbutton1_state:
                 output = os.path.join(directory_output, "BetaStatic.csv")
-                betaStatic = BetaStaticTot(ret, name)
+                betaStatic = BetaStaticTot(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaStatic)
             if checkbutton2_state:
                 output = os.path.join(directory_output, "BetaHRS.csv")
-                betaHRS = BetaHRSTot(ret, name)
+                betaHRS = BetaHRSTot(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaHRS)
             if checkbutton3_state:
                 output = os.path.join(directory_output, "BetaEFISH.csv")
-                betaEFISH = BetaEFISHTot(ret, name)
+                betaEFISH = BetaEFISHTot(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaEFISH)
@@ -252,19 +277,19 @@ class Application:
 
             if checkbutton4_state:
                 output = os.path.join(directory_output, "GammaStatic.csv")
-                gamma = Gamma0000(ret, name)
+                gamma = Gamma0000(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
             if checkbutton5_state:
                 output = os.path.join(directory_output, "GammaKerreffect.csv")
-                gamma = Gammaww00(ret, name)
+                gamma = Gammaww00(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
             if checkbutton6_state:
                 output = os.path.join(directory_output, "GammaEFISH.csv")
-                gamma = Gamma2www0(ret, name)
+                gamma = Gamma2www0(ret, name,convention)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)

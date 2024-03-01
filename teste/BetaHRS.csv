@@ -1,5 +1,10 @@
 "Beta(-2w;w,w) w= 1907.0nm:
-",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Dipole Orientation, 
-Tot(t)(au),20420.921626573938,Top(b)(au),10210.460813286969
-Tot(t)(esu),176.42083179848697,Top(b)(esu),88.21041589924349
-Tot(t)(SI),65.47694235704351,Top(b)(SI),32.738471178521756
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(T)(au),20420.941343302467
+Tot(T)(esu),176.4208246059971
+Tot(T)(SI),65.47709371186615
+"Beta(-2w;w,w) w= 1907.0nm:
+",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(B)(au),10210.470671651234
+Tot(B)(esu),88.21041230299855
+Tot(B)(SI),32.73854685593307
