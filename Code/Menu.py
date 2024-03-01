@@ -39,20 +39,31 @@ class Application:
         self.selected_directory_label_output = tk.Label(self.widget_frame, text="")
         self.selected_directory_label_output.grid(row=2, column=2, sticky=tk.W)
 
+        # Select Orientation
+        self.property_label = tk.Label(self.widget_frame, text="Select Orientation:", font=("Calibri", 10, "bold"))
+        self.property_label.grid(row=3, column=0, sticky=tk.W)
+        self.selected_orientation = tk.StringVar(master)
+        self.selected_orientation.set("Dipole Orientation")  # Default value
+
+        # Create OptionMenu
+        self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
+        self.property_menu.config(bg='#B4ADEA')
+        self.property_menu.grid(row=3, column=1, sticky=tk.W)
+
         # Select Property label and menu
         self.property_label = tk.Label(self.widget_frame, text="Select Property:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=3, column=0, sticky=tk.W)
+        self.property_label.grid(row=4, column=0, sticky=tk.W)
         self.selected_property = tk.StringVar(master)
         self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
         self.property_menu = tk.OptionMenu(self.widget_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
         self.property_menu.config(bg='#B4ADEA')
-        self.property_menu.grid(row=3, column=1, sticky=tk.W)
+        self.property_menu.grid(row=4, column=1, sticky=tk.W)
 
         # Create frame for Checkbuttons
         self.checkbutton_frame = tk.Frame(self.widget_frame)
-        self.checkbutton_frame.grid(row=4, column=0, columnspan=4, pady=10) 
+        self.checkbutton_frame.grid(row=5, column=0, columnspan=4, pady=10) 
 
         # Checkbuttons
         self.checkbutton1_value = tk.BooleanVar()
@@ -78,7 +89,7 @@ class Application:
 
         # Create a frame to contain the buttons
         self.button_frame = tk.Frame(self.widget_frame)
-        self.button_frame.grid(row=5, column=0, columnspan=4, pady=10)         
+        self.button_frame.grid(row=6, column=0, columnspan=4, pady=10)         
 
         # Generate CSV file button
         self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white", bg='#011627')
@@ -91,7 +102,7 @@ class Application:
 
         # Label to display messages
         self.message_label = tk.Label(self.widget_frame, text="")
-        self.message_label.grid(row=6, columnspan=3)
+        self.message_label.grid(row=7, columnspan=3)
 
     def on_property_select(self, event):
         selected_property = self.selected_property.get()
@@ -99,26 +110,26 @@ class Application:
 
     def on_off_checkbox(self, selected_property):
         if selected_property =="Beta":
-            self.checkbutton1.grid(row=4, column=0, sticky=tk.W)
-            self.checkbutton2.grid(row=4, column=1, sticky=tk.W)
-            self.checkbutton3.grid(row=4, column=2, sticky=tk.W)
+            self.checkbutton1.grid(row=5, column=0, sticky=tk.W)
+            self.checkbutton2.grid(row=5, column=1, sticky=tk.W)
+            self.checkbutton3.grid(row=5, column=2, sticky=tk.W)
             self.checkbutton4.grid_forget()
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
         elif selected_property=="Gamma":
-            self.checkbutton4.grid(row=4, column=0, sticky=tk.W)
-            self.checkbutton5.grid(row=4, column=1, sticky=tk.W)
-            self.checkbutton6.grid(row=4, column=2, sticky=tk.W)
+            self.checkbutton4.grid(row=5, column=0, sticky=tk.W)
+            self.checkbutton5.grid(row=5, column=1, sticky=tk.W)
+            self.checkbutton6.grid(row=5, column=2, sticky=tk.W)
             self.checkbutton1.grid_forget()
             self.checkbutton2.grid_forget()
             self.checkbutton3.grid_forget()
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
         elif selected_property=="Alpha":
-            self.checkbutton7.grid(row=4, column=0, sticky=tk.W)
-            self.checkbutton8.grid(row=4, column=2, sticky=tk.W)
+            self.checkbutton7.grid(row=5, column=0, sticky=tk.W)
+            self.checkbutton8.grid(row=5, column=2, sticky=tk.W)
             self.checkbutton1.grid_forget()
             self.checkbutton2.grid_forget()
             self.checkbutton3.grid_forget()
@@ -150,10 +161,10 @@ class Application:
 
     def run_application(self):
         selected_property_value = self.selected_property.get()
-        print("Selected Property:", selected_property_value)
+        selected_orientation_value = self.selected_orientation.get()
         
         option = selected_property_value
-
+        orientation=selected_orientation_value
         if not hasattr(self, 'selected_directory_input') or not hasattr(self, 'selected_directory_output'):
             self.message_label["text"] = "Error: Please select both input and output directories."
             return
@@ -196,14 +207,16 @@ class Application:
                             for line in lines:
                                 outputDipole.write(line + "\n")
                     #Reading and dealing with resumed .txt files
-                    with open(outputInputPath, "r") as file:
-                        comment = "Input Orientation"
-                        ret = calc(file, name, comment)
-                        self.CSVoptions(option, directory_output, ret, name)
-                    with open(outputDipolePath, "r") as file:
-                        comment = "Dipole Orientation"
-                        ret = calc(file, name, comment)
-                        self.CSVoptions(option, directory_output, ret, name)
+                    if orientation=="Input Orientation":
+                        with open(outputInputPath, "r") as file:
+                            comment = "Input Orientation"
+                            ret = calc(file, name, comment)
+                            self.CSVoptions(option, directory_output, ret, name)
+                    elif orientation=="Dipole Orientation":
+                        with open(outputDipolePath, "r") as file:
+                            comment = "Dipole Orientation"
+                            ret = calc(file, name, comment)
+                            self.CSVoptions(option, directory_output, ret, name)
 
     #Avaliates which .csv where requested and create them                   
     def CSVoptions(self, option, directory_output, ret, name):
