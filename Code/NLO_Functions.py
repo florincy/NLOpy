@@ -324,7 +324,7 @@ def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
     return result
 def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
-    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
+    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5
     return result
 def Gamma0000(list,name,convention):
     gamma0000=[]
