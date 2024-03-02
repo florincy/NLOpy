@@ -309,7 +309,7 @@ def BetaEFISHTot(list,name,convention="T"):
 # y(B)= 1/36 y(T)
 #For now, I figure it out this relations is valid for (-w;w,0,0),(-2w;w,w,0),(0;0,0,0)
 def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
-    result=((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6))/5
+    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6)))/5
     return result
 def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5
@@ -320,6 +320,12 @@ def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy
 def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
     result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yxyx))/36)+((float(zxzx))/36)+((float(zyzy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))
     return result
+def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
+    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
+    return result
+def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
+    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
+    return result
 def Gamma0000(list,name,convention):
     gamma0000=[]
     for i, elem in enumerate(list):
@@ -328,10 +334,10 @@ def Gamma0000(list,name,convention):
                 indice=[i,j]
                 xxxx=(list[i+1])
                 xxyy=(list[i+2])
-                yyyy=(list[i+2])
-                xxzz=(list[i+2])
-                yyzz=(list[i+2])
-                zzzz=(list[i+3])
+                yyyy=(list[i+3])
+                xxzz=(list[i+4])
+                yyzz=(list[i+5])
+                zzzz=(list[i+6])
                 if convention=="T":
                     au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
                     esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
@@ -355,20 +361,24 @@ def Gammaww00(list,name,convention):
             if 'Gamma(-w;w,0,0)' in elem:
                 indice=[i,j]
                 xxxx=(list[i+1])
-                xxyy=(list[i+2])
-                yyyy=(list[i+2])
-                xxzz=(list[i+2])
-                yyzz=(list[i+2])
-                zzzz=(list[i+3])
+                yyxx=(list[i+2])
+                zzxx=(list[i+3])
+                xxyy=(list[i+4])
+                yyyy=(list[i+5])
+                zzyy=(list[i+6])
+                xxzz=(list[i+7])
+                yyzz=(list[i+8])
+                zzzz=(list[i+9])
+                #(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy)
                 if convention=="T":
-                    au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                    au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],yyxx[1],xxzz[1],zzxx[1],yyzz[1],zzyy[1])
+                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],yyxx[2],xxzz[2],zzxx[2],yyzz[2],zzyy[2])
+                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],yyxx[3],xxzz[3],zzxx[3],yyzz[3],zzyy[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 elif convention=="B":
-                    au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
+                    au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],yyxx[1],xxzz[1],zzxx[1],yyzz[1],zzyy[1])
+                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],yyxx[2],xxzz[2],zzxx[2],yyzz[2],zzyy[2])
+                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],yyxx[3],xxzz[3],zzxx[3],yyzz[3],zzyy[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 gammaww00.append(list[i])
                 gammaww00.append(lined_au)
