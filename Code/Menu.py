@@ -270,7 +270,6 @@ class Application:
                     writer.writerows(betaEFISH)
 
         elif option == "Gamma":
-            print('oof')
             checkbutton4_state = self.checkbutton4_value.get()
             checkbutton5_state = self.checkbutton5_value.get()
             checkbutton6_state = self.checkbutton6_value.get()

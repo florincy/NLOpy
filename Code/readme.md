@@ -7,6 +7,10 @@ The NLO (Nonlinear Optics) Data Application is a Python GUI (Graphical User Inte
 -Generate CSV files containing processed data.
 -Provides a user-friendly interface for easy data processing.
 
+###Orientations
+    1. Input Orientation
+    2. Dipole Orientation
+
 ###Units
     1.(au): Atomic units  
     2.(10**-30 esu): Electrostatic units (When this software calls esu, it is an abreviation to this full expression)
@@ -15,9 +19,15 @@ The NLO (Nonlinear Optics) Data Application is a Python GUI (Graphical User Inte
 
 ###Properties
     Alpha:
-    The polarizability can be obteined from the alpha vector, in different units, by computing its norm.
+    The polarizability can be obteined from the alpha vector, in different units, by computing its norm, for the diferent fields and possible orientations.
+    - There are 2 possible response generators, simulating the possible experimental methodologies, which produce: Static polarizability and EFISH Hiperpolarizability.
+
     Beta:
-    The hiperpolarizability can be obtained from the beta vector, in different units and in different conventions. The 2 possible conventions are based on Taylor series expansion (convertion "t") and on Perturbation series (convention "b"). Besides that, there are 3 possible response generators, simulating the possible experimental methodologies, which produce: Static Hiperpolarizability, HRS Hiperpolarizability and EFISH Hiperpolarizability.
+    The hiperpolarizability can be obtained from the beta vector for different fields, in different units, conventions and orientations. 
+
+    - The 2 possible conventions are based on Taylor series expansion (convertion "T") and on Perturbation series (convention "B"). 
+
+    - Besides that, there are 3 possible response generators, simulating the possible experimental methodologies, which produce: Static Hiperpolarizability, HRS Hiperpolarizability and EFISH Hiperpolarizability.
 
 
 #Installation 

@@ -49,55 +49,94 @@ def open_file(log_file_path):
         return log_file.readlines()
 
 def collect(file):
-    lines = []
-    trash = {"Unable", "(z)", "x,y,z", "*", "job", "(input orientation)", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
-    Properties = ["Alpha", "Beta", "Gamma"]
+    gamma_lines=[]
+    trash = {"(au)","_|_","Unable", "(z)", "x,y,z", "*", "job", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
+    #trash_gamma_efish={"yxxx","zxxx","zyxx","yyyx","xzxx","yzxx","zzyx","zzzx","xxxy","zxxy","yyxy","zyxy","xyyy",""}
+    Properties = ["Alpha(-w;w)", "Alpha(0;0):", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)","Electric dipole moment"]
     Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
-    Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)"}
-    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)"}
+    Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}
+    Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yxyx","zxzx","zyzy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
+    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz", "Gamma(0;0,0,0):"}
+    Gamma_kerr ={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","yyxx", "zzxx", "zzyy","Gamma(-w;w,0,0)"}
     # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy
     file_lines = file.readlines()
+    in_block=False
+    lines = []  # Initialize the lines list
+    a = "nan"
 
     for line in file_lines:
+        if "Gamma(-2w;w,w,0)" in line:
+            a = "Gamma(-2w;w,w,0)"
+        if a == "Gamma(-2w;w,w,0)":
+            if any(keyword in line for keyword in trash):
+                continue
+            if any(keyword in line.strip() for keyword in Gamma_EFISH):  
+                lines.append(line.strip())  
+                # print(line)  # Uncomment for debugging
+            if any(keyword in line for keyword in Properties) and "Gamma(-2w;w,w,0)" not in line:
+                # print("epa")  # Uncomment for debugging
+                a = "nan"  
+
+    a = "nan"
+    for line in file_lines:
+        if "Gamma(-w;w,0,0)" in line:
+            a = "Gamma(-w;w,0,0)"
+        if a == "Gamma(-w;w,0,0)":
+            if any(keyword in line for keyword in trash):
+                continue
+            if any(keyword in line.strip() for keyword in Gamma_kerr):  
+                lines.append(line.strip())  
+                # print(line)  # Uncomment for debugging
+            if any(keyword in line for keyword in Properties) and "Gamma(-w;w,0,0)" not in line:
+                # print("epa")  # Uncomment for debugging
+                a = "nan"   
+    for line in file_lines:
+        if "Gamma(0;0,0,0):" in line:
+            a = "Gamma(0;0,0,0):"
+        if a == "Gamma(0;0,0,0):":
+            if any(keyword in line for keyword in trash):
+                continue
+            if any(keyword in line.strip() for keyword in Gamma_ok):  
+                lines.append(line.strip())  
+                # print(line)  # Uncomment for debugging
+            if any(keyword in line for keyword in Properties) and "Gamma(0;0,0,0):" not in line:
+                # print("epa")  # Uncomment for debugging
+                a = "nan"   
+    for line in file_lines:
+        if "Beta(0;0,0)" in line:
+            a = "Beta(0;0,0)"
+        elif "Beta(-w;w,0)" in line:
+            a = "Beta(-w;w,0)"
+        elif "Beta(-2w;w,w)" in line:
+            a = "Beta(-2w;w,w)"
+        elif "Electric dipole moment" in line:
+            a = "Electric dipole moment"
         if any(keyword in line for keyword in trash):
             continue
-
-        # Check for Alpha property
-        if any(keyword in line.split() for keyword in Alpha_ok):
-            lines.append(line.strip())
-            continue
-
+        if a in {"Beta(0;0,0)", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}:
+            if any(keyword in line.split() for keyword in Beta_ok):  
+                lines.append(line.strip())  
+            if "Electric dipole moment" in line:
+                lines.append(line.strip()) 
+            if any(keyword in line for keyword in Properties) and a not in line:
+                # print("epa")  # Uncomment for debugging
+                a = "nan"   
     for line in file_lines:
-        if "Electric dipole moment" in line:
-            lines.append(line.strip())
-            continue
-
-    for line in file_lines:
-        if any(keyword in line for keyword in trash):
-            continue
-
-        # Check for Beta property
-        if any(keyword in line.split() for keyword in Beta_ok):
-            lines.append(line.strip())
-            continue
-
-    for line in file_lines:
-        if any(keyword in line for keyword in trash):
-            continue
-
-        # Check for Gamma property
-        if any(keyword in line.split() for keyword in Gamma_ok):
-            lines.append(line.strip())
-    '''
-    for line in file_lines:
-        if any(keyword in line for keyword in trash):
-            continue
-
-        # Check for Gamma property
-        if any(keyword in line.split() for keyword in Gamma2www0_ok):
-            lines.append(line.strip())
-'''
+            if "Alpha(-w;w)" in line:
+                a = "Alpha(-w;w)"
+            elif "Alpha(0;0):" in line:
+                a = "Alpha(0;0):"
+            if any(keyword in line for keyword in trash):
+                continue
+            if a in {"Alpha(-w;w)", "Alpha(0;0):"}:
+                if any(keyword in line.split() for keyword in Alpha_ok):  
+                    lines.append(line.strip())  
+                if any(keyword in line for keyword in Properties) and a not in line:
+                    # print("epa")  # Uncomment for debugging
+                    a = "nan"   
+        
     return lines
+
 
 
 
@@ -186,10 +225,10 @@ def EletricDipoleTot(list,name):
                 nwlist.append(lined_SI)
     return nwlist
 def betamatht(x,y,z):
-    result=math.sqrt(((float(x)/2)**2)+((float(y)/2)**2)+((float(z)/2)**2))
+    result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
     return result
 def betamathb(x,y,z):
-    result=math.sqrt(((float(x)/4)**2)+((float(y)/4)**2)+((float(z)/4)**2))
+    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
     return result
 
 def BetaStaticTot(list,name,convention="T"):
@@ -266,14 +305,21 @@ def BetaEFISHTot(list,name,convention="T"):
                 EFISHlist.append(lined_esu)
                 EFISHlist.append(lined_SI)
     return EFISHlist
-
+# 3/2 * y(B) = 1/4 * y(T)
+# y(B)= 1/36 y(T)
+#For now, I figure it out this relations is valid for (-w;w,0,0),(-2w;w,w,0),(0;0,0,0)
 def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6))/5
     return result
 def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5
     return result
-
+def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
+    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zyzy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
+    return result
+def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
+    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yxyx))/36)+((float(zxzx))/36)+((float(zyzy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))
+    return result
 def Gamma0000(list,name,convention):
     gamma0000=[]
     for i, elem in enumerate(list):
@@ -345,14 +391,14 @@ def Gamma2www0(list,name,convention):
                 #ijkl = ikjl
                 # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
                 if convention=="T":
-                    au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    esu=gammamatht(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    SI=gammamatht(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    au=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    esu=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    SI=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 elif convention=="B":
-                    au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    esu=gammamathb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    SI=gammamathb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    au=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    esu=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    SI=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 gamma2www0.append(list[i])
                 gamma2www0.append(lined_au)

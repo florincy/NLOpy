@@ -49,12 +49,12 @@ for path, dirs, files in os.walk(directory):
             with open('output.csv', 'a', newline='') as df:
                 writer = csv.writer(df)
                 with open(outputInputPath, "r") as file:
-                    comment="Dipole Orientation"
-                    ret = calc(file,name,comment)
-                    gamma0000=Gamma0000(ret,name)
+                    #comment="Dipole Orientation"
+                    #ret = calc(file,name,comment)
+                    #gamma0000=Gamma0000(ret,name)
                     #print(gamma0000)
-                    gamma2www0=Gamma2www0(ret,name)
-                    print(gamma2www0)
+                    #gamma2www0=Gamma2www0(ret,name,"T")
+                    #print(gamma2www0)
                     '''
                     beta=BetaStaticTot(ret,name)
                     #print(beta)
@@ -69,8 +69,8 @@ for path, dirs, files in os.walk(directory):
                     writer.writerows(alpha)
                     '''
                 with open(outputDipolePath, "r") as file:
-                    comment="Dipole Orientation"
-                    ret = calc(file,name,comment)
+                    #comment="Dipole Orientation"
+                    #ret = calc(file,name,comment)
                     '''
                     beta=BetaStaticTot(ret,name)
                     print(beta)
