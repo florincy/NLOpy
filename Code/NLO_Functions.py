@@ -153,6 +153,13 @@ def calc(file, name, comment):
             lines.append(lined)
     return lines
 
+
+def Lined(convention, au, esu, SI):
+    lined_au=[f"Tot({convention})(au)",au]
+    lined_esu=[f"Tot({convention})(esu)",esu]
+    lined_SI=[f"Tot({convention})(SI)",SI]
+    return lined_au,lined_esu,lined_SI
+
 def AlphaStatic(list,name):
     nwlist=[]
     for i, elem in enumerate(list):
@@ -426,9 +433,3 @@ def Gamma2www0(list,name,convention):
                 gamma2www0.append(lined_SI)
                 print(gamma2www0)
     return gamma2www0
-
-def Lined(convention, au, esu, SI):
-    lined_au=[f"Tot({convention})(au)",au]
-    lined_esu=[f"Tot({convention})(esu)",esu]
-    lined_SI=[f"Tot({convention})(SI)",SI]
-    return lined_au,lined_esu,lined_SI
