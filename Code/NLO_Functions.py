@@ -55,7 +55,7 @@ def collect(file):
     Properties = ["Alpha(-w;w)", "Alpha(0;0):", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)","Electric dipole moment"]
     Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
     Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}
-    Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yxyx","zxzx","zyzy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
+    Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yyxx","zzxx","zzyy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
     Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz", "Gamma(0;0,0,0):"}
     Gamma_kerr ={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","yyxx", "zzxx", "zzyy","Gamma(-w;w,0,0)"}
     # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy
@@ -334,13 +334,13 @@ def Gamma0000(list,name,convention):
                 zzzz=(list[i+3])
                 if convention=="T":
                     au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    SI=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 elif convention=="B":
                     au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    SI=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 gamma0000.append(list[i])
                 gamma0000.append(lined_au)
@@ -362,13 +362,13 @@ def Gammaww00(list,name,convention):
                 zzzz=(list[i+3])
                 if convention=="T":
                     au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    SI=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 elif convention=="B":
                     au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    SI=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
+                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
+                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 gammaww00.append(list[i])
                 gammaww00.append(lined_au)
@@ -383,22 +383,32 @@ def Gamma2www0(list,name,convention):
             if 'Gamma(-2w;w,w,0)' in elem:
                 indice=[i,j]
                 xxxx=(list[i+1])
-                xyxy=(list[i+2])
-                yyyy=(list[i+2])
-                xzxz=(list[i+2])
-                yzyz=(list[i+2])
-                zzzz=(list[i+3])
+                yyxx=(list[i+2])
+                xyyx=(list[i+3])
+                zzxx=(list[i+4])
+                xzzx=(list[i+5])
+                yxxy=(list[i+6])
+                xyxy=(list[i+7])
+                yyyy=(list[i+8])
+                zzyy=(list[i+9])
+                yzzy=(list[i+10])
+                zxxz=(list[i+11])
+                zyyz=(list[i+12])
+                xzxz=(list[i+13])
+                yzyz=(list[i+14])
+                zzzz=(list[i+15])
+                #xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
                 #ijkl = ikjl
                 # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
                 if convention=="T":
-                    au=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    esu=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    SI=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    au=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1],yyxx[1],zzxx[1],zzyy[1],xyyx[1],xzzx[1],yxxy[1],yzzy[1],zxxz[1],zyyz[1])
+                    esu=gammamathEFISHt(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2],yyxx[2],zzxx[2],zzyy[2],xyyx[2],xzzx[2],yxxy[2],yzzy[2],zxxz[2],zyyz[2])
+                    SI=gammamathEFISHt(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3],yyxx[3],zzxx[3],zzyy[3],xyyx[3],xzzx[3],yxxy[3],yzzy[3],zxxz[3],zyyz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 elif convention=="B":
-                    au=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    esu=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
-                    SI=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1])
+                    au=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1],yyxx[1],zzxx[1],zzyy[1],xyyx[1],xzzx[1],yxxy[1],yzzy[1],zxxz[1],zyyz[1])
+                    esu=gammamathEFISHb(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2],yyxx[2],zzxx[2],zzyy[2],xyyx[2],xzzx[2],yxxy[2],yzzy[2],zxxz[2],zyyz[2])
+                    SI=gammamathEFISHb(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3],yyxx[3],zzxx[3],zzyy[3],xyyx[3],xzzx[3],yxxy[3],yzzy[3],zxxz[3],zyyz[3])
                     lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
                 gamma2www0.append(list[i])
                 gamma2www0.append(lined_au)
