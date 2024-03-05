@@ -208,7 +208,13 @@ class Application:
         selected_property_value = self.selected_property.get()
         selected_orientation_value = self.selected_orientation.get()
         convention=self.radiobutton1_value.get()
-        print(convention)
+        unit_button=self.radiobutton1_units_value.get()
+        if unit_button=="au":
+            unit=int(1)
+        elif unit_button=="standard":
+            unit=int(2)
+        elif unit_button=="SI":
+            unit=int(3)
         option = selected_property_value
         orientation=selected_orientation_value
         if not hasattr(self, 'selected_directory_input') or not hasattr(self, 'selected_directory_output'):
@@ -257,15 +263,15 @@ class Application:
                         with open(outputInputPath, "r") as file:
                             comment = "Input Orientation"
                             ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name,convention)
+                            self.CSVoptions(option, directory_output, ret, name,convention,unit)
                     elif orientation=="Dipole Orientation":
                         with open(outputDipolePath, "r") as file:
                             comment = "Dipole Orientation"
                             ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name,convention)
+                            self.CSVoptions(option, directory_output, ret, name,convention,unit)
 
     #Avaliates which .csv where requested and create them                   
-    def CSVoptions(self, option, directory_output, ret, name,convention):
+    def CSVoptions(self, option, directory_output, ret, name,convention,unit):
         if option == "Beta":
             checkbutton1_state = self.checkbutton1_value.get()
             checkbutton2_state = self.checkbutton2_value.get()
@@ -273,19 +279,19 @@ class Application:
 
             if checkbutton1_state:
                 output = os.path.join(directory_output, "BetaStatic.csv")
-                betaStatic = BetaStaticTot(ret, name,convention)
+                betaStatic = BetaStaticTot(ret,name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaStatic)
             if checkbutton2_state:
                 output = os.path.join(directory_output, "BetaHRS.csv")
-                betaHRS = BetaHRSTot(ret, name,convention)
+                betaHRS = BetaHRSTot(ret,name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaHRS)
             if checkbutton3_state:
                 output = os.path.join(directory_output, "BetaEFISH.csv")
-                betaEFISH = BetaEFISHTot(ret, name,convention)
+                betaEFISH = BetaEFISHTot(ret, name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaEFISH)
@@ -297,19 +303,19 @@ class Application:
 
             if checkbutton4_state:
                 output = os.path.join(directory_output, "GammaStatic.csv")
-                gamma = Gamma0000(ret, name,convention)
+                gamma = Gamma0000(ret,name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
             if checkbutton5_state:
                 output = os.path.join(directory_output, "GammaKerreffect.csv")
-                gamma = Gammaww00(ret, name,convention)
+                gamma = Gammaww00(ret,name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
             if checkbutton6_state:
                 output = os.path.join(directory_output, "GammaEFISH.csv")
-                gamma = Gamma2www0(ret, name,convention)
+                gamma = Gamma2www0(ret,name,convention,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(gamma)
@@ -320,13 +326,13 @@ class Application:
 
             if checkbutton7_state:
                 output = os.path.join(directory_output, "AlphaStatic.csv")
-                alpha = AlphaStatic(ret, name)
+                alpha = AlphaStatic(ret,name,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(alpha)
             if checkbutton8_state:
                 output = os.path.join(directory_output, "AlphaEFISH.csv")
-                alpha = Alphaww(ret, name)
+                alpha = Alphaww(ret, name,unit)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(alpha)
@@ -335,7 +341,7 @@ class Application:
             output = os.path.join(directory_output, f"{option}.csv")
             with open(output, 'a', newline='') as df:
                 writer = csv.writer(df)
-                dipole = EletricDipoleTot(ret, name)
+                dipole = EletricDipoleTot(ret,name,unit)
                 writer.writerows(dipole)
 
         self.message_label.config(text=".csv file generated for " + option)

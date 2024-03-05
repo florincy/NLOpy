@@ -53,8 +53,8 @@ for path, dirs, files in os.walk(directory):
                     ret = calc(file,name,comment)
                     #gamma0000=Gamma0000(ret,name)
                     #print(gamma0000)
-                    gamma2www0=Gamma2www0(ret,name,"T")
-                    print(gamma2www0)
+                    alpha=AlphaStatic(ret,name,1)
+                    print(alpha)
                     '''
                     beta=BetaStaticTot(ret,name)
                     #print(beta)

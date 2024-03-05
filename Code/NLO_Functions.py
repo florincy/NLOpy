@@ -138,8 +138,6 @@ def collect(file):
     return lines
 
 
-
-
 def calc(file, name, comment):
     lines = []
     for line in file:
@@ -153,83 +151,65 @@ def calc(file, name, comment):
             lines.append(lined)
     return lines
 
+def alphamath(xx,yy,zz):
+    result=((float(xx))+(float(yy))+(float(zz)))/3
+    return result
 
-def Lined(convention, au, esu, SI):
-    lined_au=[f"Tot({convention})(au)",au]
-    lined_esu=[f"Tot({convention})(esu)",esu]
-    lined_SI=[f"Tot({convention})(SI)",SI]
-    return lined_au,lined_esu,lined_SI
+def namingUnits(unit):
+    if unit==1:
+        return "au"
+    elif unit==2:
+        return "esu"
+    elif unit==3:
+        return "SI"
 
-def AlphaStatic(list,name):
-    nwlist=[]
-    for i, elem in enumerate(list):
-        for j, elem in enumerate(elem):
-            if 'Alpha(0;0)' in elem:
-                indice=[i,j]
-                xx=(list[i+1])
-                yy=(list[i+2])
-                zz=(list[i+3])
-                def alphamath(xx,yy,zz):
-                    result=((float(xx))+(float(yy))+(float(zz)))/3
-                    return result
-                a_au=alphamath(xx[1],yy[1],zz[1])
-                a_debye=alphamath(xx[2],yy[2],zz[2])
-                a_SI=alphamath(xx[3],yy[3],zz[3])
-                lined_au=["Tot(Alpha)(au)",a_au,"",""]
-                lined_debye=["Tot(Alpha)(Debye)",a_debye,"",""]
-                lined_SI=["Tot(Alpha)(SI)",a_SI,"",""]
+def AlphaStatic(list, name, unit):
+    nwlist = []
+    for i, sublist in enumerate(list):
+        for j, elem in enumerate(sublist):
+            if 'Alpha(0;0):' in elem:
+                xx = list[i+1]
+                yy = list[i+2]
+                zz = list[i+3]
+                print(unit)
+                a = alphamath(xx[unit], yy[unit], zz[unit])
+                lined = ["Tot(Alpha)({})".format(namingUnits(unit)), a, "", ""]
                 nwlist.append(list[i])
-                nwlist.append(lined_au)
-                nwlist.append(lined_debye)
-                nwlist.append(lined_SI)
+                nwlist.append(lined)
+                print("oueueu")
     return nwlist
 
-def Alphaww(list,name):
+
+def Alphaww(list,name,unit):
     nwlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Alpha(-w;w)' in elem:
-                indice=[i,j]
-                xx=(list[i+1])
-                yy=(list[i+2])
-                zz=(list[i+3])
-                def alphamath(xx,yy,zz):
-                    result=((float(xx))+(float(yy))+(float(zz)))/3
-                    return result
-                a_au=alphamath(xx[1],yy[1],zz[1])
-                a_debye=alphamath(xx[2],yy[2],zz[2])
-                a_SI=alphamath(xx[3],yy[3],zz[3])
-                lined_au=["Tot(Alpha)(au)",a_au,"",""]
-                lined_debye=["Tot(Alpha)(Debye)",a_debye,"",""]
-                lined_SI=["Tot(Alpha)(SI)",a_SI,"",""]
+                xx=list[i+1]
+                yy=list[i+2]
+                zz=list[i+3]
+                a=alphamath(xx[unit],yy[unit],zz[unit])
+                lined = ["Tot(Alpha)({})".format(namingUnits(unit)), a, "", ""]
                 nwlist.append(list[i])
-                nwlist.append(lined_au)
-                nwlist.append(lined_debye)
-                nwlist.append(lined_SI)
+                nwlist.append(lined)
     return nwlist
 
-def EletricDipoleTot(list,name):
+def EletricDipoleTot(list,name,unit):
     nwlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
-            if 'EletricDipole' in elem:
-                indice=[i,j]
-                x=(list[i+1])
-                y=(list[i+2])
-                z=(list[i+3])
+            if 'Electric dipole ' in elem:
+                x=list[i+1]
+                y=list[i+2]
+                z=list[i+3]
                 def electricdipolemath(x,y,z):
                     result=math.sqrt((float(x)**2)+((float(y))**2)+((float(z))**2))
                     return result
-                d_au=electricdipolemath(x[1],y[1],z[1])
-                d_debye=electricdipolemath(x[2],y[2],z[2])
-                d_SI=electricdipolemath(x[3],y[3],z[3])
-                lined_au=["Tot(Electric Dipole)(au)",d_au,"",""]
-                lined_debye=["Tot(Electric Dipole)(Debye)",d_debye,"",""]
-                lined_SI=["Tot(Electric Dipole)(SI)",d_SI,"",""]
+                d=electricdipolemath(x[unit],y[unit],z[unit])
+                print(d)
+                lined=["Tot(Electric Dipole)(Debye)",d,"",""]
                 nwlist.append(list[i])
-                nwlist.append(lined_au)
-                nwlist.append(lined_debye)
-                nwlist.append(lined_SI)
+                nwlist.append(lined)
     return nwlist
 def betamatht(x,y,z):
     result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
@@ -238,79 +218,55 @@ def betamathb(x,y,z):
     result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
     return result
 
-def BetaStaticTot(list,name,convention="T"):
+def BetaStaticTot(list,name,convention="T",unit=None):
     Staticlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Beta(0;0,0)' in elem:
-                indice=[i,j]
-                x=(list[i+1])
-                y=(list[i+2])
-                z=(list[i+3])
+                x=list[i+1]
+                y=list[i+2]
+                z=list[i+3]
                 if convention=="T":
-                    au=betamatht(x[1],y[1],z[1])
-                    esu=betamatht(x[2],y[2],z[2])
-                    SI=betamatht(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
-                    au=betamathb(x[1],y[1],z[1])
-                    esu=betamathb(x[2],y[2],z[2])
-                    SI=betamathb(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamatht(x[unit],y[unit],z[unit])
+                lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 Staticlist.append(list[i])
-                Staticlist.append(lined_au)
-                Staticlist.append(lined_esu)
-                Staticlist.append(lined_SI)
+                Staticlist.append(lined)
     return Staticlist
 
-def BetaHRSTot(list,name,convention="T"):
+def BetaHRSTot(list,name,convention="T",unit=None):
     HRSlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Beta(-2w;w,w)' in elem:
-                indice=[i,j]
-                x=(list[i+1])
-                y=(list[i+2])
-                z=(list[i+3])
+                x=list[i+1]
+                y=list[i+2]
+                z=list[i+3]
                 if convention=="T":
-                    au=betamatht(x[1],y[1],z[1])
-                    esu=betamatht(x[2],y[2],z[2])
-                    SI=betamatht(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
-                    au=betamathb(x[1],y[1],z[1])
-                    esu=betamathb(x[2],y[2],z[2])
-                    SI=betamathb(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamatht(x[unit],y[unit],z[unit])
+                lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 HRSlist.append(list[i])
-                HRSlist.append(lined_au)
-                HRSlist.append(lined_esu)
-                HRSlist.append(lined_SI)
+                HRSlist.append(lined)
     return HRSlist
 
-def BetaEFISHTot(list,name,convention="T"):
+def BetaEFISHTot(list,name,convention="T",unit=None):
     EFISHlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Beta(-w;w,0)' in elem:
-                indice=[i,j]
-                x=(list[i+1])
-                y=(list[i+2])
-                z=(list[i+3])
+                x=list[i+1]
+                y=list[i+2]
+                z=list[i+3]
                 if convention=="T":
-                    au=betamatht(x[1],y[1],z[1])
-                    esu=betamatht(x[2],y[2],z[2])
-                    SI=betamatht(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
-                    au=betamathb(x[1],y[1],z[1])
-                    esu=betamathb(x[2],y[2],z[2])
-                    SI=betamathb(x[3],y[3],z[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    b=betamatht(x[unit],y[unit],z[unit])
+                lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 EFISHlist.append(list[i])
-                EFISHlist.append(lined_au)
-                EFISHlist.append(lined_esu)
-                EFISHlist.append(lined_SI)
+                EFISHlist.append(lined)
     return EFISHlist
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)
@@ -333,103 +289,82 @@ def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
 def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5
     return result
-def Gamma0000(list,name,convention):
+def Gamma0000(list,name,convention,unit):
     gamma0000=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Gamma(0;0,0,0)' in elem:
-                indice=[i,j]
-                xxxx=(list[i+1])
-                xxyy=(list[i+2])
-                yyyy=(list[i+3])
-                xxzz=(list[i+4])
-                yyzz=(list[i+5])
-                zzzz=(list[i+6])
+                xxxx=list[i+1]
+                xxyy=list[i+2]
+                yyyy=list[i+3]
+                xxzz=list[i+4]
+                yyzz=list[i+5]
+                zzzz=list[i+6]
                 if convention=="T":
-                    au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamatht(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],xxzz[unit],yyzz[unit])
                 elif convention=="B":
-                    au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],xxzz[1],yyzz[1])
-                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],xxzz[2],yyzz[2])
-                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],xxzz[3],yyzz[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamathb(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],xxzz[unit],yyzz[unit])
+                lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gamma0000.append(list[i])
-                gamma0000.append(lined_au)
-                gamma0000.append(lined_esu)
-                gamma0000.append(lined_SI)
+                gamma0000.append(lined)
     return gamma0000
 
-def Gammaww00(list,name,convention):
+def Gammaww00(list,name,convention,unit):
     gammaww00=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Gamma(-w;w,0,0)' in elem:
-                indice=[i,j]
-                xxxx=(list[i+1])
-                yyxx=(list[i+2])
-                zzxx=(list[i+3])
-                xxyy=(list[i+4])
-                yyyy=(list[i+5])
-                zzyy=(list[i+6])
-                xxzz=(list[i+7])
-                yyzz=(list[i+8])
-                zzzz=(list[i+9])
+                xxxx=list[i+1]
+                yyxx=list[i+2]
+                zzxx=list[i+3]
+                xxyy=list[i+4]
+                yyyy=list[i+5]
+                zzyy=list[i+6]
+                xxzz=list[i+7]
+                yyzz=list[i+8]
+                zzzz=list[i+9]
                 #(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy)
                 if convention=="T":
-                    au=gammamatht(xxxx[1],yyyy[1],zzzz[1],xxyy[1],yyxx[1],xxzz[1],zzxx[1],yyzz[1],zzyy[1])
-                    esu=gammamatht(xxxx[2],yyyy[2],zzzz[2],xxyy[2],yyxx[2],xxzz[2],zzxx[2],yyzz[2],zzyy[2])
-                    SI=gammamatht(xxxx[3],yyyy[3],zzzz[3],xxyy[3],yyxx[3],xxzz[3],zzxx[3],yyzz[3],zzyy[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamathKerrt(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],yyxx[unit],xxzz[unit],zzxx[unit],yyzz[1],zzyy[1])
                 elif convention=="B":
-                    au=gammamathb(xxxx[1],yyyy[1],zzzz[1],xxyy[1],yyxx[1],xxzz[1],zzxx[1],yyzz[1],zzyy[1])
-                    esu=gammamathb(xxxx[2],yyyy[2],zzzz[2],xxyy[2],yyxx[2],xxzz[2],zzxx[2],yyzz[2],zzyy[2])
-                    SI=gammamathb(xxxx[3],yyyy[3],zzzz[3],xxyy[3],yyxx[3],xxzz[3],zzxx[3],yyzz[3],zzyy[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamathKerrb(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],yyxx[unit],xxzz[unit],zzxx[unit],yyzz[1],zzyy[1])
+                lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gammaww00.append(list[i])
-                gammaww00.append(lined_au)
-                gammaww00.append(lined_esu)
-                gammaww00.append(lined_SI)
+                gammaww00.append(lined)
     return gammaww00
 
-def Gamma2www0(list,name,convention):
+def Gamma2www0(list,name,convention,unit):
     gamma2www0=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Gamma(-2w;w,w,0)' in elem:
                 indice=[i,j]
-                xxxx=(list[i+1])
-                yyxx=(list[i+2])
-                xyyx=(list[i+3])
-                zzxx=(list[i+4])
-                xzzx=(list[i+5])
-                yxxy=(list[i+6])
-                xyxy=(list[i+7])
-                yyyy=(list[i+8])
-                zzyy=(list[i+9])
-                yzzy=(list[i+10])
-                zxxz=(list[i+11])
-                zyyz=(list[i+12])
-                xzxz=(list[i+13])
-                yzyz=(list[i+14])
-                zzzz=(list[i+15])
+                xxxx=list[i+1]
+                yyxx=list[i+2]
+                xyyx=list[i+3]
+                zzxx=list[i+4]
+                xzzx=list[i+5]
+                yxxy=list[i+6]
+                xyxy=list[i+7]
+                yyyy=list[i+8]
+                zzyy=list[i+9]
+                yzzy=list[i+10]
+                zxxz=list[i+11]
+                zyyz=list[i+12]
+                xzxz=list[i+13]
+                yzyz=list[i+14]
+                zzzz=list[i+15]
+                #result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zyzy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
                 #xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
                 #ijkl = ikjl
                 # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
                 if convention=="T":
-                    au=gammamathEFISHt(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1],yyxx[1],zzxx[1],zzyy[1],xyyx[1],xzzx[1],yxxy[1],yzzy[1],zxxz[1],zyyz[1])
-                    esu=gammamathEFISHt(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2],yyxx[2],zzxx[2],zzyy[2],xyyx[2],xzzx[2],yxxy[2],yzzy[2],zxxz[2],zyyz[2])
-                    SI=gammamathEFISHt(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3],yyxx[3],zzxx[3],zzyy[3],xyyx[3],xzzx[3],yxxy[3],yzzy[3],zxxz[3],zyyz[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamathEFISHt(xxxx[unit],yyyy[unit],zzzz[unit],xyxy[unit],xzxz[unit],yzyz[unit],yyxx[unit],zzxx[unit],zzyy[unit],xyyx[unit],xzzx[unit],yxxy[unit],yzzy[unit],zxxz[unit],zyyz[unit])
+                    print(g)
                 elif convention=="B":
-                    au=gammamathEFISHb(xxxx[1],yyyy[1],zzzz[1],xyxy[1],xzxz[1],yzyz[1],yyxx[1],zzxx[1],zzyy[1],xyyx[1],xzzx[1],yxxy[1],yzzy[1],zxxz[1],zyyz[1])
-                    esu=gammamathEFISHb(xxxx[2],yyyy[2],zzzz[2],xyxy[2],xzxz[2],yzyz[2],yyxx[2],zzxx[2],zzyy[2],xyyx[2],xzzx[2],yxxy[2],yzzy[2],zxxz[2],zyyz[2])
-                    SI=gammamathEFISHb(xxxx[3],yyyy[3],zzzz[3],xyxy[3],xzxz[3],yzyz[3],yyxx[3],zzxx[3],zzyy[3],xyyx[3],xzzx[3],yxxy[3],yzzy[3],zxxz[3],zyyz[3])
-                    lined_au, lined_esu, lined_SI = Lined(convention, au, esu, SI)
+                    g=gammamathEFISHb(xxxx[unit],yyyy[unit],zzzz[unit],xyxy[unit],xzxz[unit],yzyz[unit],yyxx[unit],zzxx[unit],zzyy[unit],xyyx[unit],xzzx[unit],yxxy[unit],yzzy[unit],zxxz[unit],zyyz[unit])
+                lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gamma2www0.append(list[i])
-                gamma2www0.append(lined_au)
-                gamma2www0.append(lined_esu)
-                gamma2www0.append(lined_SI)
+                gamma2www0.append(lined)
                 print(gamma2www0)
     return gamma2www0

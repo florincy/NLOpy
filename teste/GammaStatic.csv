@@ -1,5 +1,15 @@
 "Gamma(0;0,0,0):
 ",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(T)(au),21071.216666666664
-Tot(T)(esu),21071.216666666664
-Tot(T)(SI),21071.216666666664
+Tot(Gamma)(esu)(B),1.7083144444444442,,
+"Gamma(0;0,0,0):
+",ferro_pbe0_polar.log,Dipole Orientation, 
+Tot(Gamma)(au)(T),4683.993333333334,,
+"Gamma(0;0,0,0):
+",ferro_pbe0_polar.log,Dipole Orientation, 
+Tot(Gamma)(au)(B),3391.7411111111114,,
+"Gamma(0;0,0,0):
+",ferro_pbe0_polar.log,Dipole Orientation, 
+Tot(Gamma)(au)(B),3391.7411111111114,,
+"Gamma(0;0,0,0):
+",ferro_pbe0_polar.log,Dipole Orientation, 
+Tot(Gamma)(au)(B),3391.7411111111114,,
