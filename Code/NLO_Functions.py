@@ -163,54 +163,67 @@ def namingUnits(unit):
     elif unit==3:
         return "SI"
 
-def AlphaStatic(list, name, unit):
-    nwlist = []
+def AlphaStatic(list, name, unit,components=False):
+    AlphaStaticList = []
     for i, sublist in enumerate(list):
         for j, elem in enumerate(sublist):
             if 'Alpha(0;0):' in elem:
                 xx = list[i+1]
                 yy = list[i+2]
                 zz = list[i+3]
-                print(unit)
+                tensors_c=[xx,yy,zz]
                 a = alphamath(xx[unit], yy[unit], zz[unit])
                 lined = ["Tot(Alpha)({})".format(namingUnits(unit)), a, "", ""]
-                nwlist.append(list[i])
-                nwlist.append(lined)
-                print("oueueu")
-    return nwlist
+                AlphaStaticList.append(list[i])
+                AlphaStaticList.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        AlphaStaticList.append(lined_component)                
+    return AlphaStaticList
 
 
-def Alphaww(list,name,unit):
-    nwlist=[]
+def Alphaww(list,name,unit,components=False):
+    AlphawwList=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Alpha(-w;w)' in elem:
                 xx=list[i+1]
                 yy=list[i+2]
                 zz=list[i+3]
+                tensors_c=[xx,yy,zz]
                 a=alphamath(xx[unit],yy[unit],zz[unit])
                 lined = ["Tot(Alpha)({})".format(namingUnits(unit)), a, "", ""]
-                nwlist.append(list[i])
-                nwlist.append(lined)
-    return nwlist
+                AlphawwList.append(list[i])
+                AlphawwList.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        AlphawwList.append(lined_component)
+    return AlphawwList
 
-def EletricDipoleTot(list,name,unit):
-    nwlist=[]
+def EletricDipoleTot(list,name,unit,components=False):
+    ElectricDipoleList=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Electric dipole ' in elem:
                 x=list[i+1]
                 y=list[i+2]
                 z=list[i+3]
+                tensors_c=[x,y,z]
                 def electricdipolemath(x,y,z):
                     result=math.sqrt((float(x)**2)+((float(y))**2)+((float(z))**2))
                     return result
                 d=electricdipolemath(x[unit],y[unit],z[unit])
                 print(d)
                 lined=["Tot(Electric Dipole)(Debye)",d,"",""]
-                nwlist.append(list[i])
-                nwlist.append(lined)
-    return nwlist
+                ElectricDipoleList.append(list[i])
+                ElectricDipoleList.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} (Debye)".format(component[0]),component[unit],"",""]
+                        ElectricDipoleList.append(lined_component)
+    return ElectricDipoleList
 def betamatht(x,y,z):
     result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
     return result
@@ -218,7 +231,7 @@ def betamathb(x,y,z):
     result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
     return result
 
-def BetaStaticTot(list,name,convention="T",unit=None):
+def BetaStaticTot(list,name,convention="T",unit=None,components=False):
     Staticlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -226,6 +239,7 @@ def BetaStaticTot(list,name,convention="T",unit=None):
                 x=list[i+1]
                 y=list[i+2]
                 z=list[i+3]
+                tensors_c=[x,y,z]
                 if convention=="T":
                     b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
@@ -233,9 +247,13 @@ def BetaStaticTot(list,name,convention="T",unit=None):
                 lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 Staticlist.append(list[i])
                 Staticlist.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        Staticlist.append(lined_component)
     return Staticlist
 
-def BetaHRSTot(list,name,convention="T",unit=None):
+def BetaHRSTot(list,name,convention="T",unit=None,components=False):
     HRSlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -243,6 +261,7 @@ def BetaHRSTot(list,name,convention="T",unit=None):
                 x=list[i+1]
                 y=list[i+2]
                 z=list[i+3]
+                tensors_c=[x,y,z]
                 if convention=="T":
                     b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
@@ -250,9 +269,13 @@ def BetaHRSTot(list,name,convention="T",unit=None):
                 lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 HRSlist.append(list[i])
                 HRSlist.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        HRSlist.append(lined_component)
     return HRSlist
 
-def BetaEFISHTot(list,name,convention="T",unit=None):
+def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
     EFISHlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -260,6 +283,7 @@ def BetaEFISHTot(list,name,convention="T",unit=None):
                 x=list[i+1]
                 y=list[i+2]
                 z=list[i+3]
+                tensors_c=[x,y,z]
                 if convention=="T":
                     b=betamathb(x[unit],y[unit],z[unit])
                 elif convention=="B":
@@ -267,6 +291,10 @@ def BetaEFISHTot(list,name,convention="T",unit=None):
                 lined = ["Tot(Beta)({})({})".format(namingUnits(unit), convention), b, "", ""]
                 EFISHlist.append(list[i])
                 EFISHlist.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        EFISHlist.append(lined_component)
     return EFISHlist
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)
@@ -289,7 +317,7 @@ def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
 def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5
     return result
-def Gamma0000(list,name,convention,unit):
+def Gamma0000(list,name,convention,unit,components=False):
     gamma0000=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -300,6 +328,7 @@ def Gamma0000(list,name,convention,unit):
                 xxzz=list[i+4]
                 yyzz=list[i+5]
                 zzzz=list[i+6]
+                tensors_c=[xxxx,yyyy,zzzz,xxyy,xxzz,yyzz]
                 if convention=="T":
                     g=gammamatht(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],xxzz[unit],yyzz[unit])
                 elif convention=="B":
@@ -307,9 +336,13 @@ def Gamma0000(list,name,convention,unit):
                 lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gamma0000.append(list[i])
                 gamma0000.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        gamma0000.append(lined_component)
     return gamma0000
 
-def Gammaww00(list,name,convention,unit):
+def Gammaww00(list,name,convention,unit,components=False):
     gammaww00=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -323,6 +356,7 @@ def Gammaww00(list,name,convention,unit):
                 xxzz=list[i+7]
                 yyzz=list[i+8]
                 zzzz=list[i+9]
+                tensors_c=[xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy]
                 #(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy)
                 if convention=="T":
                     g=gammamathKerrt(xxxx[unit],yyyy[unit],zzzz[unit],xxyy[unit],yyxx[unit],xxzz[unit],zzxx[unit],yyzz[1],zzyy[1])
@@ -331,14 +365,17 @@ def Gammaww00(list,name,convention,unit):
                 lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gammaww00.append(list[i])
                 gammaww00.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        gammaww00.append(lined_component)
     return gammaww00
 
-def Gamma2www0(list,name,convention,unit):
+def Gamma2www0(list,name,convention,unit,components=False):
     gamma2www0=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
             if 'Gamma(-2w;w,w,0)' in elem:
-                indice=[i,j]
                 xxxx=list[i+1]
                 yyxx=list[i+2]
                 xyyx=list[i+3]
@@ -356,15 +393,18 @@ def Gamma2www0(list,name,convention,unit):
                 zzzz=list[i+15]
                 #result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zyzy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
                 #xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
+                tensors_c=[xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz]
                 #ijkl = ikjl
                 # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
                 if convention=="T":
                     g=gammamathEFISHt(xxxx[unit],yyyy[unit],zzzz[unit],xyxy[unit],xzxz[unit],yzyz[unit],yyxx[unit],zzxx[unit],zzyy[unit],xyyx[unit],xzzx[unit],yxxy[unit],yzzy[unit],zxxz[unit],zyyz[unit])
-                    print(g)
                 elif convention=="B":
                     g=gammamathEFISHb(xxxx[unit],yyyy[unit],zzzz[unit],xyxy[unit],xzxz[unit],yzyz[unit],yyxx[unit],zzxx[unit],zzyy[unit],xyyx[unit],xzzx[unit],yxxy[unit],yzzy[unit],zxxz[unit],zyyz[unit])
                 lined = ["Tot(Gamma)({})({})".format(namingUnits(unit), convention), g, "", ""]
                 gamma2www0.append(list[i])
                 gamma2www0.append(lined)
-                print(gamma2www0)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        gamma2www0.append(lined_component)
     return gamma2www0

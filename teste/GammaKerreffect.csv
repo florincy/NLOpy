@@ -1,15 +1,12 @@
 "Gamma(-w;w,0,0) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(Gamma)(esu)(B),210.40940005555558,,
-"Gamma(-w;w,0,0) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(Gamma)(au)(T),7400.421666666666,,
-"Gamma(-w;w,0,0) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(Gamma)(au)(B),1233.403611111111,,
-"Gamma(-w;w,0,0) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(Gamma)(au)(B),1233.403611111111,,
-"Gamma(-w;w,0,0) w=  432.0nm:
-",ferro_pbe0_polar.log,Dipole Orientation, 
-Tot(Gamma)(au)(B),1233.403611111111,,
+",ferro_pbe0_polar.log,Input Orientation, 
+Tot(Gamma)(au)(B),1233.4034444444446,,
+au (xxxx),0.328675E+05,,
+au (yyyy),0.722407E+05,,
+au (zzzz),0.236124E+05,,
+au (xxyy),0.174484E+05,,
+au (yyxx),0.190613E+05,,
+au (xxzz),0.969587E+04,,
+au (zzxx),0.940885E+04,,
+au (yyzz),0.197887E+05,,
+au (zzyy),0.178889E+05,,

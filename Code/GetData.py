@@ -51,10 +51,9 @@ for path, dirs, files in os.walk(directory):
                 with open(outputInputPath, "r") as file:
                     comment="Dipole Orientation"
                     ret = calc(file,name,comment)
-                    #gamma0000=Gamma0000(ret,name)
-                    #print(gamma0000)
-                    alpha=AlphaStatic(ret,name,1)
-                    print(alpha)
+                    gamma2ww00=Gamma2www0(ret,name,"T",1)
+                    print(gamma2ww00)
+
                     '''
                     beta=BetaStaticTot(ret,name)
                     #print(beta)
