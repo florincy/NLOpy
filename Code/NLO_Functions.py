@@ -49,11 +49,12 @@ def open_file(log_file_path):
         return log_file.readlines()
 
 def collect(file):
-    gamma_lines=[]
+    beta_lines=[]
     trash = {"(au)","_|_","Unable", "(z)", "x,y,z", "*", "job", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
     #trash_gamma_efish={"yxxx","zxxx","zyxx","yyyx","xzxx","yzxx","zzyx","zzzx","xxxy","zxxy","yyxy","zyxy","xyyy",""}
     Properties = ["Alpha(-w;w)", "Alpha(0;0):", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)","Electric dipole moment"]
     Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
+    Beta_HRS={"Beta(-2w;w,w)","xxx","yyy","zzz","xyx","xzx","yyx","yzy","zzx","zzy","xyy","xzz","yxx","yzz","zxx","zyy","xyz","xzy","zxy","zyx","yxz","yzx"}
     Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}
     Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yyxx","zzxx","zzyy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
     Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz", "Gamma(0;0,0,0):"}
@@ -134,8 +135,22 @@ def collect(file):
                 if any(keyword in line for keyword in Properties) and a not in line:
                     # print("epa")  # Uncomment for debugging
                     a = "nan"   
+    for line in file_lines:
+        if "Beta(-2w;w,w)" in line:
+            a = "Beta(-2w;w,w)"
+        if a == "Beta(-2w;w,w)":
+            if any(keyword in line for keyword in trash):
+                continue
+            if any(keyword in line.strip() for keyword in Beta_HRS):  
+                beta_lines.append(line.strip())  
+                # print(line)  # Uncomment for debugging
+            if any(keyword in line for keyword in Properties) and "Beta(-2w;w,w)" not in line:
+                # print("epa")  # Uncomment for debugging
+                a = "nan" 
+
         
-    return lines
+        
+    return lines,beta_lines
 
 
 def calc(file, name, comment):
@@ -296,6 +311,52 @@ def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
                         lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
                         EFISHlist.append(lined_component)
     return EFISHlist
+def betaHRSmath(xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,yzz,zzz):
+    #beta_abc = beta_acb
+    #xxy=xyx
+    #xxz=xzx
+    #xyz=xzy
+    #yxz=yzx
+    #zxy=zyx
+    t1=((((float(xxx))**2)+((float(yyy))**2)+((float(zzz))**2)))
+    t2=((((float(xyx))**2)+((float(xzx))**2)+((float(yyx))**2)+((float(yzy))**2)+((float(zzx))**2)+((float(zzy))**2)))
+    t3=((((float(xxx))*(float(xyy)))+((float(xxx))*(float(xzz)))+((float(yyy))*(float(yxx)))+((float(yyy))*(float(yzz)))+((float(zzz))*(float(zxx)))+((float(zzz))*(float(zyy)))))
+    t4 = (((float(xyy)) * (float(yyx)) + (float(xzz)) * (float(xzx)) + (float(yzz)) * (float(zzy)) + (float(yxx)) * (float(xyy)) + (float(zxx)) * (float(xzz)) + (float(zyy)) * (float(yzz))))
+    t5=((((float(xxx))*(float(yyx)))+((float(xxx))*(float(zzx)))+((float(yyy))*(float(xyx)))+((float(yyy))*(float(zzy)))+((float(zzz))*(float(xzx)))+((float(zzz))*(float(yzy)))))
+    t6=((((float(yxx))**2)+((float(yzz))**2)+((float(xyy))**2)+((float(xzz))**2)+((float(zyy))**2)+((float(zxx))**2)))
+    t7=(((float(yyx)) * (float(xzz)) + (float(zzx)) * (float(xyy)) + (float(xyx)) * (float(yzz)) + (float(zzy)) * (float(yxx)) + (float(xzx)) * (float(zyy)) + (float(yzy)) * (float(zxx))))
+    t8=(((float(xyy)) * (float(xzz)) + (float(xzz)) * (float(xyy)) + (float(yxx)) * (float(yzz)) + (float(yzz)) * (float(yxx)) + (float(zxx)) * (float(zyy)) + (float(zyy)) * (float(zxx))))
+    t9=(((float(yyx)) * (float(zzx)) + (float(zzx)) * (float(yyx)) + (float(xyx)) * (float(zzy)) + (float(zzy)) * (float(xyx)) + (float(xzx)) * (float(yzy)) + (float(yzy)) * (float(xzx))))
+    t10=(((float(xzy))**2)+((float(xzy))**2)+((float(yzx))**2)+((float(yzx))**2)+((float(zyx))**2)+((float(zyx))**2))
+    # t11=((float(xyz))*((float(yxz))))+((float(xzy))*((float(zxy))))+((float(yzx))*((float(zxy))))+((float(yxz))*((float(xzy))))+((float(zxy))*(float(xzy)))+((float(zyx))*(float(yzx)))
+    t11=((float(xzy))*((float(yzx))))+((float(xzy))*((float(zyx))))+((float(yzx))*((float(zyx))))+((float(yzx))*((float(xzy))))+((float(zyx))*(float(xzy)))+((float(zyx))*(float(yzx)))
+    bzzz=(t1*(1/7))+(t2*(4/35))+(t3*(2/35))+(t4*(4/35))+(t5*(4/35))+(t6*(1/35))+(t7*(4/105))+(t8*(1/105))+(t9*(4/105))+(t10*(4/105))+(t11*(4/105))
+    bzxx=(t1*(1/35))+(t3*(4/105))+(t5*(-2/35))+(t2*(8/105))+(t6*(3/35))+(t4*(-2/35))+(t8*(1/35))+(t9*(-2/105))+(t7*(-2/105))+(t10*(2/35))+(t11*(-2/105))
+def BetaHRSCase(list,name,convention="T",unit=None,components=False):
+    HRSlist=[]
+    #[['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' '], ['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'], ['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], ['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], ['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], ['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], ['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], ['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'], ['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], ['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], ['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], ['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], ['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], ['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], ['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], ['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']]
+    for i, elem in enumerate(list):
+        for j, elem in enumerate(elem):
+            if 'Beta(-2w;w,w)' in elem:
+                xxx=list[i+1]
+                yxx=list[i+2]
+                zxx=list[i+3]
+                xyx=list[i+4]
+                yyx=list[i+5]
+                zyx=list[i+6]
+                xyy=list[i+7]
+                yyy=list[i+8]
+                zyy=list[i+9]
+                xzx=list[i+10]
+                yzx=list[i+11]
+                zzx=list[i+12]
+                xzy=list[i+13]
+                yzy=list[i+14]
+                zzy=list[i+15]
+                xzz=list[i+16]
+                yzz=list[i+17]
+                zzz=list[i+18]
+
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)
 #For now, I figure it out this relations is valid for (-w;w,0,0),(-2w;w,w,0),(0;0,0,0)
@@ -408,3 +469,4 @@ def Gamma2www0(list,name,convention,unit,components=False):
                         lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
                         gamma2www0.append(lined_component)
     return gamma2www0
+

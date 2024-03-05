@@ -96,7 +96,7 @@ class Application:
         self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
-        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
+        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole","Beta HRS", command=self.on_property_select)
         self.property_menu.config(bg='#B4ADEA')
         self.property_menu.grid(row=7,column=2, sticky=tk.W)
 
@@ -255,12 +255,16 @@ class Application:
                     #Writing resumed .txt files
                     with open(outputInputPath, "w") as outputInput:
                         with open(output_file_path_input, "r") as file:
-                            lines = collect(file)
+                            returns=collect(file)
+                            lines=returns[0]  
+                            lines_beta_HRS=returns[1]  
                             for line in lines:
                                 outputInput.write(line + "\n")
                     with open(outputDipolePath, "w") as outputDipole:
                         with open(output_file_path_dipole, "r") as file:
-                            lines = collect(file)
+                            returns=collect(file)
+                            lines=returns[0]  
+                            lines_beta_HRS=returns[1]  
                             for line in lines:
                                 outputDipole.write(line + "\n")
                     #Reading and dealing with resumed .txt files

@@ -37,13 +37,16 @@ for path, dirs, files in os.walk(directory):
 
             with open(outputInputPath, "w") as outputInput:
                 with open(output_file_path_input, "r") as file:
-                    lines=collect(file)
+                    returns=collect(file)
+                    lines=returns[0]
+                    lines_beta_HRS=returns[1]
                     for line in lines:
                         outputInput.write(line+"\n")
-
             with open(outputDipolePath, "w") as outputDipole:
                 with open(output_file_path_dipole, "r") as file:
-                    lines=collect(file)
+                    returns=collect(file)
+                    lines=returns[0]  
+                    lines_beta_HRS=returns[1]                  
                     for line in lines:
                         outputDipole.write(line+"\n")    
             with open('output.csv', 'a', newline='') as df:
@@ -51,8 +54,10 @@ for path, dirs, files in os.walk(directory):
                 with open(outputInputPath, "r") as file:
                     comment="Dipole Orientation"
                     ret = calc(file,name,comment)
-                    gamma2ww00=Gamma2www0(ret,name,"T",1)
-                    print(gamma2ww00)
+                    ret_HRS=calc(lines_beta_HRS,name,comment)
+                    print(ret_HRS)
+                    #gamma2ww00=Gamma2www0(ret,name,"T",1)
+                    #print(gamma2ww00)
 
                     '''
                     beta=BetaStaticTot(ret,name)
