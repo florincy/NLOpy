@@ -3,7 +3,7 @@ from tkinter import filedialog
 import os
 import csv
 import math
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000, Gammaww00,Gamma2www0
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000, Gammaww00,Gamma2www0, BetaHRSCase
 
 root = tk.Tk()
 root.withdraw()
@@ -55,7 +55,7 @@ for path, dirs, files in os.walk(directory):
                     comment="Dipole Orientation"
                     ret = calc(file,name,comment)
                     ret_HRS=calc(lines_beta_HRS,name,comment)
-                    print(ret_HRS)
+                    BetaHRSCase(ret_HRS,name,"T",1)
                     #gamma2ww00=Gamma2www0(ret,name,"T",1)
                     #print(gamma2ww00)
 

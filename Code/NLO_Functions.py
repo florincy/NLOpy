@@ -332,6 +332,9 @@ def betaHRSmath(xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,
     t11=((float(xzy))*((float(yzx))))+((float(xzy))*((float(zyx))))+((float(yzx))*((float(zyx))))+((float(yzx))*((float(xzy))))+((float(zyx))*(float(xzy)))+((float(zyx))*(float(yzx)))
     bzzz=(t1*(1/7))+(t2*(4/35))+(t3*(2/35))+(t4*(4/35))+(t5*(4/35))+(t6*(1/35))+(t7*(4/105))+(t8*(1/105))+(t9*(4/105))+(t10*(4/105))+(t11*(4/105))
     bzxx=(t1*(1/35))+(t3*(4/105))+(t5*(-2/35))+(t2*(8/105))+(t6*(3/35))+(t4*(-2/35))+(t8*(1/35))+(t9*(-2/105))+(t7*(-2/105))+(t10*(2/35))+(t11*(-2/105))
+    bHRS=math.sqrt(bzzz+bzxx)
+    print(bHRS)
+    return bHRS
 def BetaHRSCase(list,name,convention="T",unit=None,components=False):
     HRSlist=[]
     #[['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' '], ['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'], ['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], ['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], ['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], ['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], ['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], ['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'], ['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], ['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], ['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], ['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], ['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], ['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], ['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], ['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']]
@@ -356,7 +359,11 @@ def BetaHRSCase(list,name,convention="T",unit=None,components=False):
                 xzz=list[i+16]
                 yzz=list[i+17]
                 zzz=list[i+18]
-
+                betaHRS=betaHRSmath(xxx[unit],yxx[unit],zxx[unit],xyx[unit],yyx[unit],zyx[unit],xyy[unit],yyy[unit],zyy[unit],xzx[unit],yzx[unit],zzx[unit],xzy[unit],yzy[unit],zzy[unit],xzz[unit],yzz[unit],zzz[unit])
+                lined = ["Tot(Beta HRS)({})({})".format(namingUnits(unit), convention), betaHRS, "", ""]
+                HRSlist.append(list[i])
+                HRSlist.append(lined)
+    return HRSlist
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)
 #For now, I figure it out this relations is valid for (-w;w,0,0),(-2w;w,w,0),(0;0,0,0)
