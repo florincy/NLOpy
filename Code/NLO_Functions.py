@@ -268,7 +268,7 @@ def BetaStaticTot(list,name,convention="T",unit=None,components=False):
                         Staticlist.append(lined_component)
     return Staticlist
 
-def BetaHRSTot(list,name,convention="T",unit=None,components=False):
+def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
     HRSlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -290,7 +290,7 @@ def BetaHRSTot(list,name,convention="T",unit=None,components=False):
                         HRSlist.append(lined_component)
     return HRSlist
 
-def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
+def BetaPockelsTot(list,name,convention="T",unit=None,components=False):
     EFISHlist=[]
     for i, elem in enumerate(list):
         for j, elem in enumerate(elem):
@@ -373,11 +373,11 @@ def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
 def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5
     return result
-def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
-    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zyzy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
+def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
+    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
     return result
-def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zyzy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
-    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yxyx))/36)+((float(zxzx))/36)+((float(zyzy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))
+def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
+    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))
     return result
 def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
@@ -463,7 +463,7 @@ def Gamma2www0(list,name,convention,unit,components=False):
                 #xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
                 tensors_c=[xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz]
                 #ijkl = ikjl
-                # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy                
+                # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy       
                 if convention=="T":
                     g=gammamathEFISHt(xxxx[unit],yyyy[unit],zzzz[unit],xyxy[unit],xzxz[unit],yzyz[unit],yyxx[unit],zzxx[unit],zzyy[unit],xyyx[unit],xzzx[unit],yxxy[unit],yzzy[unit],zxxz[unit],zyyz[unit])
                 elif convention=="B":

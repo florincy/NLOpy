@@ -8,7 +8,26 @@
 \usepackage{graphicx}
 \usepackage{fourier}
 \usepackage[hidelinks]{hyperref}
-\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{float}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=30mm,
+	top=30mm,
+	right=20mm,
+	bottom=20mm
+}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 %opening
 \title{NLO Equations}
@@ -18,75 +37,262 @@
 	
 	\maketitle
 	
-	\begin{abstract}
-	\end{abstract}
+
+	\section{Non Linear Optics}
+		\qquad The field of optical chemistry delves into the study of how atomic and molecular systems respond to electromagnetic fields (EM). Utilizing quantum mechanical formalism, the nonlinear optical behavior is conceptualized as the response of the wave function to specific types of perturbations. Experimentally, these perturbations need to be sufficiently robust—such as a strong direct current (DC) field—to be observable. Consequently, the development of nonlinear optics (NLO) commenced towards the end of the 19th century, gaining momentum following the discovery of lasers. \\
+		\qquad The mathematical conceptuation of nonlinearity in optics can elaborated from the dipole moment expression, where $E=Acos\omega t$.
+		\begin{equation}\label{eq:Dipole moment}
+		P=\varepsilon_0 =(\chi^{(1)}E+\chi^{(2)}E+...)
+		\end{equation}
+		\qquad Within the Schrödinger formalism, the Hamiltonian describing non-linear optical (NLO) processes encompasses terms accounting for both the isolated system ($H_{0}$) and the perturbed system ($H_{1}$), which incorporates the matter-radiation interaction, as illustrated in Equation \ref{eq:Dipole moment}. This latter term can be effectively represented by a multipole expansion, as delineated in Equation \ref{eq:Multipole expansion}, where $\vec{E}$, $\vec{H}$, and $\vec{\nabla E}$ denote the electric field, magnetic field, and electric field gradient, respectively, and $\vec{\mu}$, $\vec{m}$, and $\vec{Q}$ are the dipole moment, magnetic moment, and quadrupole moment. These quantities can also be expanded as a Taylor series. For $\vec{\mu}$, the equation is elaborated. In this expression, polarizability, first hyperpolarizability, and second hyperpolarizability appear as $\alpha$, $\beta$, and $\gamma$, which are tensors of second, third, and fourth rank, respectively. Besides Taylor's expansion, similar formulations are found in the literature, where $\frac{1}{2}$ and $\frac{1}{6}$ are absent.
+.		\begin{equation}\label{eq:Multipole expansion}
+		H_{1}=-\vec{\mu}\cdot \vec{E}-\vec{m}\cdot \vec{H}-\vec{Q}\cdot \vec{\nabla E}
+		\end{equation}
+		\begin{equation}\label{eq:dipole moment expansion}
+		\begin{aligned}
+		\mu_{a}\left(\omega_{\sigma}\right)= & \mu_{a}^{0} \delta_{\omega_{\sigma}, 0}+\sum_{b} \alpha_{a b}^{0}\left(-\omega_{\sigma} ; \omega_{1}\right) E_{b}\left(\omega_{1}\right) \\
+		& +\frac{1}{2} K^{(2)} \sum_{b, c} \beta_{a b c}^{0}\left(-\omega_{\sigma} ; \omega_{1}, \omega_{2}\right) E_{b}\left(\omega_{1}\right) E_{c}\left(\omega_{2}\right) \\
+		& +\frac{1}{6} K^{(3)} \sum_{b, c, d} \gamma_{a b c d}^{0}\left(-\omega_{\sigma} ; \omega_{1}, \omega_{2}, \omega_{3}\right) E_{b}\left(\omega_{1}\right) E_{c}\left(\omega_{2}\right) E_{d}\left(\omega_{3}\right)+\cdots
+		\end{aligned}
+		\end{equation}
+		$a,b,c,d$ refer to the cartesian coordinates \\
+		$\omega$s refer to circular optical frequencies\\
+		\qquad From equation \ref{eq:dipole moment expansion} possibilities for the circular optical frequencies, diferent NLO fenomena are defined, as resumed in table \ref{tab:fields_phenomena}.\\
+		\begin{table}[H] \caption{Fields and Phenomena}
+			\begin{tabularx}{\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+			\hline
+			Field & Phenomena & Field & Phenomena \\
+			\hline
+			$\alpha(0;0)$ & static & $\gamma(0;0,0,0)$ & static \\
+			\hline
+			$\alpha(-\omega;\omega)$ & dynamic & $\gamma(-\omega;\omega,0,0)$ & dc-Kerr \\
+			\hline
+			$\beta(0;0,0)$ & static & $\gamma(-2\omega;\omega,\omega,0)$ & electric-field-induced second harmonic generation \\
+			\hline
+			$\beta(-\omega;\omega,0)$ & dc-Pockels & $\gamma(-\omega;\omega,-\omega,\omega)$ & degenerate four-wave mixing \\
+			\hline
+			$\beta(0;\omega,-\omega)$ & optical rectification & $\gamma(-3\omega;\omega,\omega,\omega)$ & third harmonic generation \\
+			\hline
+			$\beta(-2\omega;\omega,0)$ & second harmonic generation & & \\
+			\hline
+			\end{tabularx}
+		\label{tab:fields_phenomena}
+		\end{table}
+	\paragraph{Calcutating Hyper(polarizabilites)}	
+	\qquad The methods for calculating polarizabilities and hyperpolarizabilities are divided into SOS (Summation-Over-States) approaches and techniques that rely on the evaluation of derivatives of energy or other properties. The latter method is employed by Gaussian 16 software, where these derivatives are numerically evaluated using the CPHF (Coupled-Perturbed Hartree-Fock) approach. This calculation details are clarified in Gaussian 16 file input.\\
+ 	\begin{verbatim}
+ 	#p CAM-B3LYP/gen gfinput Polar=(DCSHG) CPHF=RdFreq 
+ 	\end{verbatim}
+	\qquad Therefore, when requested, following the same pattern as the example provided earlier, the components of the $\alpha$, $\beta$, and $\gamma$ tensors are printed in the output files. \\
 	
+	\qquad The output format follows the principle of full permutation symmetry, which means that the nonlinear coefficients stay the same even if the three Cartesian indices $ijk$ are rearranged along with their respective frequency arguments, under conditions where there is no loss. Additionally, because reversing the signs of all involved frequencies changes a coefficient into its complex conjugate, and in lossless conditions, coefficients are assumed to be real, reversing all frequency signs does not affect the analysis. Therefore, it is possible to write the permutations for each field-property combination.
+			\begin{table}[H] \caption{Fields and Permutations}
+		\begin{tabularx}{\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+			\hline
+			Field & Permutations & Field & Permutations \\
+			\hline
+			$\alpha(0;0)$ & $\alpha_{ab}=\alpha_{ba}$ & $\gamma(0;0,0,0)$ & $\gamma_{abcd}=\gamma_{bacd}=\gamma_{abdc}=\gamma_{bacd}=\gamma_{badc}=\gamma_{bcad}=\gamma_{bdac}=\gamma_{cbad}=\gamma_{cdab}=\gamma_{dcab}=\gamma_{cbda}=\gamma_{cadb}=\gamma_{cdab}=\gamma_{cabd}=\gamma_{dcba}=\gamma_{dacb}=\gamma_{adcb}=\gamma_{dabc}=\gamma_{dcba}=\gamma_{dacb}=\gamma_{dbca}=\gamma_{dacb}=\gamma_{dbac}=\gamma_{adbc}=\gamma_{dabc}$ \\
+			\hline
+			$\alpha(-\omega;\omega)$ &$\alpha_{ab}=\alpha_{ba}$ & $\gamma(-\omega;\omega,0,0)$ & $\gamma_{abcd}=\gamma_{bacd}=\gamma_{badc}=\gamma_{abdc}$ \\
+			\hline
+			$\beta(0;0,0)$ & $\beta_{abc} = \beta_{bac} = \beta_{cba} = \beta_{bca} = \beta_{cab} = \beta_{acb}$
+			 & $\gamma(-2\omega;\omega,\omega,0)$ & $\gamma_{abcd}=\gamma_{acbd}$ \\
+			\hline
+			$\beta(-\omega;\omega,0)$ & $\beta_{abc}= \beta_{bac}$ & $\gamma(-\omega;\omega,-\omega,\omega)$ & $\gamma_{abcd}=\gamma_{bacd}=\gamma_{badc}=\gamma_{abdc}$ \\
+			\hline
+			$\beta(0;\omega,-\omega)$ & $\beta_{abc}= \beta_{bac}$ & $\gamma(-3\omega;\omega,\omega,\omega)$ & $\gamma_{abcd}=\gamma_{cadb}=\gamma_{dacb}=\gamma_{adcb}$ \\
+			\hline
+			$\beta(-2\omega;\omega,0)$ & $\beta_{abc} = \beta_{acb}
+			$ & & \\
+			\hline
+		\end{tabularx}
+		\label{tab:fields_permutation}
+	\end{table}
 	\section{Electric Dipole}
-	\begin{displaymath}
+	\begin{equation}\label{eq:DipoleMoment}
 	\mu = \sqrt{{\mu_x}^2+{\mu_y}^2+{\mu_z}^2}
-	\end{displaymath}
+	\end{equation}
 	
 	\section{Polarizability}
-	\begin{displaymath}
-	\alpha = \frac{{\mathrm{xx}} + {\mathrm{yy}} + {\mathrm{zz}}}{3} 
-	\end{displaymath}
+	\begin{equation}\label{eq:alpha}
+	\alpha = \frac{{\alpha_{xx}} + {\alpha_{yy}} + {\alpha_{zz}}}{3} 
+	\end{equation}
 	
 	\section{First Hyperpolarizability}
-		\paragraph{}
-	The tensor components $\beta_i$ generated by Gaussian lack multiplication by a factor of $\frac{1}{3}$. Additionally, the conversion from the Taylor series convention to the perturbational series convention involves multiplying by a $\frac{1}{2}$ factor, when considering the 3 possible beta tensors founded in Gaussian 16.0. This results in a total factor of $\frac{1}{6}$ to obtain $\beta$ in the latter convention, as illustrated below:
+	The components $\beta_i$ (\ref{eq:betai}) generated by Gaussian lack multiplication by a factor of $\frac{1}{3}$, while components $\beta_{abc}$, from $\beta$ tensor, lack multiplication by a factor of $\frac{1}{2}$. Additionally, the conversion from the Taylor series convention to the perturbational series convention involves multiplying by a $\frac{1}{2}$ factor, when considering the 3 possible beta tensors founded in Gaussian 16.0. This results in a total factor of $\frac{1}{6}$ to obtain intrinsic hyperpolarizability in the latter convention, as illustrated below:
+	\begin{equation}\label{eq:betai}
+	\beta_i = \beta_{aaa}+\frac {1}{3}\sum_{i\neq j}(\beta_{abb}+\beta_{bab}+\beta_{bba})
+	\end{equation}
 	\begin{align*}
-	\beta_i &=\beta_{iii}+\frac {1} {3}{\sum_{i\neq j}}(\beta_{ijj}+\beta_{jij}+\beta_{jji})\\
-	\beta_i^{G16} &=3\beta_i
+	&\beta_i^{\text{G16}} = 3\beta_i \\
+	&\beta^{B} = \frac{1}{2} \beta^{T} \\
+	&\beta^{B} =  \frac{1}{6}\beta^{G16}
 	\end{align*}
-	\begin{align*}
-	\beta^{B} &= \frac{1}{2} \beta^{T} \\
-	\beta^{B} &=  \frac{1}{6}\beta^{G16}
-	\end{align*}
-	\subsection{T convention}
-	\begin{displaymath}
-	\beta = \sqrt{\left(\frac{x}{3}\right)^2 + \left(\frac{y}{3}\right)^2 + \left(\frac{z}{3}\right)^2} 
-	\end{displaymath}
-	\subsection{B convention}
-	\begin{displaymath}
-	\beta = \sqrt{\left(\frac{x}{6}\right)^2 + \left(\frac{y}{6}\right)^2 + \left(\frac{z}{6}\right)^2} 
-	\end{displaymath}
-	\section{Second Hyperpolarizability}
-	\paragraph{}
-	The tensor components generated by Gaussian lack multiplication by a factor of $\frac{1}{6}$. Additionally, the conversion from the Taylor series convention to the perturbational series convention involves multiplying by a $\frac{1}{6}$ factor, when considering the 3 possible gamma tensors founded in Gaussian 16.0. This results in a total factor of $\frac{1}{36}$ to obtain $\gamma$ in the latter convention, as illustrated below:
-	\begin{align*}
-	\frac{3}{2} \gamma^{B} &= \frac{1}{4} \gamma^{T} \\
-	\gamma^{T} &= \frac{1}{6} \gamma^{G16} \\
-	\gamma^{B} &= \frac{1}{36}\gamma^{G16} 
-	\end{align*}
-	\paragraph{}$\gamma$ represents the overall gamma property calculated as discussed in the following sections.
-	\subsection{Gamma Static (0;0,0,0)}
-	\subsubsection{T convention}
-	\begin{displaymath}
-	\gamma = \frac{1}{5}\left(\frac{\mathrm{xxxx}}{6} + \frac{\mathrm{yyyy}}{6} + \frac{\mathrm{zzzz}}{6} + 2\frac{\mathrm{xxyy}}{6} + 2\frac{\mathrm{xxzz}}{6} + 2\frac{\mathrm{yyzz}}{6}\right)
-	\end{displaymath}
-	\subsubsection{B convention}
-	\begin{displaymath}
-	\gamma = \frac{1}{5}\left(\frac{\mathrm{xxxx}}{36} + \frac{\mathrm{yyyy}}{36} + \frac{\mathrm{zzzz}}{36} + 2\frac{\mathrm{xxyy}}{36} + 2\frac{\mathrm{xxzz}}{36} + 2\frac{\mathrm{yyzz}}{36}\right)
-	\end{displaymath}
-	\subsection{Gamma Kerr effect (-w;w,0,0)}
-	\subsubsection{T convention}
-	\begin{displaymath}
-	\gamma = \frac{1}{5}\left(\frac{{xxxx}}{6} + \frac{{yyyy}}{6} + \frac{{zzzz}}{6} + \frac{{xxyy}}{6} + \frac{{yyxx}}{6} + \frac{{xxzz}}{6} + \frac{{zzxx}}{6} + \frac{{yyzz}}{6} + \frac{{zzyy}}{6}\right)
-	\end{displaymath}
-	\subsubsection{B convention}
-	\begin{displaymath}
-	\gamma = \frac{1}{5}\left(\frac{{xxxx}}{36} + \frac{{yyyy}}{36} + \frac{{zzzz}}{36} + \frac{{xxyy}}{36} + \frac{{yyxx}}{36} + \frac{{xxzz}}{36} + \frac{{zzxx}}{36} + \frac{{yyzz}}{36} + \frac{{zzyy}}{36}\right)
-	\end{displaymath}
-	\subsection{Gamma EFISH (-2w,w,w,0)}
-	\subsubsection{T convention}
-	\begin{align*}
-	\gamma &= 3\left(\frac{\mathrm{xxxx}}{6} + \frac{\mathrm{yyyy}}{6} + \frac{\mathrm{zzzz}}{6}\right) + 2\left(\frac{\mathrm{xyxy}}{6} + \frac{\mathrm{xzxz}}{6} + \frac{\mathrm{yzyz}}{6} + \frac{\mathrm{yxyx}}{6} + \frac{\mathrm{zxzx}}{6} + \frac{\mathrm{zyzy}}{6}\right) \nonumber \\
-	&+ \frac{\mathrm{xyyx}}{6} + \frac{\mathrm{xzzx}}{6} + \frac{\mathrm{yxxy}}{6} + \frac{\mathrm{yzzy}}{6} + \frac{\mathrm{zxxz}}{6} + \frac{\mathrm{zyyz}}{6}  
-	\end{align*}
+	When the correct $\beta_i$ values are obtained, it is possible to calculate $<\beta>$ using equation \ref{eq:beta}, which can be employed for all fields available in G16.
+	\begin{equation}\label{eq:beta}
+	<\beta>=\sqrt{\sum_{a}^{x,y,z}\beta^{2}_{a}}
+	\end{equation}
+	Nevertheless, the hyperpolarizability for $\beta(-2\omega , \omega , \omega)$ field is a pertinent case. Experimentally, it is usually obtained using EFISH or HRS measurements. Given that statement, the rigorous theoretical approach arises to different mathematical expressions for $<\beta_{EFISH}>$, which is the same as equation \ref{eq:beta}, and $<\beta_{HRS}>$, which corresponds to equation \ref{eq:betaHRS}. 
 	
+	\begin{align}\label{eq:betazzz}
+	<\beta^{2}_{zzz}> &= \frac{1}{7} \sum_{a}^{x,y,z} \beta^{2}_{aaa} + \frac{4}{35} \sum_{a\neq b}^{x,y,z} \beta^{2}_{aab} \nonumber \\
+	&\quad + \frac{2}{35} \sum_{a\neq b}^{x,y,z} \beta_{aaa}\beta_{abb} + \frac{4}{35} \sum_{a\neq b}^{x,y,z} \beta_{baa}\beta_{aab} \nonumber \\
+	&\quad + \frac{4}{35} \sum_{a\neq b}^{x,y,z} \beta_{aaa}\beta_{bba} + \frac{1}{35} \sum_{a\neq b}^{x,y,z} \beta^{2}_{baa}\nonumber \\
+	&\quad + \frac{1}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{aab}\beta_{bcc} +\frac{1}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{baa}\beta_{bcc}\nonumber \\
+	&\quad + \frac{4}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{aab}\beta_{ccb} +\frac{2}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta^{2}_{abc}\nonumber \\
+	&\quad + \frac{4}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{abc}\beta_{bac} 
+	\end{align}
+	
+	\begin{align}\label{eq:betazxx}
+	<\beta^{2}_{zxx}> &= \frac{1}{35} \sum_{a}^{x,y,z} \beta^{2}_{aaa} + \frac{8}{105} \sum_{a\neq b}^{x,y,z} \beta^{2}_{aab} \nonumber \\
+	&\quad + \frac{4}{105} \sum_{a\neq b}^{x,y,z} \beta_{aaa}\beta_{abb} + \frac{-2}{35} \sum_{a\neq b}^{x,y,z} \beta_{baa}\beta_{aab} \nonumber \\
+	&\quad + \frac{-2}{35} \sum_{a\neq b}^{x,y,z} \beta_{aaa}\beta_{bba} + \frac{3}{35} \sum_{a\neq b}^{x,y,z} \beta^{2}_{baa}\nonumber \\
+	&\quad + \frac{-2}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{aab}\beta_{bcc} +\frac{1}{35} \sum_{a\neq b\neq c}^{x,y,z} \beta_{baa}\beta_{bcc}\nonumber \\
+	&\quad + \frac{-2}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{aab}\beta_{ccb} +\frac{2}{35} \sum_{a\neq b\neq c}^{x,y,z} \beta^{2}_{abc}\nonumber \\
+	&\quad + \frac{-2}{105} \sum_{a\neq b\neq c}^{x,y,z} \beta_{abc}\beta_{bac} 
+	\end{align}
+	
+	\begin{equation}\label{eq:betaHRS}
+	\beta_{\text{HRS}}= \sqrt{<\beta^{2}_{zzz}>+<\beta^{2}_{zxx}>}
+	\end{equation} 
+	
+	\section{Second Hyperpolarizability}
+	The tensor components generated by Gaussian lack multiplication by a factor of $\frac{1}{6}$. Additionally, the conversion from the Taylor series convention to the perturbational series convention involves multiplying by a $\frac{1}{6}$ factor, when considering the 3 possible gamma tensors founded in Gaussian 16.0. This results in a total factor of $\frac{1}{36}$ to obtain $\gamma$ in the latter convention, as illustrated below:
+	\begin{align}
+	&\frac{3}{2} \gamma^{B} = \frac{1}{4} \gamma^{T} \nonumber \\
+	&\gamma^{T} = \frac{1}{6} \gamma^{G16} \nonumber \\
+	&\gamma^{B} = \frac{1}{36}\gamma^{G16} 
+	\end{align}
+	
+	$\gamma$ represents the overall gamma property calculated as discussed in the following sections.
+		\subsubsection{Gamma Static (0;0,0,0)}
+	\begin{equation}\label{eq:gamma_static}
+	\gamma = \left({\gamma_{xxxx}} + {\gamma_{yyyy}} + {\gamma_{zzzz}} + 2{\gamma_{xxyy}} + 2\gamma_{\text{xxzz}} + 2{\gamma_{yyzz}}\right)
+	\end{equation}
+	\subsubsection{Gamma Kerr effect (-w;w,0,0)}
+	\begin{equation}\label{eq:gamma_kerr}
+	\gamma = \frac{1}{5}\left(\gamma_{{xxxx}} + \gamma_{{yyyy}} + \gamma_{{zzzz}} + \gamma_{{xxyy}} + \gamma_{{yyxx}}+ \gamma_{{xxzz}} + \gamma_{{zzxx}} + \gamma_{{yyzz}} + \gamma_{{zzyy}}\right)
+	\end{equation}
+	
+	\subsubsection{Gamma EFISH (-2w,w,w,0)}
+	\begin{align}\label{eq:gamma_efish}
+	\gamma &= 3\left({\gamma_{xxxx}}+ {\gamma_{yyyy}} + {\gamma_{zzzz}}\right) + 2\left({\gamma_{xxyy}} + {\gamma_{xxzz}} + {\gamma_{yyzz}} + {\gamma_{yyxx}} + \gamma_{zzxx} + {\gamma_{zzyy}}\right) \nonumber \\
+	&\quad + {\gamma_{xyyx}} + {\gamma_{xzzx}}+ {\gamma_{yxxy}} + {\gamma_{yzzy}} + {\gamma_{zxxz}} + {\gamma_{zyyz}} 
+	\end{align}
+	
+	\section{Software background equations}
+	Summarizing the approaches discussed here, the software employs the following expressions for each possible property.The notation agrees with the output style of Gaussian 16, which, for example, prints dipole moment components as:
+	\begin{verbatim}
+	Electric dipole moment (dipole orientation):
+	(Debye = 10**-18 statcoulomb cm , SI units = C m)
+	(au)            (Debye)         (10**-30 SI)
+	Tot        0.104706D+01      0.266137D+01      0.887736D+01
+	x          0.000000D+00      0.000000D+00      0.000000D+00
+	y          0.000000D+00      0.000000D+00      0.000000D+00
+	z          0.104706D+01      0.266137D+01      0.887736D+01
+	\end{verbatim}
+	\subsection{Mu($\mu$)}
+	\begin{equation}\label{eq:DipoleMoment_soft}
+	\mu = \sqrt{{\text x}^2+{\text y}^2+{\text z}^2}
+	\end{equation}
+	\subsection{Alpha($\alpha$)}
+	\begin{equation}\label{eq:alpha_soft}
+	\alpha = \frac{{\text{xx}} + {\text{yy}} + {\text{zz}}}{3} 
+	\end{equation}
+	\subsection{Beta($\beta$)}
+	\subsubsection{Beta, including Beta EFISH}
+	\paragraph{T convention}
+	\begin{equation}\label{eq:beta_T}
+	\beta = \sqrt{\left(\frac{x}{3}\right)^2 + \left(\frac{y}{3}\right)^2 + \left(\frac{z}{3}\right)^2} 
+	\end{equation}
+	\paragraph{B convention}
+	\begin{equation}\label{eq:beta_B}
+	\beta = \sqrt{\left(\frac{x}{6}\right)^2 + \left(\frac{y}{6}\right)^2 + \left(\frac{z}{6}\right)^2} 
+	\end{equation}
+	\subsubsection{Beta HRS}
+	For this calculation, the following substitutions of tensor components were made to original equation, considering permutation relations included in Gaussian 16.
+	\begin{enumerate}
+		\item xxy=xyx
+		\item xxz=xzx
+		\item xyz=xzy
+		\item yxz=yzx
+		\item zxy=zyx
+	\end{enumerate}
+	
+	\paragraph{T convention}
+	\begin{align}\label{eq:beta_hrs_T}
+	\mathrm{t_1} &= \mathrm({xxx})^{2} + \mathrm({yyy})^{2} + \mathrm({zzz})^{2}\\
+	\mathrm{t_2} &= \mathrm({xyx})^{2} + \mathrm({xzx})^{2} + \mathrm({yyx})^{2} + \mathrm({yzy})^{2} + \mathrm({zzx})^{2} + \mathrm({zzy})^{2}\\
+	\mathrm{t_3}&= \mathrm{xxx} * \mathrm{xyy} + \mathrm{xxx} * \mathrm{xzz} + \mathrm{yyy} * \mathrm{yxx} + \mathrm{yyy} * \mathrm{yzz} + \mathrm{zzz} * \mathrm{zxx} + \mathrm{zzz} * \mathrm{zyy} \\
+	\mathrm{t_4} &= \mathrm{xyy} * \mathrm{yyx} + \mathrm{xzz} * \mathrm{xzx} + \mathrm{yzz} * \mathrm{zzy} + \mathrm{yxx} * \mathrm{xyy} + \mathrm{zxx} * \mathrm{xzz} + \mathrm{zyy} * \mathrm{yzz} \\
+	\mathrm{t_5} &= \mathrm{xxx} * \mathrm{yyx} + \mathrm{xxx} * \mathrm{zzx} + \mathrm{yyy} * \mathrm{xyx} + \mathrm{yyy} * \mathrm{zzy} + \mathrm{zzz} * \mathrm{xzx} + \mathrm{zzz} * \mathrm{yzy}\\
+	\mathrm{t_6} &= \mathrm({yxx})^{2} + \mathrm({yzz})^{2} + \mathrm({xyy})^{2} + \mathrm({xzz})^{2} + \mathrm({zyy})^{2} + \mathrm({zxx})^{2} \\
+	\mathrm{t_7} &= \mathrm{yyx} * \mathrm{xzz} + \mathrm{zzx} * \mathrm{xyy} + \mathrm{xyx} * \mathrm{yzz} + \mathrm{zzy} * \mathrm{yxx} + \mathrm{xzx} * \mathrm{zyy} + \mathrm{yzy} * \mathrm{zxx}\\
+	\mathrm{t_8} &= \mathrm{xyy} * \mathrm{xzz} + \mathrm{xzz} * \mathrm{xyy} + \mathrm{yxx} * \mathrm{yzz} + \mathrm{yzz} * \mathrm{yxx} + \mathrm{zxx} * \mathrm{zyy} + \mathrm{zyy} * \mathrm{zxx}\\
+	\mathrm{t_9} &= \mathrm{yyx} * \mathrm{zzx} + \mathrm{zzx} * \mathrm{yyx} + \mathrm{xyx} * \mathrm{zzy} + \mathrm{zzy} * \mathrm{xyx} + \mathrm{xzx} * \mathrm{yzy} + \mathrm{yzy} * \mathrm{xzx} \\
+	\mathrm{t_{10}} &= \mathrm({xzy})^{2} + \mathrm({xzy})^{2} + \mathrm({yzx})^{2} + \mathrm({yzx})^{2} + \mathrm({zyx})^{2} + \mathrm({zyx})^{2} \\
+	\mathrm{t_{11}} &= \mathrm{xzy} * \mathrm{yzx} + \mathrm{xzy} * \mathrm{zyx} + \mathrm{yzx} * \mathrm{zyx} + \mathrm{yzx} * \mathrm{xzy} + \mathrm{zyx} * \mathrm{xzy} + \mathrm{zyx} * \mathrm{yzx} \\
+	\mathrm{\beta_{zzz}} &= \mathrm{t_1} \frac{1}{7} + \mathrm{t_2}  \frac{4}{35} + \mathrm{t_3}  \frac{2}{35} + \mathrm{t_4}  \frac{4}{35} + \mathrm{t_5}  \frac{4}{35} + \mathrm{t_6}  \frac{1}{35} + \mathrm{t_7}  \frac{4}{105} + \mathrm{t_8}  \frac{1}{105} + \mathrm{t_9}  \frac{4}{105} + \mathrm{t_{10}}  \frac{4}{105} + \mathrm{t_{11}}  \frac{4}{105}\\
+	\mathrm{\beta_{zxx}} &= \mathrm{t_1}  \frac{1}{35} + \mathrm{t_3}  \frac{4}{105} + \mathrm{t_5}  \frac{-2}{35} + \mathrm{t_2}  \frac{8}{105} + \mathrm{t_6}  \frac{3}{35} + \mathrm{t_4}  \frac{-2}{35} + \mathrm{t_8}  \frac{1}{35} + \mathrm{t_9}  \frac{-2}{105} + \mathrm{t_7}  \frac{-2}{105} + \mathrm{t_{10}}  \frac{2}{35} + \mathrm{t_{11}}  \frac{-2}{105}\\
+	\end{align}
+	\begin{equation}\label{eq:beta_HRS2}
+	\beta_{\text{HRS}}= \sqrt{\beta^{2}_{zzz}+\beta^{2}_{zxx}}
+	\end{equation}
+	\paragraph{B convention}
+	\begin{align}\label{eq:beta_hrs_B}
+	\mathrm{t_1} &= \mathrm({xxx})^{2} + \mathrm({yyy})^{2} + \mathrm({zzz})^{2}\\
+	\mathrm{t_2} &= \mathrm({xyx})^{2} + \mathrm({xzx})^{2} + \mathrm({yyx})^{2} + \mathrm({yzy})^{2} + \mathrm({zzx})^{2} + \mathrm({zzy})^{2}\\
+	\mathrm{t_3}&= \mathrm{xxx} * \mathrm{xyy} + \mathrm{xxx} * \mathrm{xzz} + \mathrm{yyy} * \mathrm{yxx} + \mathrm{yyy} * \mathrm{yzz} + \mathrm{zzz} * \mathrm{zxx} + \mathrm{zzz} * \mathrm{zyy} \\
+	\mathrm{t_4} &= \mathrm{xyy} * \mathrm{yyx} + \mathrm{xzz} * \mathrm{xzx} + \mathrm{yzz} * \mathrm{zzy} + \mathrm{yxx} * \mathrm{xyy} + \mathrm{zxx} * \mathrm{xzz} + \mathrm{zyy} * \mathrm{yzz} \\
+	\mathrm{t_5} &= \mathrm{xxx} * \mathrm{yyx} + \mathrm{xxx} * \mathrm{zzx} + \mathrm{yyy} * \mathrm{xyx} + \mathrm{yyy} * \mathrm{zzy} + \mathrm{zzz} * \mathrm{xzx} + \mathrm{zzz} * \mathrm{yzy}\\
+	\mathrm{t_6} &= \mathrm({yxx})^{2} + \mathrm({yzz})^{2} + \mathrm({xyy})^{2} + \mathrm({xzz})^{2} + \mathrm({zyy})^{2} + \mathrm({zxx})^{2} \\
+	\mathrm{t_7} &= \mathrm{yyx} * \mathrm{xzz} + \mathrm{zzx} * \mathrm{xyy} + \mathrm{xyx} * \mathrm{yzz} + \mathrm{zzy} * \mathrm{yxx} + \mathrm{xzx} * \mathrm{zyy} + \mathrm{yzy} * \mathrm{zxx}\\
+	\mathrm{t_8} &= \mathrm{xyy} * \mathrm{xzz} + \mathrm{xzz} * \mathrm{xyy} + \mathrm{yxx} * \mathrm{yzz} + \mathrm{yzz} * \mathrm{yxx} + \mathrm{zxx} * \mathrm{zyy} + \mathrm{zyy} * \mathrm{zxx}\\
+	\mathrm{t_9} &= \mathrm{yyx} * \mathrm{zzx} + \mathrm{zzx} * \mathrm{yyx} + \mathrm{xyx} * \mathrm{zzy} + \mathrm{zzy} * \mathrm{xyx} + \mathrm{xzx} * \mathrm{yzy} + \mathrm{yzy} * \mathrm{xzx} \\
+	\mathrm{t_{10}} &= \mathrm({xzy})^{2} + \mathrm({xzy})^{2} + \mathrm({yzx})^{2} + \mathrm({yzx})^{2} + \mathrm({zyx})^{2} + \mathrm({zyx})^{2} \\
+	\mathrm{t_{11}} &= \mathrm{xzy} * \mathrm{yzx} + \mathrm{xzy} * \mathrm{zyx} + \mathrm{yzx} * \mathrm{zyx} + \mathrm{yzx} * \mathrm{xzy} + \mathrm{zyx} * \mathrm{xzy} + \mathrm{zyx} * \mathrm{yzx} \\
+	\mathrm{\beta_{zzz}} &= \mathrm{t_1} \frac{1}{14} + \mathrm{t_2}  \frac{2}{35} + \mathrm{t_3}  \frac{1}{35} + \mathrm{t_4}  \frac{1}{35} + \mathrm{t_5}  \frac{1}{35} + \mathrm{t_6}  \frac{1}{70} + \mathrm{t_7}  \frac{2}{105} + \mathrm{t_8}  \frac{1}{210} + \mathrm{t_9}  \frac{2}{105} + \mathrm{t_{10}}  \frac{2}{105} + \mathrm{t_{11}}  \frac{2}{105}\\
+	\mathrm{\beta_{zxx}} &= \mathrm{t_1}  \frac{1}{70} + \mathrm{t_3}  \frac{2}{105} + \mathrm{t_5}  \frac{-1}{35} + \mathrm{t_2}  \frac{4}{105} + \mathrm{t_6}  \frac{3}{70} + \mathrm{t_4}  \frac{-1}{35} + \mathrm{t_8}  \frac{1}{70} + \mathrm{t_9}  \frac{-1}{105} + \mathrm{t_7}  \frac{-1}{105} + \mathrm{t_{10}}  \frac{1}{35} + \mathrm{t_{11}}  \frac{-1}{105}\\
+	\end{align}
+	\begin{equation}\label{eq:beta_HRS3}
+	\beta_{\text{HRS}}= \sqrt{\beta^{2}_{zzz}+\beta^{2}_{zxx}}
+	\end{equation}
+	\subsection{Gamma($\gamma$)}
+	\subsubsection{Gamma Static (0;0,0,0)}
+	\paragraph{T convention}
+	\begin{equation}\label{eq:gamma_static_T}
+	\gamma = \frac{1}{5}\left(\frac{\text{xxxx}}{6} + \frac{\text{yyyy}}{6} + \frac{\text{zzzz}}{6} + 2\frac{\text{xxyy}}{6} + 2\frac{\text{xxzz}}{6} + 2\frac{\text{yyzz}}{6}\right)
+	\end{equation}
+	\paragraph{B convention}
+	\begin{equation}\label{eq:gamma_static_B}
+	\gamma = \frac{1}{5}\left(\frac{\text{xxxx}}{36} + \frac{\text{yyyy}}{36} + \frac{\text{zzzz}}{36} + 2\frac{\text{xxyy}}{36} + 2\frac{\text{xxzz}}{36} + 2\frac{\text{yyzz}}{36}\right)
+	\end{equation}
+	
+	\subsubsection{Gamma Kerr effect (-w;w,0,0)}
+	\paragraph{T convention}
+	\begin{equation}\label{eq:gamma_kerr_T}
+	\gamma = \frac{1}{5}\left(\frac{{xxxx}}{6} + \frac{{yyyy}}{6} + \frac{{zzzz}}{6} + \frac{{xxyy}}{6} + \frac{{yyxx}}{6} + \frac{{xxzz}}{6} + \frac{{zzxx}}{6} + \frac{{yyzz}}{6} + \frac{{zzyy}}{6}\right)
+	\end{equation}
+	\paragraph{B convention}
+	\begin{equation}\label{eq:gamma_kerr_B}
+	\gamma = \frac{1}{5}\left(\frac{{xxxx}}{36} + \frac{{yyyy}}{36} + \frac{{zzzz}}{36} + \frac{{xxyy}}{36} + \frac{{yyxx}}{36} + \frac{{xxzz}}{36} + \frac{{zzxx}}{36} + \frac{{yyzz}}{36} + \frac{{zzyy}}{36}\right)
+	\end{equation}
+	
+	\subsubsection{Gamma EFISH (-2w,w,w,0)}
+		For this calculation, the following substitutions of tensor components were made to original equation, considering permutation relations included in Gaussian 16.
+	\begin{enumerate}
+		\item xxzz=xzxz
+		\item yyzz=yzyz 
+		\item xxyy=xyxy
+	\end{enumerate}
+	\paragraph{T convention}
+	\begin{align}\label{eq:gamma_efish_T}
+	\gamma &= 3\left(\frac{\text{xxxx}}{6} + \frac{\text{yyyy}}{6} + \frac{\text{zzzz}}{6}\right) + 2\left(\frac{\text{xyxy}}{6} + \frac{\text{xzxz}}{6} + \frac{\text{yzyz}}{6} + \frac{\text{yxyx}}{6} + \frac{\text{zxzx}}{6} + \frac{\text{zyzy}}{6}\right) \nonumber \\
+	&\quad + \frac{\text{xyyx}}{6} + \frac{\text{xzzx}}{6} + \frac{\text{yxxy}}{6} + \frac{\text{yzzy}}{6} + \frac{\text{zxxz}}{6} + \frac{\text{zyyz}}{6}  
+	\end{align}
+	\paragraph{B convention}
+	\begin{align}\label{eq:gamma_efish_B}
+	\gamma &= 3\left(\frac{\text{xxxx}}{36} + \frac{\text{yyyy}}{36} + \frac{\text{zzzz}}{36}\right) + 2\left(\frac{\text{xyxy}}{36} + \frac{\text{xzxz}}{36} + \frac{\text{yzyz}}{36} + \frac{\text{yxyx}}{36} + \frac{\text{zxzx}}{36} + \frac{\text{zyzy}}{36}\right) \nonumber \\
+	&\quad + \frac{\text{xyyx}}{36} + \frac{\text{xzzx}}{36} + \frac{\text{yxxy}}{36} + \frac{\text{yzzy}}{36} + \frac{\text{zxxz}}{36} + \frac{\text{zyyz}}{36}  
+	\end{align}
 \end{document}
-\subsubsection{B convention}
-	\begin{align*}
-	\gamma &= 3\left(\frac{\mathrm{xxxx}}{36} + \frac{\mathrm{yyyy}}{36} + \frac{\mathrm{zzzz}}{36}\right) + 2\left(\frac{\mathrm{xyxy}}{36} + \frac{\mathrm{xzxz}}{36} + \frac{\mathrm{yzyz}}{36} + \frac{\mathrm{yxyx}}{36} + \frac{\mathrm{zxzx}}{36} + \frac{\mathrm{zyzy}}{36}\right) \nonumber \\
-	&+ \frac{\mathrm{xyyx}}{36} + \frac{\mathrm{xzzx}}{36} + \frac{\mathrm{yxxy}}{36} + \frac{\mathrm{yzzy}}{36} + \frac{\mathrm{zxxz}}{36} + \frac{\mathrm{zyyz}}{36}  
-	\end{align*}

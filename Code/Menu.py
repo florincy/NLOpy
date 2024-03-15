@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaHRSTot, BetaEFISHTot, EletricDipoleTot, Gamma0000,Gammaww00, Gamma2www0
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaPockelsTot, BetaEFISHTot,BetaHRSCase, EletricDipoleTot, Gamma0000,Gammaww00, Gamma2www0
 from Application import Application
 
 class Application:
@@ -96,7 +96,7 @@ class Application:
         self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
-        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole","Beta HRS", command=self.on_property_select)
+        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
         self.property_menu.config(bg='#B4ADEA')
         self.property_menu.grid(row=7,column=2, sticky=tk.W)
 
@@ -109,9 +109,11 @@ class Application:
         self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
 
         
-        self.checkbutton2_value = tk.BooleanVar()
-        self.checkbutton2 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w)", variable=self.checkbutton2_value)
-
+        self.checkbutton20_value = tk.BooleanVar()
+        self.checkbutton20 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) EFISH", variable=self.checkbutton20_value)
+        
+        self.checkbutton21_value = tk.BooleanVar()
+        self.checkbutton21 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) HRS", variable=self.checkbutton21_value)
         
         self.checkbutton3_value = tk.BooleanVar()
         self.checkbutton3 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value)
@@ -161,8 +163,9 @@ class Application:
     def on_off_checkbox(self, selected_property):
         if selected_property =="Beta":
             self.checkbutton1.grid(row=0, column=0, sticky=tk.W)
-            self.checkbutton2.grid(row=0, column=1, sticky=tk.W)
-            self.checkbutton3.grid(row=0, column=2, sticky=tk.W)
+            self.checkbutton20.grid(row=0, column=1, sticky=tk.W)
+            self.checkbutton21.grid(row=0, column=2, sticky=tk.W)
+            self.checkbutton3.grid(row=0, column=3, sticky=tk.W)
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
             self.checkbutton7.grid_forget()
@@ -172,7 +175,8 @@ class Application:
             self.checkbutton5.grid(row=0, column=1, sticky=tk.W)
             self.checkbutton6.grid(row=0, column=2, sticky=tk.W)
             self.checkbutton1.grid_forget()
-            self.checkbutton2.grid_forget()
+            self.checkbutton20.grid_forget()
+            self.checkbutton21.grid_forget()
             self.checkbutton3.grid_forget()
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
@@ -180,7 +184,8 @@ class Application:
             self.checkbutton7.grid(row=0, column=0, sticky=tk.W)
             self.checkbutton8.grid(row=0, column=3, sticky=tk.W)
             self.checkbutton1.grid_forget()
-            self.checkbutton2.grid_forget()
+            self.checkbutton20.grid_forget()
+            self.checkbutton21.grid_forget()
             self.checkbutton3.grid_forget()
             self.checkbutton4.grid_forget()
             self.checkbutton5.grid_forget()
@@ -188,7 +193,8 @@ class Application:
         else:
             # Hide all checkbuttons if neither Beta nor Gamma is selected
             self.checkbutton1.grid_forget()
-            self.checkbutton2.grid_forget()
+            self.checkbutton20.grid_forget()
+            self.checkbutton21.grid_forget()
             self.checkbutton3.grid_forget()
             self.checkbutton4.grid_forget()
             self.checkbutton5.grid_forget()
@@ -271,19 +277,24 @@ class Application:
                     if orientation=="Input Orientation":
                         with open(outputInputPath, "r") as file:
                             comment = "Input Orientation"
-                            ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name,convention,unit,components)
+                            ret = calc(lines, name, comment)
+                            #Dealing with HRS appart as it is a particular case
+                            retHRS = calc(lines_beta_HRS, name, comment)
+                            self.CSVoptions(option, directory_output, ret,retHRS, name,convention,unit,components)
                     elif orientation=="Dipole Orientation":
                         with open(outputDipolePath, "r") as file:
                             comment = "Dipole Orientation"
-                            ret = calc(file, name, comment)
-                            self.CSVoptions(option, directory_output, ret, name,convention,unit,components)
+                            ret = calc(lines, name, comment)
+                            #Dealing with HRS appart as it is a particular case
+                            retHRS = calc(lines_beta_HRS, name, comment)
+                            self.CSVoptions(option, directory_output, ret,retHRS,name,convention,unit,components)
 
     #Avaliates which .csv where requested and create them                   
-    def CSVoptions(self, option, directory_output, ret, name,convention,unit,components):
+    def CSVoptions(self, option, directory_output, ret,retHRS, name,convention,unit,components):
         if option == "Beta":
             checkbutton1_state = self.checkbutton1_value.get()
-            checkbutton2_state = self.checkbutton2_value.get()
+            checkbutton20_state = self.checkbutton20_value.get()
+            checkbutton21_state = self.checkbutton21_value.get()
             checkbutton3_state = self.checkbutton3_value.get()
 
             if checkbutton1_state:
@@ -292,14 +303,20 @@ class Application:
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaStatic)
-            if checkbutton2_state:
+            if checkbutton20_state:
+                output = os.path.join(directory_output, "BetaEFISH.csv")
+                betaEFISH = BetaEFISHTot(ret,name,convention,unit,components)
+                with open(output, 'a', newline='') as df:
+                    writer = csv.writer(df)
+                    writer.writerows(betaEFISH)
+            if checkbutton21_state:
                 output = os.path.join(directory_output, "BetaHRS.csv")
-                betaHRS = BetaHRSTot(ret,name,convention,unit,components)
+                betaHRS = BetaHRSCase(retHRS,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(betaHRS)
             if checkbutton3_state:
-                output = os.path.join(directory_output, "BetaEFISH.csv")
+                output = os.path.join(directory_output, "BetaPockels.csv")
                 betaEFISH = BetaEFISHTot(ret, name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)

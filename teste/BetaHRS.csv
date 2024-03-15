@@ -1,12 +1,4 @@
-"Beta(-2w;w,w) w= 1907.0nm:
-",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
-Tot(Beta)(au)(B),13613.960895534978,,
-au (x),-0.942842E+04,,
-au (y),0.397387E+05,,
-au (z),0.000000E+00,,
-"Beta(-2w;w,w) w=  432.0nm:
-",ferro_pbe0_polar.log,Input Orientation, 
-Tot(Beta)(au)(B),1.0142570243569649,,
-au (x),-0.969264E+00,,
-au (y),-0.496611E+00,,
-au (z),0.284119E+01,,
+"Beta(-2w;w,w) w= 1907.0nm:",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(Beta HRS)(esu)(T),49.29055991428951,,
+"Beta(-2w;w,w) w=  432.0nm:",ferro_pbe0_polar.log,Input Orientation, 
+Tot(Beta HRS)(esu)(T),0.0064917064511554245,,
