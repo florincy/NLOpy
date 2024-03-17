@@ -2,159 +2,149 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic,Alphaww, BetaStaticTot, BetaPockelsTot, BetaEFISHTot,BetaHRSCase, EletricDipoleTot, Gamma0000,Gammaww00, Gamma2www0
-from Application import Application
+from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic, Alphaww, BetaStaticTot, BetaPockelsTot, BetaEFISHTot, BetaHRSCase, EletricDipoleTot, Gamma0000, Gammaww00, Gamma2www0
 
 class Application:
     def __init__(self, master=None):
         self.master = master
         self.master.title("NLO data app")
-        
+        self.main_frame = tk.Frame(master)
+        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
+
         # Create a frame to contain the widgets
-        self.widget_frame = tk.Frame(master)
-        self.widget_frame.pack()  # Expand to fill the available space
-        
-        # Centering the frame on the window
-        self.widget_frame.grid_rowconfigure(0, weight=1)
-        self.widget_frame.grid_columnconfigure(0, weight=1)
+        self.widget_frame = tk.Frame(self.main_frame)
+        self.widget_frame.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
         
         # NLO data app label
-        self.msg = tk.Label(self.widget_frame, text="NLO data app", font=("Calibri", 16, "italic", "bold"))
-        self.msg.grid(row=0, columnspan=3)
-        
+        self.msg = tk.Label(self.main_frame, text="NLO Data Analysis", font=("Calibri", 20, "italic"))
+        self.msg.grid(row=0, column=0)
+
         # Create a frame to contain the selectors
         self.selectors_frame = tk.Frame(self.widget_frame)
-        self.selectors_frame.grid(column=0, columnspan=4)
-        
+        self.selectors_frame.grid(row=2, column=0, columnspan=10, sticky="nsew")
+
         # Select Input Directory label and button
-        self.select_input_label = tk.Label(self.selectors_frame, text="Choose .log files directory:", font=("Calibri", 10, "bold"))
-        self.select_input_label.grid(row=1, column=0, columnspan=2, sticky=tk.W)
-        self.select_dir_button_input = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_input, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_input.grid(row=1, column=2, sticky=tk.W)
+        self.select_input_label = tk.Label(self.selectors_frame, text="Choose .log files directory:", font=("Calibri", 14))
+        self.select_input_label.grid(row=0, column=0, sticky=tk.W)
+        self.select_dir_button_input = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_input, bg='#7C98B3', font=("Calibri", 12), relief='flat')
+        self.select_dir_button_input.grid(row=0, column=1, sticky=tk.W)
         self.selected_directory_label_input = tk.Label(self.selectors_frame, text="")
-        self.selected_directory_label_input.grid(row=2, column=0, columnspan=4, sticky=tk.W)
+        self.selected_directory_label_input.grid(row=1, column=0, columnspan=2, sticky=tk.W)
 
         # Select Output Directory label and button
-        self.select_output_label = tk.Label(self.selectors_frame, text="Choose directory for saving:", font=("Calibri", 10, "bold"))
-        self.select_output_label.grid(row=3, column=0, columnspan=2, sticky=tk.W)
-        self.select_dir_button_output = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_output, bg='#b4adea', font=("Calibri", 10))
-        self.select_dir_button_output.grid(row=3, column=2, sticky=tk.W)
+        self.select_output_label = tk.Label(self.selectors_frame, text="Choose directory for saving:", font=("Calibri", 14))
+        self.select_output_label.grid(row=2, column=0, sticky=tk.W)
+        self.select_dir_button_output = tk.Button(self.selectors_frame, text="Choose directory", command=self.select_directory_output, bg='#7C98B3', font=("Calibri", 12), relief='flat')
+        self.select_dir_button_output.grid(row=2, column=1, sticky=tk.W)
         self.selected_directory_label_output = tk.Label(self.selectors_frame, text="")
-        self.selected_directory_label_output.grid(row=4, column=0, columnspan=4, sticky=tk.W)
+        self.selected_directory_label_output.grid(row=3, column=0, columnspan=2, sticky=tk.W)
 
-        # Create frame for Radiobuttons and Units
-        self.radioutton_frame = tk.Frame(self.widget_frame)
-        self.radioutton_frame.grid(row=4, column=0, columnspan=10, rowspan=4)
-
-        # Select Units Label
-        self.property_label = tk.Label(self.radioutton_frame, text="Choose Units:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=0, column=3, sticky=tk.W)
-
-        # Select units - Radiobuttons
-        self.radiobutton1_units_value = tk.StringVar()
-        self.radiobutton1_units = tk.Radiobutton(self.radioutton_frame, text="au", variable=self.radiobutton1_units_value, value="au")
-        self.radiobutton1_units.grid(row=0, column=4, sticky=tk.W)
-
-        self.radiobutton2_units_value = tk.StringVar()
-        self.radiobutton2_units = tk.Radiobutton(self.radioutton_frame, text="Standard(esu/Debye)", variable=self.radiobutton1_units_value, value="standard")
-        self.radiobutton2_units.grid(row=0, column=5, sticky=tk.W)
-
-        self.radiobutton3_units_value = tk.StringVar()
-        self.radiobutton3_units = tk.Radiobutton(self.radioutton_frame, text="SI", variable=self.radiobutton1_units_value, value="SI")
-        self.radiobutton3_units.grid(row=0, column=6, sticky=tk.W)
-
-        # Select Convention label
-        self.property_label = tk.Label(self.radioutton_frame, text="Choose Convention:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=0, column=0, sticky=tk.W)
-
-        # Select convention - Radiobuttons
-        self.radiobutton1_value = tk.StringVar()
-        self.radiobutton1 = tk.Radiobutton(self.radioutton_frame, text="T", variable=self.radiobutton1_value, value="T")
-        self.radiobutton1.grid(row=0, column=1, sticky=tk.W)
-
-        self.radiobutton2_value = tk.StringVar()
-        self.radiobutton2 = tk.Radiobutton(self.radioutton_frame, text="B", variable=self.radiobutton1_value, value="B")
-        self.radiobutton2.grid(row=0, column=2, sticky=tk.W)
+        # Create frame for orientation widget
+        self.orientation_frame = tk.Frame(self.widget_frame)
+        self.orientation_frame.grid(row=3, column=0, columnspan=12, pady=5, sticky="nsew")
 
         # Select Orientation OptionMenu
         self.selected_orientation = tk.StringVar(master)
         self.selected_orientation.set("Dipole Orientation")  # Default value
-        self.orientation_label = tk.Label(self.selectors_frame, text="Choose Orientation:", font=("Calibri", 10,"bold"))
-        self.orientation_label.grid(row=5, column=0, sticky=tk.W)
-        self.orientation_menu = tk.OptionMenu(self.selectors_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
-        self.orientation_menu.config(bg='#B4ADEA')
-        self.orientation_menu.grid(row=5, column=2, sticky=tk.W)
-        
+        self.orientation_label = tk.Label(self.orientation_frame, text="Choose Orientation:", font=("Calibri", 14))
+        self.orientation_label.grid(row=0, column=0, sticky=tk.W)
+        self.orientation_menu = tk.OptionMenu(self.orientation_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
+        self.orientation_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
+        self.orientation_menu.grid(row=0, column=1, sticky=tk.W)
+
+        # Create frame for Radiobuttons and Units
+        self.radioutton_frame = tk.Frame(self.widget_frame)
+        self.radioutton_frame.grid(row=4, column=0, columnspan=10, pady=5, sticky="nsew")
+
+        # Select Units Label
+        self.property_label = tk.Label(self.radioutton_frame, text="Choose Units:", font=("Calibri", 14))
+        self.property_label.grid(row=0, column=3, sticky=tk.W)
+
+        # Select units - Radiobuttons
+        self.radiobutton1_units_value = tk.StringVar()
+        self.radiobutton1_units = tk.Radiobutton(self.radioutton_frame, text="au", variable=self.radiobutton1_units_value, value="au", font=("Calibri", 12))
+        self.radiobutton1_units.grid(row=0, column=4)
+
+        self.radiobutton2_units_value = tk.StringVar()
+        self.radiobutton2_units = tk.Radiobutton(self.radioutton_frame, text="Standard (esu/Debye)", variable=self.radiobutton1_units_value, value="standard", font=("Calibri", 12))
+        self.radiobutton2_units.grid(row=0, column=5)
+
+        self.radiobutton3_units_value = tk.StringVar()
+        self.radiobutton3_units = tk.Radiobutton(self.radioutton_frame, text="SI", variable=self.radiobutton1_units_value, value="SI", font=("Calibri", 12))
+        self.radiobutton3_units.grid(row=0, column=6)
+
+        # Select Convention label
+        self.property_label = tk.Label(self.radioutton_frame, text="Choose Convention:", font=("Calibri", 14))
+        self.property_label.grid(row=0, column=0)
+
+        # Select convention - Radiobuttons
+        self.radiobutton1_value = tk.StringVar()
+        self.radiobutton1 = tk.Radiobutton(self.radioutton_frame, text="T", variable=self.radiobutton1_value, value="T", font=("Calibri", 12))
+        self.radiobutton1.grid(row=0, column=1)
+
+        self.radiobutton2_value = tk.StringVar()
+        self.radiobutton2 = tk.Radiobutton(self.radioutton_frame, text="B", variable=self.radiobutton1_value, value="B", font=("Calibri", 12))
+        self.radiobutton2.grid(row=0, column=2)
+
         # Create a frame to contain the properties widgets
         self.property_frame = tk.Frame(self.widget_frame)
-        self.property_frame.grid(row=8,column=0, columnspan=4,pady=6)
+        self.property_frame.grid(row=5, column=0, columnspan=4, pady=7, sticky="nsew")
 
         # Select Property label and menu
-        self.property_label = tk.Label(self.property_frame, text="Choose Property:", font=("Calibri", 10, "bold"))
-        self.property_label.grid(row=7,column=0, sticky=tk.W)
+        self.property_label = tk.Label(self.property_frame, text="Choose Property:", font=("Calibri", 14))
+        self.property_label.grid(row=0, column=0, sticky=tk.W)
         self.selected_property = tk.StringVar(master)
         self.selected_property.set("Electric Dipole")  # Default value
 
         # Create OptionMenu
-        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta","Gamma", "Electric Dipole", command=self.on_property_select)
-        self.property_menu.config(bg='#B4ADEA')
-        self.property_menu.grid(row=7,column=2, sticky=tk.W)
+        self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta", "Gamma", "Electric Dipole", command=self.on_property_select)
+        self.property_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
+        self.property_menu.grid(row=0, column=1, sticky=tk.W)
 
         # Create frame for Checkbuttons
         self.checkbutton_frame = tk.Frame(self.widget_frame)
-        self.checkbutton_frame.grid(row=9, column=0, columnspan=4, pady=10) 
+        self.checkbutton_frame.grid(row=6, column=0, columnspan=4, pady=10, sticky="nsew") 
 
         # Checkbuttons for Properties
         self.checkbutton1_value = tk.BooleanVar()
-        self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value)
+        self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value, font=("Calibri", 12))
 
-        
         self.checkbutton20_value = tk.BooleanVar()
-        self.checkbutton20 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) EFISH", variable=self.checkbutton20_value)
-        
+        self.checkbutton20 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) EFISH", variable=self.checkbutton20_value, font=("Calibri", 12))
+
         self.checkbutton21_value = tk.BooleanVar()
-        self.checkbutton21 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) HRS", variable=self.checkbutton21_value)
-        
+        self.checkbutton21 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-2w;w,w) HRS", variable=self.checkbutton21_value, font=("Calibri", 12))
+
         self.checkbutton3_value = tk.BooleanVar()
-        self.checkbutton3 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value)
-  
-        
+        self.checkbutton3 = tk.Checkbutton(self.checkbutton_frame,text="Beta(-w;w,0)", variable=self.checkbutton3_value, font=("Calibri", 12))
+
         self.checkbutton4_value = tk.BooleanVar()
-        self.checkbutton4 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton4_value)
-  
-        
+        self.checkbutton4 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(0;0,0,0)", variable=self.checkbutton4_value, font=("Calibri", 12))
+
         self.checkbutton5_value = tk.BooleanVar()
-        self.checkbutton5 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton5_value)
- 
-        
+        self.checkbutton5 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-w;w,0,0)", variable=self.checkbutton5_value, font=("Calibri", 12))
+
         self.checkbutton6_value = tk.BooleanVar()
-        self.checkbutton6 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton6_value)
+        self.checkbutton6 = tk.Checkbutton(self.checkbutton_frame,text="Gamma(-2w;w,w,0)", variable=self.checkbutton6_value, font=("Calibri", 12))
 
         self.checkbutton7_value = tk.BooleanVar()
-        self.checkbutton7 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(-w;w)", variable=self.checkbutton7_value)
-        
-        self.checkbutton8_value = tk.BooleanVar()
-        self.checkbutton8 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(0;0)", variable=self.checkbutton8_value)
-        
-        self.checkbutton9_value = tk.BooleanVar()
-        self.checkbutton9 = tk.Checkbutton(self.widget_frame,text="I want to see the components!", variable=self.checkbutton9_value)
-        self.checkbutton9.grid(row=10, column=0)
+        self.checkbutton7 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(-w;w)", variable=self.checkbutton7_value, font=("Calibri", 12))
 
-        # Create a frame to contain the buttons
-        self.button_frame = tk.Frame(self.widget_frame)
-        self.button_frame.grid(row=11, column=0, columnspan=4, pady=10)         
+        self.checkbutton8_value = tk.BooleanVar()
+        self.checkbutton8 = tk.Checkbutton(self.checkbutton_frame,text="Alpha(0;0)", variable=self.checkbutton8_value, font=("Calibri", 12))
+
+        self.checkbutton9_value = tk.BooleanVar()
+        self.checkbutton9 = tk.Checkbutton(self.main_frame,text="I want to see the components!", variable=self.checkbutton9_value, font=("Calibri", 12))
+        self.checkbutton9.grid(row=7, column=0, sticky="nsew")    
 
         # Generate CSV file button
-        self.run_button = tk.Button(self.button_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 10), fg="white", bg='#011627')
-        self.run_button.pack(side=tk.LEFT, padx=10)
-
-        # Exit button
-        self.exit_button = tk.Button(self.button_frame, text="Exit", command=self.widget_frame.quit, font=("Calibri", 10), fg='#011627', width=5, highlightcolor="#011627", highlightthickness=2, highlightbackground='#011627')
-        self.exit_button.pack(side=tk.RIGHT, padx=10)
+        self.run_button = tk.Button(self.main_frame, text="Generate CSV file", command=self.run_application, padx=20, pady=6, font=("Calibri", 14), fg="white", bg='#011627', relief='flat')
+        self.run_button.grid(row=8, column=0, padx=5, pady=5, sticky="nsew")
 
         # Label to display messages
-        self.message_label = tk.Label(self.widget_frame, text="")
-        self.message_label.grid(row=12, columnspan=3)
+        self.message_label = tk.Label(self.main_frame, text="")
+        self.message_label.grid(row=9, column=0, columnspan=3, pady=5, sticky="nsew")
+
 
     def on_property_select(self, event):
         selected_property = self.selected_property.get()
@@ -317,62 +307,46 @@ class Application:
                     writer.writerows(betaHRS)
             if checkbutton3_state:
                 output = os.path.join(directory_output, "BetaPockels.csv")
-                betaEFISH = BetaEFISHTot(ret, name,convention,unit,components)
+                betaPockels = BetaPockelsTot(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(betaEFISH)
-
+                    writer.writerows(betaPockels)
         elif option == "Gamma":
             checkbutton4_state = self.checkbutton4_value.get()
             checkbutton5_state = self.checkbutton5_value.get()
             checkbutton6_state = self.checkbutton6_value.get()
 
             if checkbutton4_state:
-                output = os.path.join(directory_output, "GammaStatic.csv")
-                gamma = Gamma0000(ret,name,convention,unit,components)
+                output = os.path.join(directory_output, "Gamma0000.csv")
+                gamma0000 = Gamma0000(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(gamma)
+                    writer.writerows(gamma0000)
             if checkbutton5_state:
-                output = os.path.join(directory_output, "GammaKerreffect.csv")
-                gamma = Gammaww00(ret,name,convention,unit,components)
+                output = os.path.join(directory_output, "Gammaww00.csv")
+                gammaww00 = Gammaww00(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(gamma)
+                    writer.writerows(gammaww00)
             if checkbutton6_state:
-                output = os.path.join(directory_output, "GammaEFISH.csv")
-                gamma = Gamma2www0(ret,name,convention,unit,components)
+                output = os.path.join(directory_output, "Gamma2www0.csv")
+                gamma2www0 = Gamma2www0(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(gamma)
-        
+                    writer.writerows(gamma2www0)
         elif option == "Alpha":
             checkbutton7_state = self.checkbutton7_value.get()
             checkbutton8_state = self.checkbutton8_value.get()
 
             if checkbutton7_state:
                 output = os.path.join(directory_output, "AlphaStatic.csv")
-                alpha = AlphaStatic(ret,name,unit,components)
+                alphaStatic = AlphaStatic(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(alpha)
+                    writer.writerows(alphaStatic)
             if checkbutton8_state:
-                output = os.path.join(directory_output, "AlphaEFISH.csv")
-                alpha = Alphaww(ret,name,unit,components)
+                output = os.path.join(directory_output, "Alphaww.csv")
+                alphaww = Alphaww(ret,name,convention,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
-                    writer.writerows(alpha)
-
-        else:
-            output = os.path.join(directory_output, f"{option}.csv")
-            with open(output, 'a', newline='') as df:
-                writer = csv.writer(df)
-                dipole = EletricDipoleTot(ret,name,unit,components)
-                writer.writerows(dipole)
-
-        self.message_label.config(text=".csv file generated for " + option)
-
-
-root = tk.Tk()
-app = Application(root)
-root.mainloop()
+                    writer.writerows(alphaww)
