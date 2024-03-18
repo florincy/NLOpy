@@ -93,7 +93,7 @@ class FormPreviewApp:
         self.preview_label = tk.Label(self.preview_frame, text="Preview", font=("Calibri", 14), bg="lightgray")
         self.preview_label.pack(expand=False)
 
-        self.preview_text = tk.Text(self.preview_frame, font=("Calibri", 10), wrap=tk.WORD, width=48, height=20)  # Adjust the width and height as needed
+        self.preview_text = tk.Text(self.preview_frame, font=("Calibri", 9), wrap=tk.WORD, width=45, height=20)  # Adjust the width and height as needed
         self.preview_text.pack(expand=True, fill=tk.BOTH)
 
         # Update the preview initially
@@ -113,7 +113,7 @@ class FormPreviewApp:
         # If a directory is selected, store the path and update the label
         if directory:
             self.selected_directory_path = directory
-            self.selected_directory_label_input.config(text="Selected Input Directory: " + directory)
+            self.selected_directory_label_input.config(text=directory)
     def select_xyz_file(self):
         filepath = filedialog.askopenfilename(filetypes=[("XYZ Files", "*.xyz")])
         if filepath:

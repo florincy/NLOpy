@@ -340,13 +340,22 @@ class Application:
 
             if checkbutton7_state:
                 output = os.path.join(directory_output, "AlphaStatic.csv")
-                alphaStatic = AlphaStatic(ret,name,convention,unit,components)
+                alphaStatic = AlphaStatic(ret,name,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(alphaStatic)
             if checkbutton8_state:
                 output = os.path.join(directory_output, "Alphaww.csv")
-                alphaww = Alphaww(ret,name,convention,unit,components)
+                alphaww = Alphaww(ret,name,unit,components)
                 with open(output, 'a', newline='') as df:
                     writer = csv.writer(df)
                     writer.writerows(alphaww)
+        else:
+            output = os.path.join(directory_output, f"{option}.csv")
+            with open(output, 'a', newline='') as df:
+                writer = csv.writer(df)
+                dipole = EletricDipoleTot(ret,name,unit,components)
+                writer.writerows(dipole)
+
+        self.message_label.config(text=".csv file generated for " + option)
+

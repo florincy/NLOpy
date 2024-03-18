@@ -359,10 +359,15 @@ def BetaHRSCase(list,name,convention="T",unit=None,components=False):
                 xzz=list[i+16]
                 yzz=list[i+17]
                 zzz=list[i+18]
+                tensors_c=[xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,yzz,zzz]
                 betaHRS=betaHRSmath(xxx[unit],yxx[unit],zxx[unit],xyx[unit],yyx[unit],zyx[unit],xyy[unit],yyy[unit],zyy[unit],xzx[unit],yzx[unit],zzx[unit],xzy[unit],yzy[unit],zzy[unit],xzz[unit],yzz[unit],zzz[unit])
                 lined = ["Tot(Beta HRS)({})({})".format(namingUnits(unit), convention), betaHRS, "", ""]
                 HRSlist.append(list[i])
                 HRSlist.append(lined)
+                if components == True:
+                    for component in tensors_c:
+                        lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
+                        HRSlist.append(lined_component)
     return HRSlist
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)

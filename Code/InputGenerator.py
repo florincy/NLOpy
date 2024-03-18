@@ -30,7 +30,7 @@ def generate_input_file(chk_file, mem_size, nproc_count, functional, solvent, ch
     print(content)
     preview.append(content)
 
-    preview.append(f"\n{freq}nm\n\n")
+    preview.append(f"\n{freq}nm\n")
     atoms=[]
     for line in xyz:
         # Split the line by spaces and strip each element to remove trailing spaces

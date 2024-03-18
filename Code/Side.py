@@ -5,7 +5,7 @@ from home import Home
 from Input import FormPreviewApp
 
 root = tk.Tk()
-root.geometry('800x800')
+root.geometry('750x750')
 home_window = Home(root)
 
 min_w = 45  # Minimum width of the frame
