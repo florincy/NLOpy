@@ -2,9 +2,10 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from Menu import Application
 from home import Home
+from Input import FormPreviewApp
 
 root = tk.Tk()
-root.geometry('700x700')
+root.geometry('800x800')
 home_window = Home(root)
 
 min_w = 45  # Minimum width of the frame
@@ -55,6 +56,8 @@ def data_analysis_application():
 def home_function():
     home_window = Home(root)  
 
+def input_builder_function():
+    input_builder_app=FormPreviewApp(root)
 # Define the icons to be shown and resize them
 home = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/home.png').resize((40, 40), Image.ANTIALIAS))
 data_analysis = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/keys.png').resize((40, 40), Image.ANTIALIAS))
@@ -68,7 +71,7 @@ frame.grid(row=0, column=0)
 # Make the buttons with the icons to be shown
 home_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)
 data_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)
-input_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', borderwidth=0, highlightthickness=0)
+input_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)
 exit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)
 # Put them on the frame
 home_b.grid(row=0, column=0, pady=10)
