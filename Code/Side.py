@@ -1,11 +1,13 @@
-from tkinter import Tk, Frame, Button
+import tkinter as tk
 from PIL import Image, ImageTk
 from Menu import Application
+from home import Home
 
-root = Tk()
+root = tk.Tk()
 root.geometry('700x700')
+home_window = Home(root)
 
-min_w = 50  # Minimum width of the frame
+min_w = 45  # Minimum width of the frame
 max_w = 150  # Maximum width of the frame
 cur_width = min_w  # Current width of the frame
 expanded = False  # Check if it is completely expanded
@@ -47,9 +49,11 @@ def fill():
 def quit_app():
     root.destroy()
 
-def data_analysis_application():
+def data_analysis_application(): 
     app = Application(root)
-    print("oi")
+
+def home_function():
+    home_window = Home(root)  
 
 # Define the icons to be shown and resize them
 home = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/home.png').resize((40, 40), Image.ANTIALIAS))
@@ -58,14 +62,14 @@ input_builder = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/input.png
 exit = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/close.png').resize((40, 40), Image.ANTIALIAS))
 
 root.update()  # Update the root window for the width to get updated
-frame = Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())
+frame = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())
 frame.grid(row=0, column=0)
 
 # Make the buttons with the icons to be shown
-home_b = Button(frame, image=home, bg='#7C98B3', relief='flat')
-data_analysis_b = Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application)
-input_builder_b = Button(frame, image=input_builder, bg='#7C98B3', relief='flat')
-exit_b = Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app)
+home_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)
+data_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)
+input_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', borderwidth=0, highlightthickness=0)
+exit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)
 # Put them on the frame
 home_b.grid(row=0, column=0, pady=10)
 data_analysis_b.grid(row=1, column=0, pady=50)
