@@ -3,6 +3,8 @@ from PIL import Image, ImageTk
 from Menu import Application
 from home import Home
 from Input import FormPreviewApp
+import os
+
 
 root = tk.Tk()
 root.geometry('750x750')
@@ -12,6 +14,14 @@ min_w = 45  # Minimum width of the frame
 max_w = 150  # Maximum width of the frame
 cur_width = min_w  # Current width of the frame
 expanded = False  # Check if it is completely expanded
+
+#Paths to icon images
+current_dir = os.path.dirname(__file__)
+home_path = os.path.join(current_dir, 'home.png')
+data_path = os.path.join(current_dir, 'keys.png')
+input_path = os.path.join(current_dir, 'input.png')
+exit_path = os.path.join(current_dir,'close.png')
+
 
 def expand():
     global cur_width, expanded
@@ -59,10 +69,10 @@ def home_function():
 def input_builder_function():
     input_builder_app=FormPreviewApp(root)
 # Define the icons to be shown and resize them
-home = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/home.png').resize((40, 40), Image.ANTIALIAS))
-data_analysis = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/keys.png').resize((40, 40), Image.ANTIALIAS))
-input_builder = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/input.png').resize((40, 40), Image.ANTIALIAS))
-exit = ImageTk.PhotoImage(Image.open('/home/florincy/NLO/Code/close.png').resize((40, 40), Image.ANTIALIAS))
+home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))
+data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))
+input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))
+exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))
 
 root.update()  # Update the root window for the width to get updated
 frame = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())
