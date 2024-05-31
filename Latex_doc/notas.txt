@@ -1,0 +1,83 @@
+ssh ssh.axisapps.io  -l <HASH>
+
+ 
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script a2d323a5f8d74b9895e2b7aa201bf14c
+
+ 
+
+ssh -L localhost:8888:<SERVER>:9761 -L localhost:8889:<SERVER>:7750 -L localhost:7007:<SERVER>:<PPPP> ssh.axisapps.io -l <HASH>
+
+ 
+
+tensorboard --logdir=./ --port=8217
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script 16deb06ddce84f9cbd081b2d7ee65bcc
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 ssh.axisapps.io -L localhost:7007:dgx09:6039 -l 16deb06ddce84f9cbd081b2d7ee65bcc
+-L localhost:7007:dgx09:7997
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 ssh.axisapps.io -L localhost:7007:dgx09:6039 -l ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+ssh -L localhost:8888:dgx08:9761 -L localhost:8889:dgx08:7750 -L localhost:7007:<SERVER>:<PPPP> ssh.axisapps.io -l <HASH>
+
+
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 -L localhost:7007:dgx09:0693 ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+
+Easy notes
+1) Copy link from axisapps
+2) sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script <HASH> 
+3) cat port_forward_command (Check if file exists)
+
+OPEN ANOTHER TERMINAL TAB
+4) Copy the cat output
+5) Add -L localhost:7007:<SERVER>:<REVERVE_PORT> to that copied output and past it on NEW TERMINAL TAB
+                                -L localhost:7007:<SERVER>:<REVERVE_PORT>
+
+ssh -L localhost:8888:dgx09:9306 -L localhost:8889:dgx09:7997 -L localhost:7007:dgx09:0639 ssh.axisapps.io -l 16deb06ddce84f9cbd081b2d7ee65bcc
+
+sbatch /bootcamp_scripts/MODULUS/cea_modulus_launch_script a2d323a5f8d74b9895e2b7aa201bf14c
+
+#[['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' ']
+['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'] 
+['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], 
+['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], 
+['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], 
+['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], 
+['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], 
+['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'], 
+['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], 
+['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], 
+['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], 
+['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], 
+['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], 
+['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], 
+['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], 
+['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']]
+
+['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' '], 
+['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'], 
+['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], 
+['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], 
+['xyx', '-0.567417E+00', '-0.490204E-02', '-0.181934E-02'], 
+['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], 
+['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], 
+['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], 
+['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'],
+['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], 
+['xzx', '-0.199673E+00', '-0.172502E-02', '-0.640223E-03'], 
+['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], 
+['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], 
+['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], 
+['yzy', '-0.875432E+00', '-0.756305E-02', '-0.280695E-02'], 
+['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], 
+['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], 
+['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], 
+['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']
+
+xyz
+xzy
+yzx
+yxz
+
+
+
+
+
