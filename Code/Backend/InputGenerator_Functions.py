@@ -1,3 +1,4 @@
+#Backfunction to check elements for which writing the basis is needed
 def check_and_write(atoms,preview,basis):
     for element in atoms:
         filename = "Basis_" + element + ".txt"  # Assuming the file extension is .txt
@@ -10,7 +11,8 @@ def check_and_write(atoms,preview,basis):
                 preview.append(file_content)
         except FileNotFoundError:
             print(f"File '{filename}' not found for atom '{element}'.")
-        
+ 
+#Backfunction to creating the .com input file from user selected parameters        
 def generate_input_file(chk_file, mem_size, nproc_count, functional, solvent, charge, multiplicity, xyz,freq,property,basis):
     #inputpath= inputpath + "/NLO-input.com"
     preview=[]

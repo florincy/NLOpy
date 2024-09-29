@@ -2,9 +2,9 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import csv
-from NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic, Alphaww, BetaStaticTot, BetaPockelsTot, BetaEFISHTot, BetaHRSCase, EletricDipoleTot, Gamma0000, Gammaww00, Gamma2www0
+from Backend.NLO_Functions import collect_limits, collect, read_file, calc, AlphaStatic, Alphaww, BetaStaticTot, BetaPockelsTot, BetaEFISHTot, BetaHRSCase, EletricDipoleTot, Gamma0000, Gammaww00, Gamma2www0, read_file_append
 
-class Application:
+class DataAnalysis:
     def __init__(self, master=None):
         self.master = master
         self.master.title("NLO data app")
@@ -52,7 +52,7 @@ class Application:
         self.orientation_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
         self.orientation_menu.grid(row=0, column=1, sticky=tk.W)
 
-        # Create frame for Radiobuttons and Units
+        # Create frame for Radiobuttons for Units
         self.radioutton_frame = tk.Frame(self.widget_frame)
         self.radioutton_frame.grid(row=4, column=0, columnspan=10, pady=5, sticky="nsew")
 
@@ -86,7 +86,7 @@ class Application:
         self.radiobutton2 = tk.Radiobutton(self.radioutton_frame, text="B", variable=self.radiobutton1_value, value="B", font=("Calibri", 12))
         self.radiobutton2.grid(row=0, column=2)
 
-        # Create a frame to contain the properties widgets
+        # Create a frame to contain the choosen properties widgets
         self.property_frame = tk.Frame(self.widget_frame)
         self.property_frame.grid(row=5, column=0, columnspan=4, pady=7, sticky="nsew")
 
@@ -96,16 +96,16 @@ class Application:
         self.selected_property = tk.StringVar(master)
         self.selected_property.set("Electric Dipole")  # Default value
 
-        # Create OptionMenu
+        # Create OptionMenu for properties
         self.property_menu = tk.OptionMenu(self.property_frame, self.selected_property, "Alpha", "Beta", "Gamma", "Electric Dipole", command=self.on_property_select)
         self.property_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
         self.property_menu.grid(row=0, column=1, sticky=tk.W)
 
-        # Create frame for Checkbuttons
+        # Create frame for Checkbuttons for subproperties
         self.checkbutton_frame = tk.Frame(self.widget_frame)
         self.checkbutton_frame.grid(row=6, column=0, columnspan=4, pady=10, sticky="nsew") 
 
-        # Checkbuttons for Properties
+        # Checkbuttons for subproperties Properties
         self.checkbutton1_value = tk.BooleanVar()
         self.checkbutton1 = tk.Checkbutton(self.checkbutton_frame,text="Beta(0;0,0)", variable=self.checkbutton1_value, font=("Calibri", 12))
 
@@ -144,35 +144,46 @@ class Application:
         # Label to display messages
         self.message_label = tk.Label(self.main_frame, text="")
         self.message_label.grid(row=9, column=0, columnspan=3, pady=5, sticky="nsew")
+        
+#EVENTS AND BACK INTEGRATIOM
 
-
+    # This function is called when a property is selected in other selection widget
     def on_property_select(self, event):
+        # Get the selected property from the selection widget
         selected_property = self.selected_property.get()
+        # Call the function to update the checkboxes based on the selected property
         self.on_off_checkbox(selected_property)
 
+    # This function updates the visibility of checkboxes based on the selected property
     def on_off_checkbox(self, selected_property):
-        if selected_property =="Beta":
+        if selected_property == "Beta":
+            # Display the checkboxes related to "Beta"
             self.checkbutton1.grid(row=0, column=0, sticky=tk.W)
             self.checkbutton20.grid(row=0, column=1, sticky=tk.W)
             self.checkbutton21.grid(row=0, column=2, sticky=tk.W)
             self.checkbutton3.grid(row=0, column=3, sticky=tk.W)
+            # Hide the other checkboxes
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
-        elif selected_property=="Gamma":
+        elif selected_property == "Gamma":
+            # Display the checkboxes related to "Gamma"
             self.checkbutton4.grid(row=0, column=0, sticky=tk.W)
             self.checkbutton5.grid(row=0, column=1, sticky=tk.W)
             self.checkbutton6.grid(row=0, column=2, sticky=tk.W)
+            # Hide the other checkboxes
             self.checkbutton1.grid_forget()
             self.checkbutton20.grid_forget()
             self.checkbutton21.grid_forget()
             self.checkbutton3.grid_forget()
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
-        elif selected_property=="Alpha":
+        elif selected_property == "Alpha":
+            # Display the checkboxes related to "Alpha"
             self.checkbutton7.grid(row=0, column=0, sticky=tk.W)
             self.checkbutton8.grid(row=0, column=3, sticky=tk.W)
+            # Hide the other checkboxes
             self.checkbutton1.grid_forget()
             self.checkbutton20.grid_forget()
             self.checkbutton21.grid_forget()
@@ -181,7 +192,7 @@ class Application:
             self.checkbutton5.grid_forget()
             self.checkbutton6.grid_forget()
         else:
-            # Hide all checkbuttons if neither Beta nor Gamma is selected
+            # Hide all checkboxes if the selected property is neither "Beta", "Gamma", nor "Alpha"
             self.checkbutton1.grid_forget()
             self.checkbutton20.grid_forget()
             self.checkbutton21.grid_forget()
@@ -192,19 +203,29 @@ class Application:
             self.checkbutton7.grid_forget()
             self.checkbutton8.grid_forget()
 
+    # This function is called to select an input directory using a file dialog
     def select_directory_input(self):
+        # Open a directory selection dialog
         directory = filedialog.askdirectory()
         if directory:
+            # Update the label to show the selected input directory
             self.selected_directory_label_input.config(text="Selected Input Directory: " + directory)
+            # Store the selected directory path
             self.selected_directory_input = directory 
 
+    # This function is called to select an output directory using a file dialog
     def select_directory_output(self):
+        # Open a directory selection dialog
         directory = filedialog.askdirectory()
         if directory:
+            # Update the label to show the selected output directory
             self.selected_directory_label_output.config(text="Selected Output Directory: " + directory)
+            # Store the selected directory path
             self.selected_directory_output = directory 
 
+
     def run_application(self):
+        #collecting input setted parameters
         components=self.checkbutton9_value.get()
         selected_property_value = self.selected_property.get()
         selected_orientation_value = self.selected_orientation.get()
@@ -218,28 +239,23 @@ class Application:
             unit=int(3)
         option = selected_property_value
         orientation=selected_orientation_value
+        directory_input = self.selected_directory_input
+        directory_output = self.selected_directory_output        
+        #error handling
         if not hasattr(self, 'selected_directory_input') or not hasattr(self, 'selected_directory_output'):
             self.message_label["text"] = "Error: Please select both input and output directories."
             return
-
-        directory_input = self.selected_directory_input
-        directory_output = self.selected_directory_output
-        print("Running application")  
-
+        #iterating for all .log file in selected directory input
         for path, dirs, files in os.walk(directory_input):
             for name in files:
                 if name.endswith(".log"):
                     log_file_path = os.path.join(path, name)
-                    print(f"Processing file: {log_file_path}")
-
                     returns = collect_limits(open(log_file_path, "r"))
                     line1, line2 = returns[0], returns[1]
-                    input_ref = read_file(log_file_path, line1, line2)
-                    input_dip = read_file(log_file_path, line2)
-
+                    input_ref = read_file_append(log_file_path, line1, line2)
+                    input_dip = read_file_append(log_file_path, line2)
                     output_file_path_dipole = os.path.join(path, "DipoleReference.txt")
                     output_file_path_input = os.path.join(path, "InputReference.txt")
-
                     with open(output_file_path_dipole, "w") as output_file:
                         for line in input_dip:
                             output_file.write(line + "\n")

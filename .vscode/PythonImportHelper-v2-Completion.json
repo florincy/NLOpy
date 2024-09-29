@@ -33,7 +33,15 @@
         "documentation": {}
     },
     {
-        "label": "filedialog",
+        "label": "font",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "Frame",
         "importPath": "tkinter",
         "description": "tkinter",
         "isExtraImport": true,
@@ -69,866 +77,726 @@
     },
     {
         "label": "collect_limits",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "collect",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "read_file",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "calc",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "AlphaStatic",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Alphaww",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaStaticTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "BetaHRSTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "BetaEFISHTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "EletricDipoleTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "Gamma0000",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "Gammaww00",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "Gamma2www0",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "BetaHRSCase",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "collect_limits",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "collect",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "read_file",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "calc",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "AlphaStatic",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "Alphaww",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "BetaStaticTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
-        "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaPockelsTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaEFISHTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaHRSCase",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "EletricDipoleTot",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gamma0000",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gammaww00",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gamma2www0",
-        "importPath": "NLO_Functions",
-        "description": "NLO_Functions",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
         "isExtraImport": true,
-        "detail": "NLO_Functions",
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "read_file_append",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTk",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTk",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
         "documentation": {}
     },
     {
         "label": "generate_input_file",
-        "importPath": "InputGenerator",
-        "description": "InputGenerator",
+        "importPath": "Backend.InputGenerator_Functions",
+        "description": "Backend.InputGenerator_Functions",
         "isExtraImport": true,
-        "detail": "InputGenerator",
+        "detail": "Backend.InputGenerator_Functions",
         "documentation": {}
     },
     {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
+        "label": "DataAnalysis",
+        "importPath": "Frontend.DataAnalysis",
+        "description": "Frontend.DataAnalysis",
         "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "ImageTk",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "ImageTk",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Application",
-        "importPath": "Menu",
-        "description": "Menu",
-        "isExtraImport": true,
-        "detail": "Menu",
+        "detail": "Frontend.DataAnalysis",
         "documentation": {}
     },
     {
         "label": "Home",
-        "importPath": "home",
-        "description": "home",
+        "importPath": "Frontend.Home",
+        "description": "Frontend.Home",
         "isExtraImport": true,
-        "detail": "home",
+        "detail": "Frontend.Home",
         "documentation": {}
     },
     {
-        "label": "FormPreviewApp",
-        "importPath": "Input",
-        "description": "Input",
+        "label": "InputBuilder",
+        "importPath": "Frontend.InputBuilder",
+        "description": "Frontend.InputBuilder",
         "isExtraImport": true,
-        "detail": "Input",
-        "documentation": {}
-    },
-    {
-        "label": "Application",
-        "kind": 6,
-        "importPath": "Code.Application",
-        "description": "Code.Application",
-        "peekOfCode": "class Application:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        # Create a frame to contain the widgets\n        self.widget_frame = tk.Frame(master)\n        self.widget_frame.pack()# Expand to fill the available space\n        # Centering the frame on the window\n        self.widget_frame.grid_rowconfigure(0, weight=1)\n        self.widget_frame.grid_columnconfigure(0, weight=1)",
-        "detail": "Code.Application",
-        "documentation": {}
-    },
-    {
-        "label": "root",
-        "kind": 5,
-        "importPath": "Code.GetData",
-        "description": "Code.GetData",
-        "peekOfCode": "root = tk.Tk()\nroot.withdraw()\ndirectory = filedialog.askdirectory()\n# iterating over all files\nfor path, dirs, files in os.walk(directory):\n    for name in files:\n        if name.endswith(\".log\"):\n            log_file_path = os.path.join(path, name)\n            returns = collect_limits(open(log_file_path, \"r\"))\n            line1 = returns[0]",
-        "detail": "Code.GetData",
-        "documentation": {}
-    },
-    {
-        "label": "directory",
-        "kind": 5,
-        "importPath": "Code.GetData",
-        "description": "Code.GetData",
-        "peekOfCode": "directory = filedialog.askdirectory()\n# iterating over all files\nfor path, dirs, files in os.walk(directory):\n    for name in files:\n        if name.endswith(\".log\"):\n            log_file_path = os.path.join(path, name)\n            returns = collect_limits(open(log_file_path, \"r\"))\n            line1 = returns[0]\n            line2 = returns[1]\n            input_ref = read_file(log_file_path, line1, line2)",
-        "detail": "Code.GetData",
-        "documentation": {}
-    },
-    {
-        "label": "FormPreviewApp",
-        "kind": 6,
-        "importPath": "Code.Input",
-        "description": "Code.Input",
-        "peekOfCode": "class FormPreviewApp:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Form and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Initialize Tkinter variables\n        self.filepath=\"none\"\n        self.charge_input_var = tk.StringVar()",
-        "detail": "Code.Input",
-        "documentation": {}
-    },
-    {
-        "label": "solvents",
-        "kind": 5,
-        "importPath": "Code.Input",
-        "description": "Code.Input",
-        "peekOfCode": "solvents = ['Water', 'Acetonitrile', 'Methanol', 'Ethanol', 'IsoQuinoline', 'Quinoline', 'Chloroform', 'DiethylEther', 'Dichloromethane', 'DiChloroEthane', 'CarbonTetraChloride', 'Benzene', 'Toluene', 'ChloroBenzene', 'NitroMethane', 'Heptane', 'CycloHexane', 'Aniline', 'Acetone', 'TetraHydroFuran', 'DiMethylSulfoxide', 'Argon', 'Krypton', 'Xenon', 'n-Octanol', '1,1,1-TriChloroEthane', '1,1,2-TriChloroEthane', '1,2,4-TriMethylBenzene', '1,2-DiBromoEthane', '1,2-EthaneDiol', '1,4-Dioxane', '1-Bromo-2-MethylPropane', '1-BromoOctane', '1-BromoPentane', '1-BromoPropane', '1-Butanol', '1-ChloroHexane', '1-ChloroPentane', '1-ChloroPropane', '1-Decanol', '1-FluoroOctane', '1-Heptanol', '1-Hexanol', '1-Hexene', '1-Hexyne', '1-IodoButane', '1-IodoHexaDecane', '1-IodoPentane', '1-IodoPropane', '1-NitroPropane', '1-Nonanol', '1-Pentanol', '1-Pentene', '1-Propanol', '2,2,2-TriFluoroEthanol', '2,2,4-TriMethylPentane', '2,4-DiMethylPentane', '2,4-DiMethylPyridine', '2,6-DiMethylPyridine', '2-BromoPropane', '2-Butanol', '2-ChloroButane', '2-Heptanone', '2-Hexanone', '2-MethoxyEthanol', '2-Methyl-1-Propanol', '2-Methyl-2-Propanol', '2-MethylPentane', '2-MethylPyridine', '2-NitroPropane', '2-Octanone', '2-Pentanone', '2-Propanol', '2-Propen-1-ol', '3-MethylPyridine', '3-Pentanone', '4-Heptanone', '4-Methyl-2-Pentanone', '4-MethylPyridine', '5-Nonanone', 'AceticAcid', 'AcetoPhenone', 'a-ChloroToluene', 'Anisole', 'Benzaldehyde', 'BenzoNitrile', 'BenzylAlcohol', 'BromoBenzene', 'BromoEthane', 'Bromoform', 'Butanal', 'ButanoicAcid', 'Butanone', 'ButanoNitrile', 'ButylAmine', 'ButylEthanoate', 'CarbonDiSulfide', 'Cis-1,2-DiMethylCycloHexane', 'Cis-Decalin', 'CycloHexanone', 'CycloPentane', 'CycloPentanol', 'CycloPentanone', 'Decalin-mixture', 'DiBromomEthane', 'DiButylEther', 'DiEthylAmine', 'DiEthylSulfide', 'DiIodoMethane', 'DiIsoPropylEther', 'DiMethylDiSulfide', 'DiPhenylEther', 'DiPropylAmine', 'e-1,2-DiChloroEthene', 'e-2-Pentene', 'EthaneThiol', 'EthylBenzene', 'EthylEthanoate', 'EthylMethanoate', 'EthylPhenylEther', 'FluoroBenzene', 'Formamide', 'FormicAcid', 'HexanoicAcid', 'IodoBenzene', 'IodoEthane', 'IodoMethane', 'IsoPropylBenzene', 'm-Cresol', 'Mesitylene', 'MethylBenzoate', 'MethylButanoate', 'MethylCycloHexane', 'MethylEthanoate', 'MethylMethanoate', 'MethylPropanoate', 'm-Xylene', 'n-ButylBenzene', 'n-Decane', 'n-Dodecane', 'n-Hexadecane', 'n-Hexane', 'NitroBenzene', 'NitroEthane', 'n-MethylAniline', 'n-MethylFormamide-mixture', 'n,n-DiMethylAcetamide', 'n,n-DiMethylFormamide', 'n-Nonane', 'n-Octane', 'n-Pentadecane', 'n-Pentane', 'n-Undecane', 'o-ChloroToluene', 'o-Cresol', 'o-DiChloroBenzene', 'o-NitroToluene', 'o-Xylene', 'Pentanal', 'PentanoicAcid', 'PentylAmine', 'PentylEthanoate', 'PerFluoroBenzene', 'p-IsoPropylToluene', 'Propanal', 'PropanoicAcid', 'PropanoNitrile', 'PropylAmine', 'PropylEthanoate', 'p-Xylene', 'Pyridine', 'sec-ButylBenzene', 'tert-ButylBenzene', 'TetraChloroEthene', 'TetraHydroThiophene-s,s-dioxide', 'Tetralin', 'Thiophene', 'Thiophenol', 'trans-Decalin', 'TriButylPhosphate', 'TriChloroEthene', 'TriEthylAmine', 'Xylene-mixture', 'z-1,2-DiChloroEthene']\nfunctionals = ['B3LYP', 'B3P86', 'O3LYP', 'APFD', 'wB97XD', 'LC-wHPBE', 'LC-wPBE', 'CAM-B3LYP', 'wB97', 'wB97X', 'LC-BLYP', 'MN15', 'M11', 'SOGGA11X', 'N12SX', 'MN12SX', 'PW6B95', 'PW6B95D3', 'M08HX', 'M06', 'M06HF', 'M062X', 'PBE1PBE', 'HSEH1PBE', 'OHSE2PBE', 'OHSE1PBE', 'PBEh1PBE', 'B1B95', 'B1LYP', 'mPW1PW91', 'mPW1LYP', 'mPW1PBE', 'mPW3PBE', 'B98', 'B971', 'B972', 'TPSSh', 'tHCTHhyb', 'BMK', 'HISSbPBE', 'X3LYP', 'BHandH', 'BHandHLYP']\n#INITAL SETTINGS AND FRAMES --------------------------------------------------------------------------------\nclass FormPreviewApp:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Form and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")",
-        "detail": "Code.Input",
-        "documentation": {}
-    },
-    {
-        "label": "functionals",
-        "kind": 5,
-        "importPath": "Code.Input",
-        "description": "Code.Input",
-        "peekOfCode": "functionals = ['B3LYP', 'B3P86', 'O3LYP', 'APFD', 'wB97XD', 'LC-wHPBE', 'LC-wPBE', 'CAM-B3LYP', 'wB97', 'wB97X', 'LC-BLYP', 'MN15', 'M11', 'SOGGA11X', 'N12SX', 'MN12SX', 'PW6B95', 'PW6B95D3', 'M08HX', 'M06', 'M06HF', 'M062X', 'PBE1PBE', 'HSEH1PBE', 'OHSE2PBE', 'OHSE1PBE', 'PBEh1PBE', 'B1B95', 'B1LYP', 'mPW1PW91', 'mPW1LYP', 'mPW1PBE', 'mPW3PBE', 'B98', 'B971', 'B972', 'TPSSh', 'tHCTHhyb', 'BMK', 'HISSbPBE', 'X3LYP', 'BHandH', 'BHandHLYP']\n#INITAL SETTINGS AND FRAMES --------------------------------------------------------------------------------\nclass FormPreviewApp:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Form and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Initialize Tkinter variables",
-        "detail": "Code.Input",
+        "detail": "Frontend.InputBuilder",
         "documentation": {}
     },
     {
         "label": "check_and_write",
         "kind": 2,
-        "importPath": "Code.InputGenerator",
-        "description": "Code.InputGenerator",
+        "importPath": "Code.Backend.InputGenerator_Functions",
+        "description": "Code.Backend.InputGenerator_Functions",
         "peekOfCode": "def check_and_write(atoms,preview,basis):\n    for element in atoms:\n        filename = \"Basis_\" + element + \".txt\"  # Assuming the file extension is .txt\n        pwd=f\"/home/florincy/NLO/Basis/{basis}/\"\n        print(pwd)\n        try:\n            with open(pwd+filename, 'r') as basis_file:\n                file_content = basis_file.readlines()\n                file_content='\\n'.join(file_content) \n                preview.append(file_content)",
-        "detail": "Code.InputGenerator",
+        "detail": "Code.Backend.InputGenerator_Functions",
         "documentation": {}
     },
     {
         "label": "generate_input_file",
         "kind": 2,
-        "importPath": "Code.InputGenerator",
-        "description": "Code.InputGenerator",
+        "importPath": "Code.Backend.InputGenerator_Functions",
+        "description": "Code.Backend.InputGenerator_Functions",
         "peekOfCode": "def generate_input_file(chk_file, mem_size, nproc_count, functional, solvent, charge, multiplicity, xyz,freq,property,basis):\n    #inputpath= inputpath + \"/NLO-input.com\"\n    preview=[]\n    preview.append(f\"%chk={chk_file}\")\n    preview.append(f\"%mem={mem_size}\")\n    preview.append(f\"%nproc={nproc_count}\")\n    print(solvent)\n    if solvent != \"None\":\n        solventConf = f\"scrf=(iefpcm,read,solvent={solvent})\"\n    else:",
-        "detail": "Code.InputGenerator",
-        "documentation": {}
-    },
-    {
-        "label": "Application",
-        "kind": 6,
-        "importPath": "Code.Menu",
-        "description": "Code.Menu",
-        "peekOfCode": "class Application:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a frame to contain the widgets\n        self.widget_frame = tk.Frame(self.main_frame)\n        self.widget_frame.grid(row=1, column=0, padx=5, pady=5, sticky=\"nsew\")\n        # NLO data app label",
-        "detail": "Code.Menu",
+        "detail": "Code.Backend.InputGenerator_Functions",
         "documentation": {}
     },
     {
         "label": "collect_limits",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def collect_limits(log_file):\n    line1, line2 = None, None\n    for num, line in enumerate(log_file, 1):\n        if \"Electric dipole moment (input orientation):\" in line:\n            line1 = num\n        if \"Electric dipole moment (dipole orientation):\" in line:\n            line2 = num\n    return line1, line2\ndef read_file(log_file_path, start, end=None):\n    lines = []",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def collect_limits(log_file):\n    line1, line2 = None, None\n    for num, line in enumerate(log_file, 1):\n        if \"Electric dipole moment (input orientation):\" in line:\n            line1 = num\n        if \"Electric dipole moment (dipole orientation):\" in line:\n            line2 = num\n    return line1, line2\n#Function for reading and appending lines from .log file\ndef read_file_append(log_file_path, start, end=None):",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "read_file_append",
+        "kind": 2,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def read_file_append(log_file_path, start, end=None):\n    lines = []\n    if end is None:\n        with open(log_file_path, \"r\") as log_file:\n            for i in range(start - 2):\n                next(log_file)  # Skip lines until start line\n            for line in log_file:\n                lines.append(line.strip())\n    else:\n        with open(log_file_path, \"r\") as log_file:",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "read_file",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def read_file(log_file_path, start, end=None):\n    lines = []\n    if end is None:\n        with open(log_file_path, \"r\") as log_file:\n            for i in range(start - 2):\n                next(log_file)  # Skip lines until start line\n            for line in log_file:\n                lines.append(line.strip())\n    else:\n        with open(log_file_path, \"r\") as log_file:",
-        "detail": "Code.NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "read_file",
-        "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def read_file(log_file_path, start, end=None):\n    lines = []\n    with open(log_file_path, \"r\") as log_file:\n        for i in range(start - 2):\n            next(log_file)  # Skip lines until start line\n        if end is None:\n            for line in log_file:\n                lines.append(line.strip())\n        else:\n            for i in range(end - start + 1):",
-        "detail": "Code.NLO_Functions",
-        "documentation": {}
-    },
-    {
-        "label": "open_file",
-        "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def open_file(log_file_path):\n    with open(log_file_path, \"r\") as log_file:\n        return log_file.readlines()\ndef collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    Properties = [\"Alpha(-w;w)\", \"Alpha(0;0):\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Gamma(-w;w,0,0)\", \"Gamma(0;0,0,0):\",\"Gamma(-2w;w,w,0)\",\"Electric dipole moment\"]\n    Alpha_ok = {\"xx\", \"yy\", \"zz\", \"Alpha(-w;w)\", \"Alpha(0;0):\"}\n    Beta_HRS={\"Beta(-2w;w,w)\",\"xxx\",\"yyy\",\"zzz\",\"xyx\",\"xzx\",\"yyx\",\"yzy\",\"zzx\",\"zzy\",\"xyy\",\"xzz\",\"yxx\",\"yzz\",\"zxx\",\"zyy\",\"xyz\",\"xzy\",\"zxy\",\"zyx\",\"yxz\",\"yzx\"}",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "collect",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    Properties = [\"Alpha(-w;w)\", \"Alpha(0;0):\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Gamma(-w;w,0,0)\", \"Gamma(0;0,0,0):\",\"Gamma(-2w;w,w,0)\",\"Electric dipole moment\"]\n    Alpha_ok = {\"xx\", \"yy\", \"zz\", \"Alpha(-w;w)\", \"Alpha(0;0):\"}\n    Beta_HRS={\"Beta(-2w;w,w)\",\"xxx\",\"yyy\",\"zzz\",\"xyx\",\"xzx\",\"yyx\",\"yzy\",\"zzx\",\"zzy\",\"xyy\",\"xzz\",\"yxx\",\"yzz\",\"zxx\",\"zyy\",\"xyz\",\"xzy\",\"zxy\",\"zyx\",\"yxz\",\"yzx\"}\n    Beta_ok = {\"x\", \"y\", \"z\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Electric dipole moment\"}\n    Gamma_EFISH={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\",\"yyxx\",\"zzxx\",\"zzyy\",\"xyyx\",\"xzzx\",\"yxxy\",\"yzzy\",\"zxxz\",\"zyyz\",\"Gamma(-2w;w,w,0)\"}\n    Gamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "calc",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def calc(file, name, comment):\n    lines = []\n    for line in file:\n        if any(keyword in line for keyword in [\"x\", \"y\", \"z\"]):\n            line = line.split()\n            for i in range(len(line)):\n                line[i] = line[i].replace('D', 'E')\n            lines.append(line)\n        else:\n            lined = [line, name, comment, \" \"]",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "alphamath",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def alphamath(xx,yy,zz):\n    result=((float(xx))+(float(yy))+(float(zz)))/3\n    return result\ndef namingUnits(unit):\n    if unit==1:\n        return \"au\"\n    elif unit==2:\n        return \"esu\"\n    elif unit==3:\n        return \"SI\"",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def alphamath(xx,yy,zz):\n    result=((float(xx))+(float(yy))+(float(zz)))/3\n    return result\n#Auxiliar function to naming units \ndef namingUnits(unit):\n    if unit==1:\n        return \"au\"\n    elif unit==2:\n        return \"esu\"\n    elif unit==3:",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "namingUnits",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def namingUnits(unit):\n    if unit==1:\n        return \"au\"\n    elif unit==2:\n        return \"esu\"\n    elif unit==3:\n        return \"SI\"\ndef AlphaStatic(list, name, unit,components=False):\n    AlphaStaticList = []\n    for i, sublist in enumerate(list):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def namingUnits(unit):\n    if unit==1:\n        return \"au\"\n    elif unit==2:\n        return \"esu\"\n    elif unit==3:\n        return \"SI\"\n#Alpha Static\ndef AlphaStatic(list, name, unit,components=False):\n    AlphaStaticList = []",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "AlphaStatic",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def AlphaStatic(list, name, unit,components=False):\n    AlphaStaticList = []\n    for i, sublist in enumerate(list):\n        for j, elem in enumerate(sublist):\n            if 'Alpha(0;0):' in elem:\n                xx = list[i+1]\n                yy = list[i+2]\n                zz = list[i+3]\n                tensors_c=[xx,yy,zz]\n                a = alphamath(xx[unit], yy[unit], zz[unit])",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Alphaww",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def Alphaww(list,name,unit,components=False):\n    AlphawwList=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Alpha(-w;w)' in elem:\n                xx=list[i+1]\n                yy=list[i+2]\n                zz=list[i+3]\n                tensors_c=[xx,yy,zz]\n                a=alphamath(xx[unit],yy[unit],zz[unit])",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "EletricDipoleTot",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def EletricDipoleTot(list,name,unit,components=False):\n    ElectricDipoleList=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Electric dipole ' in elem:\n                x=list[i+1]\n                y=list[i+2]\n                z=list[i+3]\n                tensors_c=[x,y,z]\n                def electricdipolemath(x,y,z):",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "betamatht",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def betamatht(x,y,z):\n    result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))\n    return result\ndef betamathb(x,y,z):\n    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))\n    return result\ndef BetaStaticTot(list,name,convention=\"T\",unit=None,components=False):\n    Staticlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def betamatht(x,y,z):\n    result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))\n    return result\n#Beta b function\ndef betamathb(x,y,z):\n    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))\n    return result\n#Beta Static function\ndef BetaStaticTot(list,name,convention=\"T\",unit=None,components=False):\n    Staticlist=[]",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "betamathb",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def betamathb(x,y,z):\n    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))\n    return result\ndef BetaStaticTot(list,name,convention=\"T\",unit=None,components=False):\n    Staticlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(0;0,0)' in elem:\n                x=list[i+1]\n                y=list[i+2]",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def betamathb(x,y,z):\n    result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))\n    return result\n#Beta Static function\ndef BetaStaticTot(list,name,convention=\"T\",unit=None,components=False):\n    Staticlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(0;0,0)' in elem:\n                x=list[i+1]",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaStaticTot",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def BetaStaticTot(list,name,convention=\"T\",unit=None,components=False):\n    Staticlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(0;0,0)' in elem:\n                x=list[i+1]\n                y=list[i+2]\n                z=list[i+3]\n                tensors_c=[x,y,z]\n                if convention==\"T\":",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaEFISHTot",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def BetaEFISHTot(list,name,convention=\"T\",unit=None,components=False):\n    HRSlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(-2w;w,w)' in elem:\n                x=list[i+1]\n                y=list[i+2]\n                z=list[i+3]\n                tensors_c=[x,y,z]\n                if convention==\"T\":",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaPockelsTot",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def BetaPockelsTot(list,name,convention=\"T\",unit=None,components=False):\n    EFISHlist=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(-w;w,0)' in elem:\n                x=list[i+1]\n                y=list[i+2]\n                z=list[i+3]\n                tensors_c=[x,y,z]\n                if convention==\"T\":",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "betaHRSmath",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def betaHRSmath(xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,yzz,zzz):\n    #beta_abc = beta_acb\n    #xxy=xyx\n    #xxz=xzx\n    #xyz=xzy\n    #yxz=yzx\n    #zxy=zyx\n    t1=((((float(xxx))**2)+((float(yyy))**2)+((float(zzz))**2)))\n    t2=((((float(xyx))**2)+((float(xzx))**2)+((float(yyx))**2)+((float(yzy))**2)+((float(zzx))**2)+((float(zzy))**2)))\n    t3=((((float(xxx))*(float(xyy)))+((float(xxx))*(float(xzz)))+((float(yyy))*(float(yxx)))+((float(yyy))*(float(yzz)))+((float(zzz))*(float(zxx)))+((float(zzz))*(float(zyy)))))",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "BetaHRSCase",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def BetaHRSCase(list,name,convention=\"T\",unit=None,components=False):\n    HRSlist=[]\n    #[['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' '], ['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'], ['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], ['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], ['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], ['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], ['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], ['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'], ['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], ['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], ['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], ['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], ['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], ['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], ['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], ['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Beta(-2w;w,w)' in elem:\n                xxx=list[i+1]\n                yxx=list[i+2]\n                zxx=list[i+3]\n                xyx=list[i+4]",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamatht",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6)))/5\n    return result\ndef gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5\n    return result\ndef gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))\n    return result\ndef gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6)))/5\n    return result\n#Gamma general b function\ndef gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5\n    return result\n#Gamma general EFISH t function\ndef gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamathb",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5\n    return result\ndef gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))\n    return result\ndef gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))\n    return result\ndef gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):\n    result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5\n    return result\n#Gamma general EFISH t function\ndef gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))\n    return result\n#Gamma general EFISH b function\ndef gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamathEFISH",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))\n    return result\ndef gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))\n    return result\ndef gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5\n    return result\ndef gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))\n    return result\n#Gamma general EFISH b function\ndef gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))\n    return result\n#Gamma general kerr t function\ndef gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamathEFISH",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))\n    return result\ndef gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5\n    return result\ndef gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5\n    return result\ndef Gamma0000(list,name,convention,unit,components=False):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):\n    result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))\n    return result\n#Gamma general kerr t function\ndef gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5\n    return result\n#Gamma general kerr b function\ndef gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamathKerrt",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5\n    return result\ndef gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5\n    return result\ndef Gamma0000(list,name,convention,unit,components=False):\n    gamma0000=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5\n    return result\n#Gamma general kerr b function\ndef gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5\n    return result\n#Gamma 0000 function\ndef Gamma0000(list,name,convention,unit,components=False):\n    gamma0000=[]",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "gammamathKerrb",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
-        "peekOfCode": "def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5\n    return result\ndef Gamma0000(list,name,convention,unit,components=False):\n    gamma0000=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Gamma(0;0,0,0)' in elem:\n                xxxx=list[i+1]\n                xxyy=list[i+2]",
-        "detail": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):\n    result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5\n    return result\n#Gamma 0000 function\ndef Gamma0000(list,name,convention,unit,components=False):\n    gamma0000=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Gamma(0;0,0,0)' in elem:\n                xxxx=list[i+1]",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gamma0000",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def Gamma0000(list,name,convention,unit,components=False):\n    gamma0000=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Gamma(0;0,0,0)' in elem:\n                xxxx=list[i+1]\n                xxyy=list[i+2]\n                yyyy=list[i+3]\n                xxzz=list[i+4]\n                yyzz=list[i+5]",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gammaww00",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def Gammaww00(list,name,convention,unit,components=False):\n    gammaww00=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Gamma(-w;w,0,0)' in elem:\n                xxxx=list[i+1]\n                yyxx=list[i+2]\n                zzxx=list[i+3]\n                xxyy=list[i+4]\n                yyyy=list[i+5]",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
         "label": "Gamma2www0",
         "kind": 2,
-        "importPath": "Code.NLO_Functions",
-        "description": "Code.NLO_Functions",
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
         "peekOfCode": "def Gamma2www0(list,name,convention,unit,components=False):\n    gamma2www0=[]\n    for i, elem in enumerate(list):\n        for j, elem in enumerate(elem):\n            if 'Gamma(-2w;w,w,0)' in elem:\n                xxxx=list[i+1]\n                yyxx=list[i+2]\n                xyyx=list[i+3]\n                zzxx=list[i+4]\n                xzzx=list[i+5]",
-        "detail": "Code.NLO_Functions",
+        "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
     {
-        "label": "expand",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\ndef contract():",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "contract",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def contract():\n    global cur_width, expanded\n    cur_width -= 10  # Reduce the width by 10\n    rep = root.after(5, contract)  # Call this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new reduced width\n    if cur_width <= min_w:  # If it is back to normal width\n        expanded = False  # Frame is not expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\ndef fill():",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "fill",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def fill():\n    if expanded:  # If the frame is expanded\n        # Show text on buttons, and remove the images\n        home_b.config(text='Home', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        data_analysis_b.config(text='Data Analysis', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        input_builder_b.config(text='Input Builder', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        exit_b.config(text='Exit', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n    else:\n        # Show images on buttons\n        home_b.config(image=home, font=(\"Calibri\", 16, \"italic\", \"bold\"))",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "quit_app",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def quit_app():\n    root.destroy()\ndef data_analysis_application(): \n    app = Application(root)\ndef home_function():\n    home_window = Home(root)  \ndef input_builder_function():\n    input_builder_app=FormPreviewApp(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "data_analysis_application",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def data_analysis_application(): \n    app = Application(root)\ndef home_function():\n    home_window = Home(root)  \ndef input_builder_function():\n    input_builder_app=FormPreviewApp(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "home_function",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def home_function():\n    home_window = Home(root)  \ndef input_builder_function():\n    input_builder_app=FormPreviewApp(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "input_builder_function",
-        "kind": 2,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "def input_builder_function():\n    input_builder_app=FormPreviewApp(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "root",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "root = tk.Tk()\nroot.geometry('750x750')\nhome_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "home_window",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "home_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "min_w",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "min_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "max_w",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "max_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "cur_width",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "cur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "expanded",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "expanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "current_dir",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "current_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "home_path",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "home_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "data_path",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "data_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "input_path",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "input_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "exit_path",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "exit_path = os.path.join(current_dir,'close.png')\ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "home",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "data_analysis",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "input_builder",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "exit",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "frame",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "frame = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "home_b",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "home_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "data_analysis_b",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "data_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "input_builder_b",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "input_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())\nframe.bind('<Leave>', lambda e: contract())",
-        "detail": "Code.Side",
-        "documentation": {}
-    },
-    {
-        "label": "exit_b",
-        "kind": 5,
-        "importPath": "Code.Side",
-        "description": "Code.Side",
-        "peekOfCode": "exit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())\nframe.bind('<Leave>', lambda e: contract())\n# So that it does not depend on the widgets inside the frame",
-        "detail": "Code.Side",
+        "label": "DataAnalysis",
+        "kind": 6,
+        "importPath": "Code.Frontend.DataAnalysis",
+        "description": "Code.Frontend.DataAnalysis",
+        "peekOfCode": "class DataAnalysis:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a frame to contain the widgets\n        self.widget_frame = tk.Frame(self.main_frame)\n        self.widget_frame.grid(row=1, column=0, padx=5, pady=5, sticky=\"nsew\")\n        # NLO data app label",
+        "detail": "Code.Frontend.DataAnalysis",
         "documentation": {}
     },
     {
         "label": "Home",
         "kind": 6,
-        "importPath": "Code.home",
-        "description": "Code.home",
-        "peekOfCode": "class Home:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        # Create a main frame\n        self.main_frame = tk.Frame(master)  # Use a light purple background\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a label for the title\n        title_label = tk.Label(self.main_frame, text=\"Welcome to NLOpy!\", font=(\"Calibri\", 24, \"italic\"), bg=\"#E6E6FA\")\n        title_label.pack(pady=(20, 10))  # Add some padding at the top",
-        "detail": "Code.home",
+        "importPath": "Code.Frontend.Home",
+        "description": "Code.Frontend.Home",
+        "peekOfCode": "class Home:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        # Create a main frame\n        self.main_frame = tk.Frame(master)  # Use a light purple background\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a label for the title\n        title_label = tk.Label(self.main_frame, text=\"Welcome to NLOpy!\", font=(\"Calibri\", 24), bg=\"#E6E6FA\")\n        title_label.pack(pady=(20, 10))  ",
+        "detail": "Code.Frontend.Home",
+        "documentation": {}
+    },
+    {
+        "label": "InputBuilder",
+        "kind": 6,
+        "importPath": "Code.Frontend.InputBuilder",
+        "description": "Code.Frontend.InputBuilder",
+        "peekOfCode": "class InputBuilder:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Inpur Builder and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Initialize user-input parameters\n        self.filepath=\"none\"\n        self.charge_input_var = tk.StringVar()",
+        "detail": "Code.Frontend.InputBuilder",
+        "documentation": {}
+    },
+    {
+        "label": "solvents",
+        "kind": 5,
+        "importPath": "Code.Frontend.InputBuilder",
+        "description": "Code.Frontend.InputBuilder",
+        "peekOfCode": "solvents = ['Water', 'Acetonitrile', 'Methanol', 'Ethanol', 'IsoQuinoline', 'Quinoline', 'Chloroform', 'DiethylEther', 'Dichloromethane', 'DiChloroEthane', 'CarbonTetraChloride', 'Benzene', 'Toluene', 'ChloroBenzene', 'NitroMethane', 'Heptane', 'CycloHexane', 'Aniline', 'Acetone', 'TetraHydroFuran', 'DiMethylSulfoxide', 'Argon', 'Krypton', 'Xenon', 'n-Octanol', '1,1,1-TriChloroEthane', '1,1,2-TriChloroEthane', '1,2,4-TriMethylBenzene', '1,2-DiBromoEthane', '1,2-EthaneDiol', '1,4-Dioxane', '1-Bromo-2-MethylPropane', '1-BromoOctane', '1-BromoPentane', '1-BromoPropane', '1-Butanol', '1-ChloroHexane', '1-ChloroPentane', '1-ChloroPropane', '1-Decanol', '1-FluoroOctane', '1-Heptanol', '1-Hexanol', '1-Hexene', '1-Hexyne', '1-IodoButane', '1-IodoHexaDecane', '1-IodoPentane', '1-IodoPropane', '1-NitroPropane', '1-Nonanol', '1-Pentanol', '1-Pentene', '1-Propanol', '2,2,2-TriFluoroEthanol', '2,2,4-TriMethylPentane', '2,4-DiMethylPentane', '2,4-DiMethylPyridine', '2,6-DiMethylPyridine', '2-BromoPropane', '2-Butanol', '2-ChloroButane', '2-Heptanone', '2-Hexanone', '2-MethoxyEthanol', '2-Methyl-1-Propanol', '2-Methyl-2-Propanol', '2-MethylPentane', '2-MethylPyridine', '2-NitroPropane', '2-Octanone', '2-Pentanone', '2-Propanol', '2-Propen-1-ol', '3-MethylPyridine', '3-Pentanone', '4-Heptanone', '4-Methyl-2-Pentanone', '4-MethylPyridine', '5-Nonanone', 'AceticAcid', 'AcetoPhenone', 'a-ChloroToluene', 'Anisole', 'Benzaldehyde', 'BenzoNitrile', 'BenzylAlcohol', 'BromoBenzene', 'BromoEthane', 'Bromoform', 'Butanal', 'ButanoicAcid', 'Butanone', 'ButanoNitrile', 'ButylAmine', 'ButylEthanoate', 'CarbonDiSulfide', 'Cis-1,2-DiMethylCycloHexane', 'Cis-Decalin', 'CycloHexanone', 'CycloPentane', 'CycloPentanol', 'CycloPentanone', 'Decalin-mixture', 'DiBromomEthane', 'DiButylEther', 'DiEthylAmine', 'DiEthylSulfide', 'DiIodoMethane', 'DiIsoPropylEther', 'DiMethylDiSulfide', 'DiPhenylEther', 'DiPropylAmine', 'e-1,2-DiChloroEthene', 'e-2-Pentene', 'EthaneThiol', 'EthylBenzene', 'EthylEthanoate', 'EthylMethanoate', 'EthylPhenylEther', 'FluoroBenzene', 'Formamide', 'FormicAcid', 'HexanoicAcid', 'IodoBenzene', 'IodoEthane', 'IodoMethane', 'IsoPropylBenzene', 'm-Cresol', 'Mesitylene', 'MethylBenzoate', 'MethylButanoate', 'MethylCycloHexane', 'MethylEthanoate', 'MethylMethanoate', 'MethylPropanoate', 'm-Xylene', 'n-ButylBenzene', 'n-Decane', 'n-Dodecane', 'n-Hexadecane', 'n-Hexane', 'NitroBenzene', 'NitroEthane', 'n-MethylAniline', 'n-MethylFormamide-mixture', 'n,n-DiMethylAcetamide', 'n,n-DiMethylFormamide', 'n-Nonane', 'n-Octane', 'n-Pentadecane', 'n-Pentane', 'n-Undecane', 'o-ChloroToluene', 'o-Cresol', 'o-DiChloroBenzene', 'o-NitroToluene', 'o-Xylene', 'Pentanal', 'PentanoicAcid', 'PentylAmine', 'PentylEthanoate', 'PerFluoroBenzene', 'p-IsoPropylToluene', 'Propanal', 'PropanoicAcid', 'PropanoNitrile', 'PropylAmine', 'PropylEthanoate', 'p-Xylene', 'Pyridine', 'sec-ButylBenzene', 'tert-ButylBenzene', 'TetraChloroEthene', 'TetraHydroThiophene-s,s-dioxide', 'Tetralin', 'Thiophene', 'Thiophenol', 'trans-Decalin', 'TriButylPhosphate', 'TriChloroEthene', 'TriEthylAmine', 'Xylene-mixture', 'z-1,2-DiChloroEthene']\nfunctionals = ['B3LYP', 'B3P86', 'O3LYP', 'APFD', 'wB97XD', 'LC-wHPBE', 'LC-wPBE', 'CAM-B3LYP', 'wB97', 'wB97X', 'LC-BLYP', 'MN15', 'M11', 'SOGGA11X', 'N12SX', 'MN12SX', 'PW6B95', 'PW6B95D3', 'M08HX', 'M06', 'M06HF', 'M062X', 'PBE1PBE', 'HSEH1PBE', 'OHSE2PBE', 'OHSE1PBE', 'PBEh1PBE', 'B1B95', 'B1LYP', 'mPW1PW91', 'mPW1LYP', 'mPW1PBE', 'mPW3PBE', 'B98', 'B971', 'B972', 'TPSSh', 'tHCTHhyb', 'BMK', 'HISSbPBE', 'X3LYP', 'BHandH', 'BHandHLYP']\n#INITAL SETTINGS AND FRAMES \nclass InputBuilder:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Inpur Builder and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")",
+        "detail": "Code.Frontend.InputBuilder",
+        "documentation": {}
+    },
+    {
+        "label": "functionals",
+        "kind": 5,
+        "importPath": "Code.Frontend.InputBuilder",
+        "description": "Code.Frontend.InputBuilder",
+        "peekOfCode": "functionals = ['B3LYP', 'B3P86', 'O3LYP', 'APFD', 'wB97XD', 'LC-wHPBE', 'LC-wPBE', 'CAM-B3LYP', 'wB97', 'wB97X', 'LC-BLYP', 'MN15', 'M11', 'SOGGA11X', 'N12SX', 'MN12SX', 'PW6B95', 'PW6B95D3', 'M08HX', 'M06', 'M06HF', 'M062X', 'PBE1PBE', 'HSEH1PBE', 'OHSE2PBE', 'OHSE1PBE', 'PBEh1PBE', 'B1B95', 'B1LYP', 'mPW1PW91', 'mPW1LYP', 'mPW1PBE', 'mPW3PBE', 'B98', 'B971', 'B972', 'TPSSh', 'tHCTHhyb', 'BMK', 'HISSbPBE', 'X3LYP', 'BHandH', 'BHandHLYP']\n#INITAL SETTINGS AND FRAMES \nclass InputBuilder:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Inpur Builder and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Initialize user-input parameters",
+        "detail": "Code.Frontend.InputBuilder",
+        "documentation": {}
+    },
+    {
+        "label": "expand",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\n#Contract the GUI window ",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "contract",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def contract():\n    global cur_width, expanded\n    cur_width -= 10  # Reduce the width by 10\n    rep = root.after(5, contract)  # Call this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new reduced width\n    if cur_width <= min_w:  # If it is back to normal width\n        expanded = False  # Frame is not expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\n#Filling side menu with icons and buttons",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "fill",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def fill():\n    if expanded:  # If the frame is expanded\n        # Show text on buttons, and remove the images\n        home_b.config(text='Home', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        data_analysis_b.config(text='Data Analysis', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        input_builder_b.config(text='Input Builder', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n        exit_b.config(text='Exit', image='', font=(\"Calibri\", 16, \"italic\", \"bold\"))\n    else:\n        # Show images on buttons\n        home_b.config(image=home, font=(\"Calibri\", 16, \"italic\", \"bold\"))",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "quit_app",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def quit_app():\n    root.destroy()\n#NLO data analysis redirectioning function, instatiate object from class \ndef data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "data_analysis_application",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "home_function",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "input_builder_function",
+        "kind": 2,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "def input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "root = tk.Tk()\nroot.geometry('750x750')\nhome_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "home_window",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "home_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "min_w",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "min_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "max_w",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "max_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window ",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "cur_width",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "cur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "expanded",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "expanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "current_dir",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "current_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "home_path",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "home_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "data_path",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "data_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "input_path",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "input_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "exit_path",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "exit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "data_analysis",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "input_builder",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "exit",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "frame = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "home_b",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "home_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "data_analysis_b",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "data_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "input_builder_b",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "input_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())\nframe.bind('<Leave>', lambda e: contract())",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "exit_b",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "exit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())\nframe.bind('<Leave>', lambda e: contract())\n# So that it does not depend on the widgets inside the frame",
+        "detail": "Code.Main",
         "documentation": {}
     }
 ]

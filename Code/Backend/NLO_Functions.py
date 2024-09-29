@@ -4,6 +4,7 @@ import os
 import csv
 import math
 
+#Function for collecting lines numbers containing keywords 
 def collect_limits(log_file):
     line1, line2 = None, None
     for num, line in enumerate(log_file, 1):
@@ -13,7 +14,8 @@ def collect_limits(log_file):
             line2 = num
     return line1, line2
 
-def read_file(log_file_path, start, end=None):
+#Function for reading and appending lines from .log file
+def read_file_append(log_file_path, start, end=None):
     lines = []
     if end is None:
         with open(log_file_path, "r") as log_file:
@@ -44,10 +46,7 @@ def read_file(log_file_path, start, end=None):
                 lines.append(next(log_file).strip())
     return lines
 
-def open_file(log_file_path):
-    with open(log_file_path, "r") as log_file:
-        return log_file.readlines()
-
+#Function to colleting tensor values and setting then to cleaned list
 def collect(file):
     beta_lines=[]
     trash = {"(au)","_|_","Unable", "(z)", "x,y,z", "*", "job", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
@@ -73,9 +72,7 @@ def collect(file):
                 continue
             if any(keyword in line.strip() for keyword in Gamma_EFISH):  
                 lines.append(line.strip())  
-                # print(line)  # Uncomment for debugging
             if any(keyword in line for keyword in Properties) and "Gamma(-2w;w,w,0)" not in line:
-                # print("epa")  # Uncomment for debugging
                 a = "nan"  
 
     a = "nan"
@@ -87,9 +84,7 @@ def collect(file):
                 continue
             if any(keyword in line.strip() for keyword in Gamma_kerr):  
                 lines.append(line.strip())  
-                # print(line)  # Uncomment for debugging
             if any(keyword in line for keyword in Properties) and "Gamma(-w;w,0,0)" not in line:
-                # print("epa")  # Uncomment for debugging
                 a = "nan"   
     for line in file_lines:
         if "Gamma(0;0,0,0):" in line:
@@ -99,9 +94,7 @@ def collect(file):
                 continue
             if any(keyword in line.strip() for keyword in Gamma_ok):  
                 lines.append(line.strip())  
-                # print(line)  # Uncomment for debugging
             if any(keyword in line for keyword in Properties) and "Gamma(0;0,0,0):" not in line:
-                # print("epa")  # Uncomment for debugging
                 a = "nan"   
     for line in file_lines:
         if "Beta(0;0,0)" in line:
@@ -118,9 +111,9 @@ def collect(file):
             if any(keyword in line.split() for keyword in Beta_ok):  
                 lines.append(line.strip())  
             if "Electric dipole moment" in line:
-                lines.append(line.strip()) 
+                lines.append(line.split("(")[0]) 
+                print(line.split("(")[0])
             if any(keyword in line for keyword in Properties) and a not in line:
-                # print("epa")  # Uncomment for debugging
                 a = "nan"   
     for line in file_lines:
             if "Alpha(-w;w)" in line:
@@ -133,7 +126,6 @@ def collect(file):
                 if any(keyword in line.split() for keyword in Alpha_ok):  
                     lines.append(line.strip())  
                 if any(keyword in line for keyword in Properties) and a not in line:
-                    # print("epa")  # Uncomment for debugging
                     a = "nan"   
     for line in file_lines:
         if "Beta(-2w;w,w)" in line:
@@ -143,16 +135,13 @@ def collect(file):
                 continue
             if any(keyword in line.strip() for keyword in Beta_HRS):  
                 beta_lines.append(line.strip())  
-                # print(line)  # Uncomment for debugging
             if any(keyword in line for keyword in Properties) and "Beta(-2w;w,w)" not in line:
-                # print("epa")  # Uncomment for debugging
                 a = "nan" 
 
-        
-        
+    
     return lines,beta_lines
 
-
+#function to change exponent pattern and improving tensors lists
 def calc(file, name, comment):
     lines = []
     for line in file:
@@ -166,10 +155,12 @@ def calc(file, name, comment):
             lines.append(lined)
     return lines
 
+#Alpha general function
 def alphamath(xx,yy,zz):
     result=((float(xx))+(float(yy))+(float(zz)))/3
     return result
 
+#Auxiliar function to naming units 
 def namingUnits(unit):
     if unit==1:
         return "au"
@@ -177,7 +168,7 @@ def namingUnits(unit):
         return "esu"
     elif unit==3:
         return "SI"
-
+#Alpha Static
 def AlphaStatic(list, name, unit,components=False):
     AlphaStaticList = []
     for i, sublist in enumerate(list):
@@ -197,7 +188,7 @@ def AlphaStatic(list, name, unit,components=False):
                         AlphaStaticList.append(lined_component)                
     return AlphaStaticList
 
-
+#Alpha ww
 def Alphaww(list,name,unit,components=False):
     AlphawwList=[]
     for i, elem in enumerate(list):
@@ -217,6 +208,7 @@ def Alphaww(list,name,unit,components=False):
                         AlphawwList.append(lined_component)
     return AlphawwList
 
+#Electric Dipole function
 def EletricDipoleTot(list,name,unit,components=False):
     ElectricDipoleList=[]
     for i, elem in enumerate(list):
@@ -239,13 +231,18 @@ def EletricDipoleTot(list,name,unit,components=False):
                         lined_component= ["{} (Debye)".format(component[0]),component[unit],"",""]
                         ElectricDipoleList.append(lined_component)
     return ElectricDipoleList
+
+#Beta t function
 def betamatht(x,y,z):
     result=math.sqrt(((float(x)/3)**2)+((float(y)/3)**2)+((float(z)/3)**2))
     return result
+
+#Beta b function
 def betamathb(x,y,z):
     result=math.sqrt(((float(x)/6)**2)+((float(y)/6)**2)+((float(z)/6)**2))
     return result
 
+#Beta Static function
 def BetaStaticTot(list,name,convention="T",unit=None,components=False):
     Staticlist=[]
     for i, elem in enumerate(list):
@@ -268,6 +265,7 @@ def BetaStaticTot(list,name,convention="T",unit=None,components=False):
                         Staticlist.append(lined_component)
     return Staticlist
 
+#Beta EFISH function
 def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
     HRSlist=[]
     for i, elem in enumerate(list):
@@ -290,6 +288,7 @@ def BetaEFISHTot(list,name,convention="T",unit=None,components=False):
                         HRSlist.append(lined_component)
     return HRSlist
 
+#Beta Pockels function
 def BetaPockelsTot(list,name,convention="T",unit=None,components=False):
     EFISHlist=[]
     for i, elem in enumerate(list):
@@ -311,6 +310,8 @@ def BetaPockelsTot(list,name,convention="T",unit=None,components=False):
                         lined_component= ["{} ({})".format(component[0],namingUnits(unit)),component[unit],"",""]
                         EFISHlist.append(lined_component)
     return EFISHlist
+
+#General Beta HRS function
 def betaHRSmath(xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,yzz,zzz):
     #beta_abc = beta_acb
     #xxy=xyx
@@ -335,6 +336,8 @@ def betaHRSmath(xxx,yxx,zxx,xyx,yyx,zyx,xyy,yyy,zyy,xzx,yzx,zzx,xzy,yzy,zzy,xzz,
     bHRS=math.sqrt(bzzz+bzxx)
     print(bHRS)
     return bHRS
+
+#Beta HRS function
 def BetaHRSCase(list,name,convention="T",unit=None,components=False):
     HRSlist=[]
     #[['Beta(-2w;w,w) w=  432.0nm:', 'ferro_pbe0_polar.log', 'Dipole Orientation', ' '], ['xxx', '-0.128728E+00', '-0.111211E-02', '-0.412748E-03'], ['yxx', '-0.759067E+00', '-0.655775E-02', '-0.243384E-02'], ['zxx', '-0.428911E+00', '-0.370546E-02', '-0.137524E-02'], ['yyx', '-0.714938E+00', '-0.617650E-02', '-0.229235E-02'], ['zyx', '-0.339588E+00', '-0.293377E-02', '-0.108884E-02'], ['xyy', '-0.143306E+00', '-0.123805E-02', '-0.459491E-03'], ['yyy', '0.766277E+00', '0.662003E-02', '0.245696E-02'], ['zyy', '-0.679120E+00', '-0.586706E-02', '-0.217750E-02'], ['yzx', '-0.179569E+00', '-0.155134E-02', '-0.575765E-03'], ['zzx', '0.193351E+00', '0.167040E-02', '0.619954E-03'], ['xzy', '-0.257625E-01', '-0.222568E-03', '-0.826037E-04'], ['zzy', '0.491069E-01', '0.424246E-03', '0.157455E-03'], ['xzz', '-0.322233E+00', '-0.278384E-02', '-0.103319E-02'], ['yzz', '0.238276E+00', '0.205852E-02', '0.763999E-03'], ['zzz', '0.331969E+00', '0.286795E-02', '0.106441E-02']]
@@ -372,24 +375,31 @@ def BetaHRSCase(list,name,convention="T",unit=None,components=False):
 # 3/2 * y(B) = 1/4 * y(T)
 # y(B)= 1/36 y(T)
 #For now, I figure it out this relations is valid for (-w;w,0,0),(-2w;w,w,0),(0;0,0,0)
+#Gamma general t function
 def gammamatht(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(2*((float(xxyy))/6))+(2*((float(xxzz))/6))+(2*((float(yyzz))/6)))/5
     return result
+#Gamma general b function
 def gammamathb(xxxx,yyyy,zzzz,xxyy,xxzz,yyzz):
     result=((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(2*((float(xxyy))/36))+(2*((float(xxzz))/36))+(2*((float(yyzz))/36))/5
     return result
+#Gamma general EFISH t function
 def gammamathEFISHt (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yxyx,zxzx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
     result=(3*((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6))+(2*(((float(xyxy))/6)+((float(xzxz))/6)+((float(yzyz))/6)+((float(yxyx))/6)+((float(zxzx))/6)+((float(zzyy))/6)))+(((float(xyyx))/6)+((float(xzzx))/6)+((float(yxxy))/6)+((float(yzzy))/6)+((float(zxxz))/6)+((float(zyyz))/6))
     return result
+#Gamma general EFISH b function
 def gammamathEFISHb (xxxx,yyyy,zzzz,xyxy,xzxz,yzyz,yyxx,zzxx,zzyy,xyyx,xzzx,yxxy,yzzy,zxxz,zyyz):
     result=(3*((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36))+(2*(((float(xyxy))/36)+((float(xzxz))/36)+((float(yzyz))/36)+((float(yyxx))/36)+((float(zzxx))/36)+((float(zzyy))/36)))+(((float(xyyx))/36)+((float(xzzx))/36)+((float(yxxy))/36)+((float(yzzy))/36)+((float(zxxz))/36)+((float(zyyz))/36))
     return result
+#Gamma general kerr t function
 def gammamathKerrt(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/6)+((float(yyyy))/6)+((float(zzzz))/6)+(((float(xxyy))/6))+(((float(yyxx))/6))+(((float(xxzz))/6))+(((float(zzxx))/6))+((float(yyzz))/6)+((float(zzyy))/6))/5
     return result
+#Gamma general kerr b function
 def gammamathKerrb(xxxx,yyyy,zzzz,xxyy,yyxx,xxzz,zzxx,yyzz,zzyy):
     result=(((float(xxxx))/36)+((float(yyyy))/36)+((float(zzzz))/36)+(((float(xxyy))/36))+(((float(yyxx))/36))+(((float(xxzz))/36))+(((float(zzxx))/36))+((float(yyzz))/36)+((float(zzyy))/36))/5
     return result
+#Gamma 0000 function
 def Gamma0000(list,name,convention,unit,components=False):
     gamma0000=[]
     for i, elem in enumerate(list):
@@ -415,6 +425,7 @@ def Gamma0000(list,name,convention,unit,components=False):
                         gamma0000.append(lined_component)
     return gamma0000
 
+#Gamma ww00 function
 def Gammaww00(list,name,convention,unit,components=False):
     gammaww00=[]
     for i, elem in enumerate(list):
@@ -444,6 +455,7 @@ def Gammaww00(list,name,convention,unit,components=False):
                         gammaww00.append(lined_component)
     return gammaww00
 
+#Gamma 2www0 function
 def Gamma2www0(list,name,convention,unit,components=False):
     gamma2www0=[]
     for i, elem in enumerate(list):

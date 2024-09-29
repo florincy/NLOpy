@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+Alpha(0;0):,SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(Alpha)(au),320.92333333333335,,
+xx (au),0.318100E+03,,
+yy (au),0.129663E+03,,
+zz (au),0.515007E+03,,
+Alpha(0;0):,SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
+Tot(Alpha)(au),320.92333333333335,,
+xx (au),0.318100E+03,,
+yy (au),0.129663E+03,,
+zz (au),0.515007E+03,,
+Alpha(0;0):,A7_property_B3LYP_def2-TZVP_solvent.log,Input Orientation, 
+Tot(Alpha)(au),1237.68,,
+xx (au),0.117085E+04,,
+yy (au),0.105995E+04,,
+zz (au),0.148224E+04,,
+>>>>>>> bdb1cdc (NLO organized)
 Alpha(0;0):,ferro_pbe0_polar.log,Input Orientation, 
 Tot(Alpha)(au),120.28399999999999,,
 xx (au),0.114332E+03,,

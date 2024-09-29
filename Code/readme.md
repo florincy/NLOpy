@@ -36,11 +36,14 @@ The NLO (Nonlinear Optics) Data Application is a Python GUI (Graphical User Inte
 git clone https://github.com/florincy/NLO.git
 '''
 
+<<<<<<< HEAD
 #Install the required dependencies:
 
 '''
 pip install -r math
 '''
+=======
+>>>>>>> bdb1cdc (NLO organized)
 ##Usage
 Run the application by executing the following command:
 
@@ -63,7 +66,11 @@ python main.py
 ##Dependencies
 -Python 3.x
 -tkinter
+<<<<<<< HEAD
 -NLO_Functions (custom module for processing NLO data)
+=======
+-PIL
+>>>>>>> bdb1cdc (NLO organized)
 
 ##Contributing
 Contributions are welcome! If you encounter any bugs or have suggestions for improvements, please open an issue or submit a pull request.
