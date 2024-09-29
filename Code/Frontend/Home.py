@@ -12,7 +12,11 @@ class Home:
         self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
 
         # Create a label for the title
+<<<<<<< HEAD
         title_label = tk.Label(self.main_frame, text="Welcome to NLOpy!", font=("Calibri", 24), bg="#E6E6FA")
+=======
+        title_label = tk.Label(self.main_frame, text="Welcome to NLOpy!", font=("Calibri", 24, "italic"), bg="#E6E6FA")
+>>>>>>> origin/master
         title_label.pack(pady=(20, 10))  
 
         # Create a label for the description
@@ -32,10 +36,17 @@ class Home:
         
         # Load and display imagees
         img1 = Image.open(nqtcm_path)  # Replace "your_image_file_path.jpg" with the path to your image file
+<<<<<<< HEAD
         img1 = img1.resize((250, 100), Image.LANCZOS)  # Resize the image as needed
         photo1 = ImageTk.PhotoImage(img1)
         img2 = Image.open(nlopy_path)  # Replace "your_image_file_path.jpg" with the path to your image file
         img2 = img2.resize((170, 100), Image.LANCZOS)  # Resize the image as needed
+=======
+        img1 = img1.resize((250, 100), Image.ANTIALIAS)  # Resize the image as needed
+        photo1 = ImageTk.PhotoImage(img1)
+        img2 = Image.open(nlopy_path)  # Replace "your_image_file_path.jpg" with the path to your image file
+        img2 = img2.resize((170, 100), Image.ANTIALIAS)  # Resize the image as needed
+>>>>>>> origin/master
         photo2 = ImageTk.PhotoImage(img2)
         image1_label = tk.Label(self.photo_frame, image=photo1)
         image1_label.image = photo1  # Keep a reference to the image to prevent garbage collection

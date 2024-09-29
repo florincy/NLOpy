@@ -4,8 +4,11 @@ from Frontend.DataAnalysis import DataAnalysis
 from Frontend.Home import Home
 from Frontend.InputBuilder import InputBuilder
 import os
+<<<<<<< HEAD
 from tkinter import font
 from tkinter import Frame
+=======
+>>>>>>> origin/master
 
 #Creating GUI window
 root = tk.Tk()
@@ -77,10 +80,17 @@ def input_builder_function():
     input_builder_app=InputBuilder(root)
     
 # Define the icons to be shown and resize them
+<<<<<<< HEAD
 home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))
 data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))
 input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))
 exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))
+=======
+home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))
+data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))
+input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))
+exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))
+>>>>>>> origin/master
 
 root.update()  # Update the root window for the width to get updated
 frame = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())

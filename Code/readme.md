@@ -37,6 +37,7 @@ git clone https://github.com/florincy/NLO.git
 '''
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Install the required dependencies:
 
 '''
@@ -44,6 +45,8 @@ pip install -r math
 '''
 =======
 >>>>>>> bdb1cdc (NLO organized)
+=======
+>>>>>>> origin/master
 ##Usage
 Run the application by executing the following command:
 
@@ -67,10 +70,14 @@ python main.py
 -Python 3.x
 -tkinter
 <<<<<<< HEAD
+<<<<<<< HEAD
 -NLO_Functions (custom module for processing NLO data)
 =======
 -PIL
 >>>>>>> bdb1cdc (NLO organized)
+=======
+-PIL
+>>>>>>> origin/master
 
 ##Contributing
 Contributions are welcome! If you encounter any bugs or have suggestions for improvements, please open an issue or submit a pull request.

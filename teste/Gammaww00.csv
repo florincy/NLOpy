@@ -1,5 +1,6 @@
 "Gamma(-w;w,0,0) w=  432.0nm:",ferro_pbe0_polar.log,Input Orientation, 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tot(Gamma)(esu)(T),1262.4564003333332,,
 xxxx (esu),0.163099E+02,,
 yyyy (esu),0.364819E+02,,
@@ -11,6 +12,8 @@ zzxx (esu),0.471014E+01,,
 yyzz (esu),0.999445E+01,,
 zzyy (esu),0.903464E+01,,
 =======
+=======
+>>>>>>> origin/master
 Tot(Gamma)(au)(T),7400.421666666666,,
 xxxx (au),0.323821E+05,,
 yyyy (au),0.724321E+05,,
@@ -21,4 +24,7 @@ xxzz (au),0.961811E+04,,
 zzxx (au),0.935164E+04,,
 yyzz (au),0.198433E+05,,
 zzyy (au),0.179376E+05,,
+<<<<<<< HEAD
 >>>>>>> bdb1cdc (NLO organized)
+=======
+>>>>>>> origin/master

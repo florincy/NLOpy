@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "label": "tkinter",
         "kind": 6,
         "isExtraImport": true,
@@ -55,6 +56,32 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
+=======
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+>>>>>>> origin/master
         "documentation": {}
     },
     {
@@ -76,6 +103,7 @@
         "documentation": {}
     },
     {
+<<<<<<< HEAD
         "label": "collect_limits",
         "importPath": "Backend.NLO_Functions",
         "description": "Backend.NLO_Functions",
@@ -797,6 +825,337 @@
         "description": "Main",
         "peekOfCode": "exit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame\nhome_b.grid(row=0, column=0, pady=10)\ndata_analysis_b.grid(row=1, column=0, pady=50)\ninput_builder_b.grid(row=2, column=0)\nexit_b.grid(row=5, column=0, pady=50)\n# Bind to the frame, if entered or left\nframe.bind('<Enter>', lambda e: expand())\nframe.bind('<Leave>', lambda e: contract())\n# So that it does not depend on the widgets inside the frame",
         "detail": "Main",
+=======
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "pkgutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pkgutil",
+        "description": "pkgutil",
+        "detail": "pkgutil",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "b85decode",
+        "importPath": "base64",
+        "description": "base64",
+        "isExtraImport": true,
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "searchAndCreate",
+        "kind": 2,
+        "importPath": "NLO.MakeATableForNLO",
+        "description": "NLO.MakeATableForNLO",
+        "peekOfCode": "def searchAndCreate(keyword1,keyword2):\n    root=[0.0, 0.0]\n    p=np.array([[False, False, False] ,[False, False, False]], dtype=bool)\n    pv=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]\n    AddTot=[False, False]\n    for row in inf:\n        col=[\"Tot prop\"] \n        col2=[\"Tot prop\"] \n        row= row.split(\"   \")\n        row = [x for x in row if x != '']",
+        "detail": "NLO.MakeATableForNLO",
+        "documentation": {}
+    },
+    {
+        "label": "ResultsPath",
+        "kind": 5,
+        "importPath": "NLO.MakeATableForNLO",
+        "description": "NLO.MakeATableForNLO",
+        "peekOfCode": "ResultsPath = sys.argv[1]\nprint(ResultsPath)\ntitle = ['Campos e metodos', 'tensor', 'au','esu', 'outra']\nreadFile=pd.read_csv(ResultsPath, error_bad_lines=False, header=None, delimiter=\":\")\nreadFile.to_csv('Results.csv', index = None)\nwith open('Results.csv') as inf, open('Results2.csv', 'w') as ouf:\n    reader = csv.reader(inf)\n    writer = csv.writer(ouf)\n    searchAndCreate(\"Beta(-2w,w,w)\", \"Beta(-w,w,0)\")\n    ouf.close()",
+        "detail": "NLO.MakeATableForNLO",
+        "documentation": {}
+    },
+    {
+        "label": "title",
+        "kind": 5,
+        "importPath": "NLO.MakeATableForNLO",
+        "description": "NLO.MakeATableForNLO",
+        "peekOfCode": "title = ['Campos e metodos', 'tensor', 'au','esu', 'outra']\nreadFile=pd.read_csv(ResultsPath, error_bad_lines=False, header=None, delimiter=\":\")\nreadFile.to_csv('Results.csv', index = None)\nwith open('Results.csv') as inf, open('Results2.csv', 'w') as ouf:\n    reader = csv.reader(inf)\n    writer = csv.writer(ouf)\n    searchAndCreate(\"Beta(-2w,w,w)\", \"Beta(-w,w,0)\")\n    ouf.close()",
+        "detail": "NLO.MakeATableForNLO",
+        "documentation": {}
+    },
+    {
+        "label": "proc",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "proc = subprocess.run([\"./GetShielding2.0.sh\"],\n                      shell=True, capture_output=True)\nres = proc.stdout\nres = str(res)\nprint(res)\nsres = res.split(\"\\\\n\")\nsres = sres[1:-1]\nsres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "res = proc.stdout\nres = str(res)\nprint(res)\nsres = res.split(\"\\\\n\")\nsres = sres[1:-1]\nsres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "res = str(res)\nprint(res)\nsres = res.split(\"\\\\n\")\nsres = sres[1:-1]\nsres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "sres",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "sres = res.split(\"\\\\n\")\nsres = sres[1:-1]\nsres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "sres",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "sres = sres[1:-1]\nsres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "sres",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "sres = [i.replace('isotropic =', '') for i in sres]\ntitle = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):\n            try:",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "title",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "title = ['Método', \"Blindagem\"]\nn = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):\n            try:\n              s = float(row)",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "n",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "n = int((len(sres))/2)\nprint(n)\nsres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):\n            try:\n              s = float(row)\n              #print(s)",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "sres",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "sres = np.array(sres)\nmet = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):\n            try:\n              s = float(row)\n              #print(s)\n            except Exception:\n              print(\"lala\")",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "met",
+        "kind": 5,
+        "importPath": "Testes.MakeATable",
+        "description": "Testes.MakeATable",
+        "peekOfCode": "met = np.split(sres, n)\nfor array in met:\n    for i, row in enumerate(array):\n        for j, value in enumerate(row):\n            try:\n              s = float(row)\n              #print(s)\n            except Exception:\n              print(\"lala\")\n              #pass # do job to handle: Exception occurred while converting to int",
+        "detail": "Testes.MakeATable",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_root",
+        "kind": 2,
+        "importPath": "Testes.OptimizedChatGPTMTNLO",
+        "description": "Testes.OptimizedChatGPTMTNLO",
+        "peekOfCode": "def calculate_root(prop_values):\n    return math.sqrt(sum(prop_values))\ndef search_and_create(keywords, writer, reader):\n    prop_values = [[False, False, False], [False, False, False]]\n    for i, row in enumerate(reader):\n        row = [x.strip() for x in row]\n        # Check for Tot prop columns\n        for j, prop_value in enumerate(prop_values):\n            if prop_value[2]:\n                prop_value[2] = (float(row[3]) / 3) ** 2",
+        "detail": "Testes.OptimizedChatGPTMTNLO",
+        "documentation": {}
+    },
+    {
+        "label": "search_and_create",
+        "kind": 2,
+        "importPath": "Testes.OptimizedChatGPTMTNLO",
+        "description": "Testes.OptimizedChatGPTMTNLO",
+        "peekOfCode": "def search_and_create(keywords, writer, reader):\n    prop_values = [[False, False, False], [False, False, False]]\n    for i, row in enumerate(reader):\n        row = [x.strip() for x in row]\n        # Check for Tot prop columns\n        for j, prop_value in enumerate(prop_values):\n            if prop_value[2]:\n                prop_value[2] = (float(row[3]) / 3) ** 2\n                tot_prop = calculate_root(prop_value)\n                writer.writerow([\"Tot prop\", tot_prop])",
+        "detail": "Testes.OptimizedChatGPTMTNLO",
+        "documentation": {}
+    },
+    {
+        "label": "ResultsPath",
+        "kind": 5,
+        "importPath": "Testes.OptimizedChatGPTMTNLO",
+        "description": "Testes.OptimizedChatGPTMTNLO",
+        "peekOfCode": "ResultsPath = sys.argv[1]\nprint(ResultsPath)\ntitle = ['Campos e metodos', 'tensor', 'au','esu', 'outra']\nreadFile=pd.read_csv(ResultsPath, error_bad_lines=False, header=None, delimiter=\":\", usecols=[0, 1, 2, 3])\nreadFile.to_csv('Results.csv', index = None)\nwith open('Results.csv') as inf, open('Results2.csv', 'w') as ouf:\n    reader = csv.reader(inf)\n    writer = csv.writer(ouf)\n    dw = csv.DictWriter(ouf, delimiter=',', \n                        fieldnames=title)",
+        "detail": "Testes.OptimizedChatGPTMTNLO",
+        "documentation": {}
+    },
+    {
+        "label": "title",
+        "kind": 5,
+        "importPath": "Testes.OptimizedChatGPTMTNLO",
+        "description": "Testes.OptimizedChatGPTMTNLO",
+        "peekOfCode": "title = ['Campos e metodos', 'tensor', 'au','esu', 'outra']\nreadFile=pd.read_csv(ResultsPath, error_bad_lines=False, header=None, delimiter=\":\", usecols=[0, 1, 2, 3])\nreadFile.to_csv('Results.csv', index = None)\nwith open('Results.csv') as inf, open('Results2.csv', 'w') as ouf:\n    reader = csv.reader(inf)\n    writer = csv.writer(ouf)\n    dw = csv.DictWriter(ouf, delimiter=',', \n                        fieldnames=title)\n    dw.writeheader()\n    keywords=[\"Beta(-2w,w,w)\",\"Beta(-w,w,0)\"]",
+        "detail": "Testes.OptimizedChatGPTMTNLO",
+        "documentation": {}
+    },
+    {
+        "label": "include_setuptools",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def include_setuptools(args):\n    \"\"\"\n    Install setuptools only if absent and not excluded.\n    \"\"\"\n    cli = not args.no_setuptools\n    env = not os.environ.get(\"PIP_NO_SETUPTOOLS\")\n    absent = not importlib.util.find_spec(\"setuptools\")\n    return cli and env and absent\ndef include_wheel(args):\n    \"\"\"",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "include_wheel",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def include_wheel(args):\n    \"\"\"\n    Install wheel only if absent and not excluded.\n    \"\"\"\n    cli = not args.no_wheel\n    env = not os.environ.get(\"PIP_NO_WHEEL\")\n    absent = not importlib.util.find_spec(\"wheel\")\n    return cli and env and absent\ndef determine_pip_install_arguments():\n    pre_parser = argparse.ArgumentParser()",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "determine_pip_install_arguments",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def determine_pip_install_arguments():\n    pre_parser = argparse.ArgumentParser()\n    pre_parser.add_argument(\"--no-setuptools\", action=\"store_true\")\n    pre_parser.add_argument(\"--no-wheel\", action=\"store_true\")\n    pre, args = pre_parser.parse_known_args()\n    args.append(\"pip\")\n    if include_setuptools(pre):\n        args.append(\"setuptools\")\n    if include_wheel(pre):\n        args.append(\"wheel\")",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "monkeypatch_for_cert",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def monkeypatch_for_cert(tmpdir):\n    \"\"\"Patches `pip install` to provide default certificate with the lowest priority.\n    This ensures that the bundled certificates are used unless the user specifies a\n    custom cert via any of pip's option passing mechanisms (config, env-var, CLI).\n    A monkeypatch is the easiest way to achieve this, without messing too much with\n    the rest of pip's internals.\n    \"\"\"\n    from pip._internal.commands.install import InstallCommand\n    # We want to be using the internal certificates.\n    cert_path = os.path.join(tmpdir, \"cacert.pem\")",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "bootstrap",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def bootstrap(tmpdir):\n    monkeypatch_for_cert(tmpdir)\n    # Execute the included pip and use it to install the latest pip and\n    # setuptools from PyPI\n    from pip._internal.cli.main import main as pip_entry_point\n    args = determine_pip_install_arguments()\n    sys.exit(pip_entry_point(args))\ndef main():\n    tmpdir = None\n    try:",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "def main():\n    tmpdir = None\n    try:\n        # Create a temporary working directory\n        tmpdir = tempfile.mkdtemp()\n        # Unpack the zipfile into the temporary directory\n        pip_zip = os.path.join(tmpdir, \"pip.zip\")\n        with open(pip_zip, \"wb\") as fp:\n            fp.write(b85decode(DATA.replace(b\"\\n\", b\"\")))\n        # Add the zipfile to sys.path so that we can import it",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "this_python",
+        "kind": 5,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "this_python = sys.version_info[:2]\nmin_version = (3, 7)\nif this_python < min_version:\n    message_parts = [\n        \"This script does not work on Python {}.{}\".format(*this_python),\n        \"The minimum supported Python version is {}.{}.\".format(*min_version),\n        \"Please use https://bootstrap.pypa.io/pip/{}.{}/get-pip.py instead.\".format(*this_python),\n    ]\n    print(\"ERROR: \" + \" \".join(message_parts))\n    sys.exit(1)",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "min_version",
+        "kind": 5,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "min_version = (3, 7)\nif this_python < min_version:\n    message_parts = [\n        \"This script does not work on Python {}.{}\".format(*this_python),\n        \"The minimum supported Python version is {}.{}.\".format(*min_version),\n        \"Please use https://bootstrap.pypa.io/pip/{}.{}/get-pip.py instead.\".format(*this_python),\n    ]\n    print(\"ERROR: \" + \" \".join(message_parts))\n    sys.exit(1)\nimport os.path",
+        "detail": "get-pip",
+        "documentation": {}
+    },
+    {
+        "label": "DATA",
+        "kind": 5,
+        "importPath": "get-pip",
+        "description": "get-pip",
+        "peekOfCode": "DATA = b\"\"\"\nP)h>@6aWAK2mp9ik5)EXTfg@J003hF000jF003}la4%n9X>MtBUtcb8c|A}~OT<77z0a=*z39R^gCC$\n46ubz6s0VM$QfAw<4YV^ulDhQYJKLoj0wIr=m&a>4j-Yd*&;gApvce~cZs9vA#oz~Hs_G9}@={gs0>$\n0Ey)BF}4Yn|P3fG=HDKGrp>3k>3`+a7A#ef^Qc?Aku8pu@?#cxjnxqUdn$oUH1em)?EVTKWXP-r8=Bn\nXEY5~VAFcnna-AaOvDnklJRvk1Ots&5)PzlR3Z(;!<AMCetMl+Jae{dBN(99^1|cUjYs$b{k^AD*A=>\nTH?qDU!^v)#}bpnk6j;<vGQS%9>SmWS<i9*$Sgh94_FJ%*Ol!P)h>@6aWAK2mp9ik5(fa<G*bJ006E8\n000jF003}la4%n9ZDDC{Utcb8d0kV%Zk#X>z4H|#a#(gnNDl3xQMXd1UUKOns+2=hAs2?lTCkCAmTbS\niZw%}v;e_osZ{EC_(fwduAnOx7|M~OfcT&!1bMQ%WLr>h>6Vqlx%G6Yi&anZ)x+4%&YsXcv?o5rdJ%y\nI3(ar|~$ej^x8zC+R722G1LxW>41i_LzSzXiUg=gix@F7$i8uUPw?R%v5RJB|kb0lK^#~?F4sIJSY)5\ns^{d~2s1fm6!{&nJ82nv|#E99nDWwvT*Y7s79ezH0k@|3~s=X_~{5;=rMr>TJ7xNC@AGDh4}b_gk^$v",
+        "detail": "get-pip",
+>>>>>>> origin/master
         "documentation": {}
     }
 ]

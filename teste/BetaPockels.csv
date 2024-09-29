@@ -1,5 +1,6 @@
 "Beta(-w;w,0) w= 1907.0nm:",SQ01_Polar_Cam-B3LYP_6-31+G_d-p_IEF-PCM.log,Input Orientation, 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tot(Beta)(esu)(T),49.41461039532123,,
 x (esu),-0.543854E+02,,
 y (esu),-0.252810E+01,,
@@ -15,6 +16,8 @@ x (esu),0.345546E+03,,
 y (esu),-0.107817E+02,,
 z (esu),-0.133900E+04,,
 =======
+=======
+>>>>>>> origin/master
 Tot(Beta)(au)(T),5719.796318418701,,
 x (au),-0.629517E+04,,
 y (au),-0.292631E+03,,
@@ -29,4 +32,7 @@ Tot(Beta)(au)(T),0.04492033394423275,,
 x (au),-0.231924E+00,,
 y (au),0.109559E+00,,
 z (au),0.827659E-01,,
+<<<<<<< HEAD
 >>>>>>> bdb1cdc (NLO organized)
+=======
+>>>>>>> origin/master
