@@ -525,7 +525,7 @@
         "kind": 6,
         "importPath": "Code.Frontend.Home",
         "description": "Code.Frontend.Home",
-        "peekOfCode": "class Home:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        # Create a main frame\n        self.main_frame = tk.Frame(master)  # Use a light purple background\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a label for the title\n<<<<<<< HEAD\n        title_label = tk.Label(self.main_frame, text=\"Welcome to NLOpy!\", font=(\"Calibri\", 24), bg=\"#E6E6FA\")",
+        "peekOfCode": "class Home:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"NLO data app\")\n        # Create a main frame\n        self.main_frame = tk.Frame(master)  # Use a light purple background\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Create a label for the title\n        title_label = tk.Label(self.main_frame, text=\"Welcome to NLOpy!\", font=(\"Calibri\", 24), bg=\"#E6E6FA\")\n        title_label.pack(pady=(20, 10))  ",
         "detail": "Code.Frontend.Home",
         "documentation": {}
     },
@@ -597,7 +597,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\n<<<<<<< HEAD",
+        "peekOfCode": "def data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -606,7 +606,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\n<<<<<<< HEAD\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))",
+        "peekOfCode": "def home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -615,7 +615,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\n<<<<<<< HEAD\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\n=======\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))",
+        "peekOfCode": "def input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -723,7 +723,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\n=======\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master",
+        "peekOfCode": "home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -732,7 +732,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\n=======\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated",
+        "peekOfCode": "data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -741,7 +741,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\n=======\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())",
+        "peekOfCode": "input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -750,43 +750,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\n=======\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)",
-        "detail": "Code.Main",
-        "documentation": {}
-    },
-    {
-        "label": "home",
-        "kind": 5,
-        "importPath": "Code.Main",
-        "description": "Code.Main",
-        "peekOfCode": "home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.ANTIALIAS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Main",
-        "documentation": {}
-    },
-    {
-        "label": "data_analysis",
-        "kind": 5,
-        "importPath": "Code.Main",
-        "description": "Code.Main",
-        "peekOfCode": "data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.ANTIALIAS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Main",
-        "documentation": {}
-    },
-    {
-        "label": "input_builder",
-        "kind": 5,
-        "importPath": "Code.Main",
-        "description": "Code.Main",
-        "peekOfCode": "input_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.ANTIALIAS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)",
-        "detail": "Code.Main",
-        "documentation": {}
-    },
-    {
-        "label": "exit",
-        "kind": 5,
-        "importPath": "Code.Main",
-        "description": "Code.Main",
-        "peekOfCode": "exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.ANTIALIAS))\n>>>>>>> origin/master\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)",
+        "peekOfCode": "exit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))\nroot.update()  # Update the root window for the width to get updated\nframe = tk.Frame(root, bg='#7C98B3', width=50, height=root.winfo_height())\nframe.grid(row=0, column=0)\n# Make the buttons with the icons to be shown\nhome_b = tk.Button(frame, image=home, bg='#7C98B3', relief='flat', command=home_function, borderwidth=0, highlightthickness=0)\ndata_analysis_b = tk.Button(frame, image=data_analysis, bg='#7C98B3', relief='flat', command=data_analysis_application, borderwidth=0, highlightthickness=0)\ninput_builder_b = tk.Button(frame, image=input_builder, bg='#7C98B3', relief='flat', command=input_builder_function,borderwidth=0, highlightthickness=0)\nexit_b = tk.Button(frame, image=exit, bg='#7C98B3', relief='flat', command=quit_app, borderwidth=0, highlightthickness=0)\n# Put them on the frame",
         "detail": "Code.Main",
         "documentation": {}
     },

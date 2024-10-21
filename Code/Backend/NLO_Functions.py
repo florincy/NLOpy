@@ -111,12 +111,8 @@ def collect(file):
             if any(keyword in line.split() for keyword in Beta_ok):  
                 lines.append(line.strip())  
             if "Electric dipole moment" in line:
-<<<<<<< HEAD
                 lines.append(line.split("(")[0]) 
                 print(line.split("(")[0])
-=======
-                lines.append(line.strip()) 
->>>>>>> origin/master
             if any(keyword in line for keyword in Properties) and a not in line:
                 a = "nan"   
     for line in file_lines:
