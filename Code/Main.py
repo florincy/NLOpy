@@ -16,6 +16,7 @@ min_w = 45  # Minimum width of the frame
 max_w = 150  # Maximum width of the frame
 cur_width = min_w  # Current width of the frame
 expanded = False  # Check if it is completely expanded
+stop = False
 
 #Paths to icon images
 current_dir = os.path.dirname(__file__)
@@ -24,28 +25,32 @@ data_path = os.path.join(current_dir, 'keys.png')
 input_path = os.path.join(current_dir, 'input.png')
 exit_path = os.path.join(current_dir,'close.png')
 
-#Expand the GUI window 
+#Expand the GUI window
 def expand():
-    global cur_width, expanded
+    global cur_width, expanded, stop
     cur_width += 10  # Increase the width by 10
     rep = root.after(5, expand)  # Repeat this function every 5 ms
+    if stop: # conditional create to stop expansion when contract function is called.
+        root.after_cancel(rep)
     frame.config(width=cur_width)  # Change the width to the new increased width
     if cur_width >= max_w:  # If width is greater than maximum width
         expanded = True  # Frame is expanded
         root.after_cancel(rep)  # Stop repeating the function
         fill()
-        
-#Contract the GUI window 
+
+#Contract the GUI window
 def contract():
-    global cur_width, expanded
+    global cur_width, expanded, stop
+    stop = True
     cur_width -= 10  # Reduce the width by 10
     rep = root.after(5, contract)  # Call this function every 5 ms
     frame.config(width=cur_width)  # Change the width to the new reduced width
     if cur_width <= min_w:  # If it is back to normal width
         expanded = False  # Frame is not expanded
         root.after_cancel(rep)  # Stop repeating the function
+        stop = False
         fill()
-        
+
 #Filling side menu with icons and buttons
 def fill():
     if expanded:  # If the frame is expanded
@@ -64,19 +69,19 @@ def fill():
 #Quit the GUI application
 def quit_app():
     root.destroy()
-    
+
 #NLO data analysis redirectioning function, instatiate object from class 
-def data_analysis_application(): 
+def data_analysis_application():
     data_analysis_app = DataAnalysis(root)
-    
+
 #Home redirectioning function
 def home_function():
-    home_window = Home(root)  
+    home_window = Home(root)
 
 #Input bulding redirectioning function
 def input_builder_function():
     input_builder_app=InputBuilder(root)
-    
+
 # Define the icons to be shown and resize them
 home = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))
 data_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))
