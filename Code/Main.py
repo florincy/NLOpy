@@ -44,7 +44,8 @@ def contract():
     stop = True
     cur_width -= 10  # Reduce the width by 10
     rep = root.after(5, contract)  # Call this function every 5 ms
-    frame.config(width=cur_width)  # Change the width to the new reduced width
+    if cur_width >= min_w: # Prevent error when contract function is called when cur_width = min_w
+        frame.config(width=cur_width)  # Change the width to the new reduced width
     if cur_width <= min_w:  # If it is back to normal width
         expanded = False  # Frame is not expanded
         root.after_cancel(rep)  # Stop repeating the function
