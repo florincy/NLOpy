@@ -7,12 +7,37 @@ import math
 #Function for collecting lines numbers containing keywords 
 def collect_limits(log_file):
     line1, line2 = None, None
+    InputLine, DipoleLine = 0, 0
+
+    # Find the Input orientation and Standard orientation lines
     for num, line in enumerate(log_file, 1):
-        if "Electric dipole moment (input orientation):" in line:
+        if "Input orientation" in line:
+            InputLine = num
+        if "Standard orientation" in line:
+            DipoleLine = num
+
+    print(f"Input orientation line: {InputLine}, Standard orientation line: {DipoleLine}")
+    
+    # Reset log_file 
+    if hasattr(log_file, "seek"):
+       log_file.seek(0)
+        
+    # Check for Dipole moments after identifying the orientation lines
+    for num, line in enumerate(log_file, 1):
+        if InputLine > 0 and (
+            "Dipole moment (field-independent basis, Debye)" in line or
+            "Electric dipole moment (input orientation):" in line
+        ) :
             line1 = num
-        if "Electric dipole moment (dipole orientation):" in line:
+
+        if DipoleLine > 0 and (
+            "Dipole moment (field-independent basis, Debye)" in line or
+            "Electric dipole moment (dipole orientation):" in line
+        ):
             line2 = num
+
     return line1, line2
+
 
 #Function for reading and appending lines from .log file
 def read_file_append(log_file_path, start, end=None):
@@ -45,25 +70,24 @@ def read_file(log_file_path, start, end=None):
             for i in range(end - start + 1):
                 lines.append(next(log_file).strip())
     return lines
-
+#Defining as global variables to acess from all functions
+Properties = ["Alpha(-w;w)", "Alpha(0;0):", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)","Electric dipole moment"]
+Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
+Beta_HRS={"Beta(-2w;w,w)","xxx","yyy","zzz","xyx","xzx","yyx","yzy","zzx","zzy","xyy","xzz","yxx","yzz","zxx","zyy","xyz","xzy","zxy","zyx","yxz","yzx"}
+Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}
+Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yyxx","zzxx","zzyy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
+Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz", "Gamma(0;0,0,0):"}
+Gamma_kerr ={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","yyxx", "zzxx", "zzyy","Gamma(-w;w,0,0)"}
 #Function to colleting tensor values and setting then to cleaned list
 def collect(file):
     beta_lines=[]
     trash = {"(au)","_|_","Unable", "(z)", "x,y,z", "*", "job", "cpu", "Elapsed", "time", "Dipole polarizability", "First dipole hyperpolarizability", "Second dipole hyperpolarizability", "||"}
     #trash_gamma_efish={"yxxx","zxxx","zyxx","yyyx","xzxx","yzxx","zzyx","zzzx","xxxy","zxxy","yyxy","zyxy","xyyy",""}
-    Properties = ["Alpha(-w;w)", "Alpha(0;0):", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Gamma(-w;w,0,0)", "Gamma(0;0,0,0):","Gamma(-2w;w,w,0)","Electric dipole moment"]
-    Alpha_ok = {"xx", "yy", "zz", "Alpha(-w;w)", "Alpha(0;0):"}
-    Beta_HRS={"Beta(-2w;w,w)","xxx","yyy","zzz","xyx","xzx","yyx","yzy","zzx","zzy","xyy","xzz","yxx","yzz","zxx","zyy","xyz","xzy","zxy","zyx","yxz","yzx"}
-    Beta_ok = {"x", "y", "z", "Beta(0;0,0):", "Beta(-w;w,0)", "Beta(-2w;w,w)","Electric dipole moment"}
-    Gamma_EFISH={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz","yyxx","zzxx","zzyy","xyyx","xzzx","yxxy","yzzy","zxxz","zyyz","Gamma(-2w;w,w,0)"}
-    Gamma_ok = {"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","xyxy", "xzxz", "yzyz", "Gamma(0;0,0,0):"}
-    Gamma_kerr ={"xxyy", "xxzz", "yyzz", "xxxx","yyyy","zzzz","yyxx", "zzxx", "zzyy","Gamma(-w;w,0,0)"}
     # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy
     file_lines = file.readlines()
     in_block=False
     lines = []  # Initialize the lines list
     a = "nan"
-
     for line in file_lines:
         if "Gamma(-2w;w,w,0)" in line:
             a = "Gamma(-2w;w,w,0)"
@@ -74,7 +98,6 @@ def collect(file):
                 lines.append(line.strip())  
             if any(keyword in line for keyword in Properties) and "Gamma(-2w;w,w,0)" not in line:
                 a = "nan"  
-
     a = "nan"
     for line in file_lines:
         if "Gamma(-w;w,0,0)" in line:
@@ -137,10 +160,39 @@ def collect(file):
                 beta_lines.append(line.strip())  
             if any(keyword in line for keyword in Properties) and "Beta(-2w;w,w)" not in line:
                 a = "nan" 
+    return lines,beta_lines
+def collect_09_A02(file):
+    file_lines = file
+    trash = ['Charge=', "Dipole moment (field-independent basis, Debye)", "Traceless"]
+    lines = []
+    Gamma_EFISH_upper = [text.upper() for text in Gamma_EFISH]
+    properties = ["Dipole moment", "Quadrupole moment", "Hexadecapole moment"]
+    a = "nan"
+
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Hexadecapole" in fragment:
+                a = "Gamma(-2w;w,w,0)"
+
+            # Process fragments if 'a' is the specific value
+            if a == "Gamma(-2w;w,w,0)":
+                # Check if the fragment matches any keyword in Gamma_EFISH_upper
+                if any(keyword in fragment for keyword in Gamma_EFISH_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lines.append(f"{fragment} {line.split()[index + 1]}")
+
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Hexadecapole" not in line:
+                    a = "nan"
+
+    return lines
 
     
-    return lines,beta_lines
-
 #function to change exponent pattern and improving tensors lists
 def calc(file, name, comment):
     lines = []

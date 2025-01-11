@@ -33,6 +33,14 @@
         "documentation": {}
     },
     {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
         "label": "font",
         "importPath": "tkinter",
         "description": "tkinter",
@@ -196,6 +204,134 @@
         "documentation": {}
     },
     {
+        "label": "collect_limits",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "collect",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "read_file",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "calc",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "AlphaStatic",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Alphaww",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "BetaStaticTot",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "BetaPockelsTot",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "BetaEFISHTot",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "BetaHRSCase",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "EletricDipoleTot",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Gamma0000",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Gammaww00",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Gamma2www0",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "read_file_append",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "collect_09_A02",
+        "importPath": "Backend.NLO_Functions",
+        "description": "Backend.NLO_Functions",
+        "isExtraImport": true,
+        "detail": "Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
         "label": "Image",
         "importPath": "PIL",
         "description": "PIL",
@@ -282,7 +418,7 @@
         "kind": 2,
         "importPath": "Code.Backend.NLO_Functions",
         "description": "Code.Backend.NLO_Functions",
-        "peekOfCode": "def collect_limits(log_file):\n    line1, line2 = None, None\n    for num, line in enumerate(log_file, 1):\n        if \"Electric dipole moment (input orientation):\" in line:\n            line1 = num\n        if \"Electric dipole moment (dipole orientation):\" in line:\n            line2 = num\n    return line1, line2\n#Function for reading and appending lines from .log file\ndef read_file_append(log_file_path, start, end=None):",
+        "peekOfCode": "def collect_limits(log_file):\n    line1, line2 = None, None\n    InputLine, DipoleLine = 0, 0\n    # Find the Input orientation and Standard orientation lines\n    for num, line in enumerate(log_file, 1):\n        if \"Input orientation\" in line:\n            InputLine = num\n        if \"Standard orientation\" in line:\n            DipoleLine = num\n    print(f\"Input orientation line: {InputLine}, Standard orientation line: {DipoleLine}\")",
         "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
@@ -309,7 +445,16 @@
         "kind": 2,
         "importPath": "Code.Backend.NLO_Functions",
         "description": "Code.Backend.NLO_Functions",
-        "peekOfCode": "def collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    Properties = [\"Alpha(-w;w)\", \"Alpha(0;0):\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Gamma(-w;w,0,0)\", \"Gamma(0;0,0,0):\",\"Gamma(-2w;w,w,0)\",\"Electric dipole moment\"]\n    Alpha_ok = {\"xx\", \"yy\", \"zz\", \"Alpha(-w;w)\", \"Alpha(0;0):\"}\n    Beta_HRS={\"Beta(-2w;w,w)\",\"xxx\",\"yyy\",\"zzz\",\"xyx\",\"xzx\",\"yyx\",\"yzy\",\"zzx\",\"zzy\",\"xyy\",\"xzz\",\"yxx\",\"yzz\",\"zxx\",\"zyy\",\"xyz\",\"xzy\",\"zxy\",\"zyx\",\"yxz\",\"yzx\"}\n    Beta_ok = {\"x\", \"y\", \"z\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Electric dipole moment\"}\n    Gamma_EFISH={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\",\"yyxx\",\"zzxx\",\"zzyy\",\"xyyx\",\"xzzx\",\"yxxy\",\"yzzy\",\"zxxz\",\"zyyz\",\"Gamma(-2w;w,w,0)\"}\n    Gamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}",
+        "peekOfCode": "def collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy\n    file_lines = file.readlines()\n    in_block=False\n    lines = []  # Initialize the lines list\n    a = \"nan\"\n    for line in file_lines:",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "collect_09_A02",
+        "kind": 2,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "def collect_09_A02(file):\n    file_lines = file\n    trash = ['Charge=', \"Dipole moment (field-independent basis, Debye)\", \"Traceless\"]\n    lines = []\n    Gamma_EFISH_upper = [text.upper() for text in Gamma_EFISH]\n    properties = [\"Dipole moment\", \"Quadrupole moment\", \"Hexadecapole moment\"]\n    a = \"nan\"\n    for line in file_lines:\n        # Skip lines containing any keywords in 'trash'\n        if any(keyword in line for keyword in trash):",
         "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
@@ -512,6 +657,42 @@
         "documentation": {}
     },
     {
+        "label": "Properties",
+        "kind": 5,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "Properties = [\"Alpha(-w;w)\", \"Alpha(0;0):\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Gamma(-w;w,0,0)\", \"Gamma(0;0,0,0):\",\"Gamma(-2w;w,w,0)\",\"Electric dipole moment\"]\nAlpha_ok = {\"xx\", \"yy\", \"zz\", \"Alpha(-w;w)\", \"Alpha(0;0):\"}\nBeta_HRS={\"Beta(-2w;w,w)\",\"xxx\",\"yyy\",\"zzz\",\"xyx\",\"xzx\",\"yyx\",\"yzy\",\"zzx\",\"zzy\",\"xyy\",\"xzz\",\"yxx\",\"yzz\",\"zxx\",\"zyy\",\"xyz\",\"xzy\",\"zxy\",\"zyx\",\"yxz\",\"yzx\"}\nBeta_ok = {\"x\", \"y\", \"z\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Electric dipole moment\"}\nGamma_EFISH={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\",\"yyxx\",\"zzxx\",\"zzyy\",\"xyyx\",\"xzzx\",\"yxxy\",\"yzzy\",\"zxxz\",\"zyyz\",\"Gamma(-2w;w,w,0)\"}\nGamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}\nGamma_kerr ={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"yyxx\", \"zzxx\", \"zzyy\",\"Gamma(-w;w,0,0)\"}\n#Function to colleting tensor values and setting then to cleaned list\ndef collect(file):\n    beta_lines=[]",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Alpha_ok",
+        "kind": 5,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "Alpha_ok = {\"xx\", \"yy\", \"zz\", \"Alpha(-w;w)\", \"Alpha(0;0):\"}\nBeta_HRS={\"Beta(-2w;w,w)\",\"xxx\",\"yyy\",\"zzz\",\"xyx\",\"xzx\",\"yyx\",\"yzy\",\"zzx\",\"zzy\",\"xyy\",\"xzz\",\"yxx\",\"yzz\",\"zxx\",\"zyy\",\"xyz\",\"xzy\",\"zxy\",\"zyx\",\"yxz\",\"yzx\"}\nBeta_ok = {\"x\", \"y\", \"z\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Electric dipole moment\"}\nGamma_EFISH={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\",\"yyxx\",\"zzxx\",\"zzyy\",\"xyyx\",\"xzzx\",\"yxxy\",\"yzzy\",\"zxxz\",\"zyyz\",\"Gamma(-2w;w,w,0)\"}\nGamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}\nGamma_kerr ={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"yyxx\", \"zzxx\", \"zzyy\",\"Gamma(-w;w,0,0)\"}\n#Function to colleting tensor values and setting then to cleaned list\ndef collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Beta_ok",
+        "kind": 5,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "Beta_ok = {\"x\", \"y\", \"z\", \"Beta(0;0,0):\", \"Beta(-w;w,0)\", \"Beta(-2w;w,w)\",\"Electric dipole moment\"}\nGamma_EFISH={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\",\"yyxx\",\"zzxx\",\"zzyy\",\"xyyx\",\"xzzx\",\"yxxy\",\"yzzy\",\"zxxz\",\"zyyz\",\"Gamma(-2w;w,w,0)\"}\nGamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}\nGamma_kerr ={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"yyxx\", \"zzxx\", \"zzyy\",\"Gamma(-w;w,0,0)\"}\n#Function to colleting tensor values and setting then to cleaned list\ndef collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
+        "label": "Gamma_ok",
+        "kind": 5,
+        "importPath": "Code.Backend.NLO_Functions",
+        "description": "Code.Backend.NLO_Functions",
+        "peekOfCode": "Gamma_ok = {\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"xyxy\", \"xzxz\", \"yzyz\", \"Gamma(0;0,0,0):\"}\nGamma_kerr ={\"xxyy\", \"xxzz\", \"yyzz\", \"xxxx\",\"yyyy\",\"zzzz\",\"yyxx\", \"zzxx\", \"zzyy\",\"Gamma(-w;w,0,0)\"}\n#Function to colleting tensor values and setting then to cleaned list\ndef collect(file):\n    beta_lines=[]\n    trash = {\"(au)\",\"_|_\",\"Unable\", \"(z)\", \"x,y,z\", \"*\", \"job\", \"cpu\", \"Elapsed\", \"time\", \"Dipole polarizability\", \"First dipole hyperpolarizability\", \"Second dipole hyperpolarizability\", \"||\"}\n    #trash_gamma_efish={\"yxxx\",\"zxxx\",\"zyxx\",\"yyyx\",\"xzxx\",\"yzxx\",\"zzyx\",\"zzzx\",\"xxxy\",\"zxxy\",\"yyxy\",\"zyxy\",\"xyyy\",\"\"}\n    # Thus, xxzz=xzxz, yyzz=yzyz and xxyy=xyxy\n    file_lines = file.readlines()\n    in_block=False",
+        "detail": "Code.Backend.NLO_Functions",
+        "documentation": {}
+    },
+    {
         "label": "DataAnalysis",
         "kind": 6,
         "importPath": "Code.Frontend.DataAnalysis",
@@ -561,7 +742,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\n#Contract the GUI window ",
+        "peekOfCode": "def expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    if stop: # conditional create to stop expansion when contract function is called.\n        root.after_cancel(rep)\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -570,7 +751,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def contract():\n    global cur_width, expanded\n    cur_width -= 10  # Reduce the width by 10\n    rep = root.after(5, contract)  # Call this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new reduced width\n    if cur_width <= min_w:  # If it is back to normal width\n        expanded = False  # Frame is not expanded\n        root.after_cancel(rep)  # Stop repeating the function\n        fill()\n#Filling side menu with icons and buttons",
+        "peekOfCode": "def contract():\n    global cur_width, expanded, stop\n    stop = True\n    cur_width -= 10  # Reduce the width by 10\n    rep = root.after(5, contract)  # Call this function every 5 ms\n    if cur_width >= min_w: # Prevent error when contract function is called when cur_width = min_w\n        frame.config(width=cur_width)  # Change the width to the new reduced width\n    if cur_width <= min_w:  # If it is back to normal width\n        expanded = False  # Frame is not expanded\n        root.after_cancel(rep)  # Stop repeating the function",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -588,7 +769,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def quit_app():\n    root.destroy()\n#NLO data analysis redirectioning function, instatiate object from class \ndef data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():",
+        "peekOfCode": "def quit_app():\n    root.destroy()\n#NLO data analysis redirectioning function, instatiate object from class \ndef data_analysis_application():\n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)\n#Input bulding redirectioning function\ndef input_builder_function():",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -597,7 +778,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def data_analysis_application(): \n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))",
+        "peekOfCode": "def data_analysis_application():\n    data_analysis_app = DataAnalysis(root)\n#Home redirectioning function\ndef home_function():\n    home_window = Home(root)\n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -606,7 +787,7 @@
         "kind": 2,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "def home_function():\n    home_window = Home(root)  \n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))",
+        "peekOfCode": "def home_function():\n    home_window = Home(root)\n#Input bulding redirectioning function\ndef input_builder_function():\n    input_builder_app=InputBuilder(root)\n# Define the icons to be shown and resize them\nhome = ImageTk.PhotoImage(Image.open(home_path).resize((40, 40), Image.LANCZOS))\ndata_analysis = ImageTk.PhotoImage(Image.open(data_path).resize((40, 40), Image.LANCZOS))\ninput_builder = ImageTk.PhotoImage(Image.open(input_path).resize((40, 40), Image.LANCZOS))\nexit = ImageTk.PhotoImage(Image.open(exit_path).resize((40, 40), Image.LANCZOS))",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -624,7 +805,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "root = tk.Tk()\nroot.geometry('750x750')\nhome_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')",
+        "peekOfCode": "root = tk.Tk()\nroot.geometry('750x750')\nhome_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -633,7 +814,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "home_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')",
+        "peekOfCode": "home_window = Home(root)\nmin_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -642,7 +823,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "min_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')",
+        "peekOfCode": "min_w = 45  # Minimum width of the frame\nmax_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -651,7 +832,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "max_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window ",
+        "peekOfCode": "max_w = 150  # Maximum width of the frame\ncur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -660,7 +841,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "cur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():",
+        "peekOfCode": "cur_width = min_w  # Current width of the frame\nexpanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -669,7 +850,16 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "expanded = False  # Check if it is completely expanded\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded",
+        "peekOfCode": "expanded = False  # Check if it is completely expanded\nstop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():",
+        "detail": "Code.Main",
+        "documentation": {}
+    },
+    {
+        "label": "stop",
+        "kind": 5,
+        "importPath": "Code.Main",
+        "description": "Code.Main",
+        "peekOfCode": "stop = False\n#Paths to icon images\ncurrent_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -678,7 +868,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "current_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms",
+        "peekOfCode": "current_dir = os.path.dirname(__file__)\nhome_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -687,7 +877,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "home_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width",
+        "peekOfCode": "home_path = os.path.join(current_dir, 'home.png')\ndata_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    if stop: # conditional create to stop expansion when contract function is called.",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -696,7 +886,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "data_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width",
+        "peekOfCode": "data_path = os.path.join(current_dir, 'keys.png')\ninput_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    if stop: # conditional create to stop expansion when contract function is called.\n        root.after_cancel(rep)",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -705,7 +895,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "input_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded",
+        "peekOfCode": "input_path = os.path.join(current_dir, 'input.png')\nexit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    if stop: # conditional create to stop expansion when contract function is called.\n        root.after_cancel(rep)\n    frame.config(width=cur_width)  # Change the width to the new increased width",
         "detail": "Code.Main",
         "documentation": {}
     },
@@ -714,7 +904,7 @@
         "kind": 5,
         "importPath": "Code.Main",
         "description": "Code.Main",
-        "peekOfCode": "exit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window \ndef expand():\n    global cur_width, expanded\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width\n        expanded = True  # Frame is expanded\n        root.after_cancel(rep)  # Stop repeating the function",
+        "peekOfCode": "exit_path = os.path.join(current_dir,'close.png')\n#Expand the GUI window\ndef expand():\n    global cur_width, expanded, stop\n    cur_width += 10  # Increase the width by 10\n    rep = root.after(5, expand)  # Repeat this function every 5 ms\n    if stop: # conditional create to stop expansion when contract function is called.\n        root.after_cancel(rep)\n    frame.config(width=cur_width)  # Change the width to the new increased width\n    if cur_width >= max_w:  # If width is greater than maximum width",
         "detail": "Code.Main",
         "documentation": {}
     },
