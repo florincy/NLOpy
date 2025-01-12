@@ -43,14 +43,23 @@ class DataAnalysis:
         self.orientation_frame = tk.Frame(self.widget_frame)
         self.orientation_frame.grid(row=3, column=0, columnspan=12, pady=5, sticky="nsew")
 
+    # Select Version OptionMenu
+        self.selected_orientation = tk.StringVar(master)
+        self.selected_orientation.set("G09 Rev. D01/G16 Rev. C01")  # Default value
+        self.orientation_label = tk.Label(self.orientation_frame, text="Choose Gaussian Version:", font=("Calibri", 14))
+        self.orientation_label.grid(row=0, column=0, sticky=tk.W)
+        self.orientation_menu = tk.OptionMenu(self.orientation_frame, self.selected_orientation, "G09 Rev. D01/G16 Rev. C01", "G09 Rev. A01")
+        self.orientation_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
+        self.orientation_menu.grid(row=0, column=1, sticky=tk.W)
+
         # Select Orientation OptionMenu
         self.selected_orientation = tk.StringVar(master)
         self.selected_orientation.set("Dipole Orientation")  # Default value
         self.orientation_label = tk.Label(self.orientation_frame, text="Choose Orientation:", font=("Calibri", 14))
-        self.orientation_label.grid(row=0, column=0, sticky=tk.W)
+        self.orientation_label.grid(row=1, column=0, sticky=tk.W)
         self.orientation_menu = tk.OptionMenu(self.orientation_frame, self.selected_orientation, "Input Orientation", "Dipole Orientation")
         self.orientation_menu.config(bg='#7C98B3', font=("Calibri", 12), relief='flat')
-        self.orientation_menu.grid(row=0, column=1, sticky=tk.W)
+        self.orientation_menu.grid(row=1, column=1, sticky=tk.W)
 
         # Create frame for Radiobuttons for Units
         self.radioutton_frame = tk.Frame(self.widget_frame)

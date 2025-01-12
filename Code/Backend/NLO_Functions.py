@@ -163,33 +163,158 @@ def collect(file):
     return lines,beta_lines
 def collect_09_A02(file):
     file_lines = file
-    trash = ['Charge=', "Dipole moment (field-independent basis, Debye)", "Traceless"]
+    trash = ['Charge=', "Traceless"]
     lines = []
     Gamma_EFISH_upper = [text.upper() for text in Gamma_EFISH]
-    properties = ["Dipole moment", "Quadrupole moment", "Hexadecapole moment"]
+    Gamma_kerr_upper = [text.upper() for text in Gamma_kerr]
+    Gamma_ok_upper = [text.upper() for text in Gamma_ok]
+    Beta_ok_upper = ["XXX","YYY","ZZZ","XYY","XXY","XXZ","XZZ","YZZ","YYZ","XYZ"]
+    Beta_HRS_upper = [text.upper() for text in Beta_HRS]
+    Alpha_ok_upper =[text.upper() for text in Alpha_ok]
+    Electric_dipole = ["X","Y","Z"]
+    properties = ["Dipole moment", "Octapole moment", "Hexadecapole moment","Quadrupole moment"]
     a = "nan"
-
+    #Gamma(-2w;w,w,0)
     for line in file_lines:
         # Skip lines containing any keywords in 'trash'
         if any(keyword in line for keyword in trash):
             continue
-
         for fragment in line.split():
             # Check for "Hexadecapole" in the fragment
             if "Hexadecapole" in fragment:
                 a = "Gamma(-2w;w,w,0)"
-
-            # Process fragments if 'a' is the specific value
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
             if a == "Gamma(-2w;w,w,0)":
                 # Check if the fragment matches any keyword in Gamma_EFISH_upper
                 if any(keyword in fragment for keyword in Gamma_EFISH_upper):
                     index = line.split().index(fragment)  # Correctly find the index
-                    lines.append(f"{fragment} {line.split()[index + 1]}")
-
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
                 # Reset 'a' if properties are found and "Hexadecapole" is not in the line
                 if any(keyword in line for keyword in properties) and "Hexadecapole" not in line:
                     a = "nan"
-
+    #Gamma(-w;w,0,0)
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Hexadecapole" in fragment:
+                a = "Gamma(-w;w,0,0)"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
+            if a == "Gamma(-w;w,0,0)":
+                # Check if the fragment matches any keyword in Gamma_kerr_upper
+                if any(keyword in fragment for keyword in Gamma_kerr_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Hexadecapole" not in line:
+                    a = "nan"
+    #Gamma(0;0,0,0)
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Hexadecapole" in fragment:
+                a = "Gamma(0;0,0,0)"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
+            if a == "Gamma(0;0,0,0)":
+                # Check if the fragment matches any keyword in Gamma_ok_upper
+                if any(keyword in fragment for keyword in Gamma_ok_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Hexadecapole" not in line:
+                    a = "nan"
+    #Beta non-HRS
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Octapole" in fragment:
+                a = "Beta(-2w;w,w)"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
+            if a == "Beta(-2w;w,w)":
+                # Check if the fragment matches any keyword in Beta_ok_upper
+                if any(keyword in fragment for keyword in Beta_ok_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Octapole" not in line:
+                    a = "nan"
+    #Beta HRS
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Octapole" in fragment:
+                a = "Beta(-2w;w,w)"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
+            if a == "Beta(-2w;w,w)":
+                # Check if the fragment matches any keyword in Beta_HRS_upper
+                if any(keyword in fragment for keyword in Beta_HRS_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Octapole" not in line:
+                    a = "nan"
+    #Alpha(-w;w)   
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Quadrupole" in fragment:
+                a = "Alpha(-w;w)"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)            # Process fragments if 'a' is the specific value
+            if a == "Alpha(-w;w)":
+                # Check if the fragment matches any keyword in Beta_HRS_upper
+                if any(keyword in fragment for keyword in Alpha_ok_upper):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Quadrupole" not in line:
+                    a = "nan"
+    #Electric Dipole   
+    for line in file_lines:
+        # Skip lines containing any keywords in 'trash'
+        if any(keyword in line for keyword in trash):
+            continue
+        for fragment in line.split():
+            # Check for "Hexadecapole" in the fragment
+            if "Dipole" in fragment:
+                a = "Electric dipole moment"
+                lined=[a,"COMENTARIO DEPOIS"]
+                lines.append(lined)
+            # Process fragments if 'a' is the specific value
+            if a == "Electric dipole moment":
+                # Check if the fragment matches any keyword in Electric_dipole
+                if any(keyword in fragment for keyword in Electric_dipole):
+                    index = line.split().index(fragment)  # Correctly find the index
+                    lined=[fragment,line.split()[index + 1]]
+                    lines.append(lined)
+                # Reset 'a' if properties are found and "Hexadecapole" is not in the line
+                if any(keyword in line for keyword in properties) and "Dipole" not in line:
+                    a = "nan"
     return lines
 
     

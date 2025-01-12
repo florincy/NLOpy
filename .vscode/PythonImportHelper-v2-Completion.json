@@ -454,7 +454,7 @@
         "kind": 2,
         "importPath": "Code.Backend.NLO_Functions",
         "description": "Code.Backend.NLO_Functions",
-        "peekOfCode": "def collect_09_A02(file):\n    file_lines = file\n    trash = ['Charge=', \"Dipole moment (field-independent basis, Debye)\", \"Traceless\"]\n    lines = []\n    Gamma_EFISH_upper = [text.upper() for text in Gamma_EFISH]\n    properties = [\"Dipole moment\", \"Quadrupole moment\", \"Hexadecapole moment\"]\n    a = \"nan\"\n    for line in file_lines:\n        # Skip lines containing any keywords in 'trash'\n        if any(keyword in line for keyword in trash):",
+        "peekOfCode": "def collect_09_A02(file):\n    file_lines = file\n    trash = ['Charge=', \"Traceless\"]\n    lines = []\n    Gamma_EFISH_upper = [text.upper() for text in Gamma_EFISH]\n    Gamma_kerr_upper = [text.upper() for text in Gamma_kerr]\n    Gamma_ok_upper = [text.upper() for text in Gamma_ok]\n    Beta_ok_upper = [\"XXX\",\"YYY\",\"ZZZ\",\"XYY\",\"XXY\",\"XXZ\",\"XZZ\",\"YZZ\",\"YYZ\",\"XYZ\"]\n    Beta_HRS_upper = [text.upper() for text in Beta_HRS]\n    Alpha_ok_upper =[text.upper() for text in Alpha_ok]",
         "detail": "Code.Backend.NLO_Functions",
         "documentation": {}
     },
@@ -735,6 +735,24 @@
         "description": "Code.Frontend.InputBuilder",
         "peekOfCode": "functionals = ['B3LYP', 'B3P86', 'O3LYP', 'APFD', 'wB97XD', 'LC-wHPBE', 'LC-wPBE', 'CAM-B3LYP', 'wB97', 'wB97X', 'LC-BLYP', 'MN15', 'M11', 'SOGGA11X', 'N12SX', 'MN12SX', 'PW6B95', 'PW6B95D3', 'M08HX', 'M06', 'M06HF', 'M062X', 'PBE1PBE', 'HSEH1PBE', 'OHSE2PBE', 'OHSE1PBE', 'PBEh1PBE', 'B1B95', 'B1LYP', 'mPW1PW91', 'mPW1LYP', 'mPW1PBE', 'mPW3PBE', 'B98', 'B971', 'B972', 'TPSSh', 'tHCTHhyb', 'BMK', 'HISSbPBE', 'X3LYP', 'BHandH', 'BHandHLYP']\n#INITAL SETTINGS AND FRAMES \nclass InputBuilder:\n    def __init__(self, master=None):\n        self.master = master\n        self.master.title(\"Inpur Builder and Preview\")\n        #Main frame\n        self.main_frame = tk.Frame(master)\n        self.main_frame.grid(row=0, column=1, padx=20, pady=20, sticky=\"nsew\")\n        # Initialize user-input parameters",
         "detail": "Code.Frontend.InputBuilder",
+        "documentation": {}
+    },
+    {
+        "label": "log_file_path",
+        "kind": 5,
+        "importPath": "Code.G09-tests",
+        "description": "Code.G09-tests",
+        "peekOfCode": "log_file_path = \"/home/florincy/NLO/Dados/pna_gaussian/g09-A02/pNA_g09-A02_gama.log\"\nversion = \"g09-A02\"\n# Read and process the log file\nwith open(log_file_path, \"r\") as log_file:\n    if version == \"g09-A02\":\n        unit = 1  # Unit for calculations for A02, that version prints only one unit\n        start_line = collect_limits(log_file)[0]\n        end_line = start_line + 16\n        lines = read_file_append(log_file_path, start_line, end_line)\n        print(lines)  # Debugging",
+        "detail": "Code.G09-tests",
+        "documentation": {}
+    },
+    {
+        "label": "version",
+        "kind": 5,
+        "importPath": "Code.G09-tests",
+        "description": "Code.G09-tests",
+        "peekOfCode": "version = \"g09-A02\"\n# Read and process the log file\nwith open(log_file_path, \"r\") as log_file:\n    if version == \"g09-A02\":\n        unit = 1  # Unit for calculations for A02, that version prints only one unit\n        start_line = collect_limits(log_file)[0]\n        end_line = start_line + 16\n        lines = read_file_append(log_file_path, start_line, end_line)\n        print(lines)  # Debugging\n        values = collect_09_A02(lines)",
+        "detail": "Code.G09-tests",
         "documentation": {}
     },
     {
